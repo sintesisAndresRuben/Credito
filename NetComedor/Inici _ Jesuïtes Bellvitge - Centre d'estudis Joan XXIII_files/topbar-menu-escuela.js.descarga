@@ -1,0 +1,18 @@
+(function ($) {
+
+    jQuery(document).ready(function ($) {
+    			
+				
+		$("#ico-menu-escuela").click(function(){
+			
+			$("#topbar .nav ul").toggleClass("menu-change");
+			
+			if ($(this).children("img").attr("src")=="/sites/all/themes/global_fje/images/ico-menu-on.png") {	
+					$(this).children("img").attr('src', '/sites/all/themes/global_fje/images/ico-menu-off.png');
+			}else{
+					$(this).children("img").attr('src', '/sites/all/themes/global_fje/images/ico-menu-on.png');
+			}
+	
+		});
+   });
+})(jQuery);

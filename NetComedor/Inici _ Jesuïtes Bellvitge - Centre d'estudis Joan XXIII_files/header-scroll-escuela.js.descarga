@@ -1,0 +1,43 @@
+// -----------------------------------------------------------------
+// HEADER SCROLL
+// Mostramos la barra superior (topbar) al hacer scroll
+// -----------------------------------------------------------------
+
+(function ($) {
+			
+	var flag = 0;
+
+	$(window).scroll(function(e){
+					
+				//console.log(flag);
+								
+				var scrollAmount = $(window).scrollTop(); 
+				//console.log("TOP: "+scrollAmount);
+				
+				if(scrollAmount>=155){			
+					$('#topbar-escuela').css("display", "block");
+					$('#topbar-escuela').css("position", "fixed");	
+					
+					$('#topbar-escuela').css("width", "100%");	
+					$('#topbar-escuela').css("z-index", "9999");
+					
+					if(flag==0){
+						flag=1;
+						$('#topbar-escuela').css("top", "-40px");	
+						$("#topbar-escuela").animate({top:'0px'});
+						
+					}
+					
+				}else{
+					$('#topbar-escuela').css("display", "none");
+					$('#topbar-escuela').css("top", "0px");	
+					flag=0;
+
+				}
+		});	
+
+	//support colorbox iframe
+	$(document).ready(function(){
+		$('.youtube').colorbox({iframe:true, innerWidth:800, innerHeight:500});
+	});
+})(jQuery);
