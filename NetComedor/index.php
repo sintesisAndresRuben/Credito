@@ -1,7 +1,8 @@
 <?php
 session_start();
 include 'conexion.proc.php';
-if (!isset($_SESSION['usu_email'])) {
+if (!isset($_SESSION['mail_usuario'])) {
+  session_destroy();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <!-- saved from url=(0025)http://www.j23.fje.edu/es -->
@@ -157,8 +158,8 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
             <div class="loginBox">
             <input id="username" name="username" type="text" placeholder="Usuari">
             <input id="password" name="password" type="password" placeholder="Password">
-            <input id="cpassword" name="cpassword" type="hidden" value="">
-            <input class="button" name="action" type="submit" value="Entrar" onclick="/*alert(&#39;Avui entre les 16h i les 17h hi ha previstes tasques de manteniment dels servidors de laNet. \nDurant aquest temps laNet tindrà afectacions del servei.\nDisculpeu les molèsties que aquest fet us pugui ocasionar&#39;);*/return true;">
+            <!-- <input id="cpassword" name="cpassword" type="hidden" value=""> -->
+            <input class="button" name="login" type="submit" value="Entrar" onclick="/*alert(&#39;Avui entre les 16h i les 17h hi ha previstes tasques de manteniment dels servidors de laNet. \nDurant aquest temps laNet tindrà afectacions del servei.\nDisculpeu les molèsties que aquest fet us pugui ocasionar&#39;);*/return true;">
             </div>
         </form>
 	</div>
@@ -344,22 +345,22 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
   <div id="views_slideshow_cycle_div_slideshow-block_1_0" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-1 views-row-first views-row-odd" aria-labelledby="views_slideshow_pager_field_item_bottom_slideshow-block_1_0" style="position: absolute; top: 0px; left: 0px; display: none; z-index: 4; opacity: 0;">
   <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-odd views-row-first">
     
-          <div id="slide" style="background-image:url(/sites/default/files/slideshow/slide-fje.png)"><div></div><div class="caption"><div class="container"><div class="titulo">Sobre todo, gracias</div><div class="subtitulo">Más en las obras que en las palabras</div></div></div></div>  </div>
+          <div id="slide" style="background-image:url(img/principal/slide-fje.png)"><div></div><div class="caption"><div class="container"><div class="titulo">Sobre todo, gracias</div><div class="subtitulo">Más en las obras que en las palabras</div></div></div></div>  </div>
 </div>
 <div id="views_slideshow_cycle_div_slideshow-block_1_1" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-2 views_slideshow_cycle_hidden views-row-even" aria-labelledby="views_slideshow_pager_field_item_bottom_slideshow-block_1_1" style="position: absolute; top: 0px; left: 0px; display: none; z-index: 4; opacity: 0; width: 1349px; height: 600px;">
   <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-odd">
     
-          <div id="slide" style="background-image:url(/sites/default/files/slideshow/bellvitge_slide_fp_1500x600.jpg)"><div></div><div class="caption"><div class="container"><div class="titulo">Le ayudamos a encontrar su vocación, el inicio de una trayectoria</div><div class="subtitulo">Formamos a los profesionales del futuro</div></div></div></div>  </div>
+          <div id="slide" style="background-image:url(img/principal/bellvitge_slide_fp_1500x600.jpg)"><div></div><div class="caption"><div class="container"><div class="titulo">Le ayudamos a encontrar su vocación, el inicio de una trayectoria</div><div class="subtitulo">Formamos a los profesionales del futuro</div></div></div></div>  </div>
 </div>
 <div id="views_slideshow_cycle_div_slideshow-block_1_2" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-3 views_slideshow_cycle_hidden views-row-odd" aria-labelledby="views_slideshow_pager_field_item_bottom_slideshow-block_1_2" style="position: absolute; top: 0px; left: 0px; display: none; z-index: 4; opacity: 0; width: 1349px; height: 600px;">
   <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-odd">
     
-          <div id="slide" style="background-image:url(/sites/default/files/slideshow/bellvitge_slide_secundaria_1500x600.jpg)"><div></div><div class="caption"><div class="container"><div class="titulo">Formación integral del alumno</div><div class="subtitulo">Personas con capacidad de adaptación, reflexivas y abiertas al cambio</div></div></div></div>  </div>
+          <div id="slide" style="background-image:url(img/principal/slideshow/bellvitge_slide_secundaria_1500x600.jpg)"><div></div><div class="caption"><div class="container"><div class="titulo">Formación integral del alumno</div><div class="subtitulo">Personas con capacidad de adaptación, reflexivas y abiertas al cambio</div></div></div></div>  </div>
 </div>
 <div id="views_slideshow_cycle_div_slideshow-block_1_3" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-4 views_slideshow_cycle_hidden views-row-last views-row-even" aria-labelledby="views_slideshow_pager_field_item_bottom_slideshow-block_1_3" style="position: absolute; top: 0px; left: 0px; display: block; z-index: 5; opacity: 1; width: 1349px; height: 600px;">
   <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-odd">
     
-          <div id="slide" style="background-image:url(/sites/default/files/slideshow/bellvitge_slide_primaria_1500x600.jpg)"><div></div><div class="caption"><div class="container"><div class="titulo">Despertar el gusto y la inquietud</div><div class="subtitulo">El maestro acompaña, el alumno construye su saber</div></div></div></div>  </div>
+          <div id="slide" style="background-image:url(img/principal/slideshow/bellvitge_slide_primaria_1500x600.jpg)"><div></div><div class="caption"><div class="container"><div class="titulo">Despertar el gusto y la inquietud</div><div class="subtitulo">El maestro acompaña, el alumno construye su saber</div></div></div></div>  </div>
 </div>
 </div>
 </div>

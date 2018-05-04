@@ -2,7 +2,7 @@
 	$dbServer = "127.0.0.1"; // Nombre o IP del servidor 10.4.11.200
 	$dbUser = "root"; // Nombre de usuario
 	$dbPwd = ""; // Contraseña del servidor
-	$dbNameBD = "bd_friendlyfood"; // Nombre de la base de datos
+	$dbNameBD = "bd_comedor"; // Nombre de la base de datos
 
 	$conexion = mysqli_connect ($dbServer, $dbUser, $dbPwd, $dbNameBD);
 	mysqli_query($conexion,"SET NAMES 'utf8'"); // Establece el texto a mostrar, de la base de datos, en UTF8
@@ -16,32 +16,34 @@
 
 	if (isset($_POST['login'])) {
 		session_start();
-		$user = $_POST['heroEmail'];
-		$pwd = $_POST['heroPassword'];
+		$user = $_POST['username'];
+		$pwd1 = $_POST['password'];
 
-		$pwd = md5($pwd);
+		$pwd = md5($pwd1);
 
-		$sqlLogin = "SELECT * FROM tbl_usuario WHERE usu_email = '$user' AND usu_password = '$pwd'";
+		$sqlLogin = "SELECT * FROM tbl_usuarios WHERE mail_usuario = '$user' AND password_usuario = '$pwd'";
 		$result = mysqli_query($conexion,$sqlLogin);
 
 		if (mysqli_num_rows($result)>0) {
 			$usu_session = (mysqli_fetch_array($result));
-			$_SESSION['usu_id'] = $usu_session['usu_id'];
-			$_SESSION['usu_nombre'] = $usu_session['usu_nombre'];
-			$_SESSION['usu_apellido'] = $usu_session['usu_apellido'];
-			$_SESSION['usu_admin'] = $usu_session['usu_admin'];
-			$_SESSION['usu_email'] = $user;
+			$_SESSION['id_usuario'] = $usu_session['id_usuario'];
+			$_SESSION['nombre_usuario'] = $usu_session['nombre_usuario'];
+			$_SESSION['apellido_usuario'] = $usu_session['apellido_usuario'];
+			$_SESSION['tipo_usuario'] = $usu_session['tipo_usuario'];
+			$_SESSION['mail_usuario'] = $user;
+			$_SESSION['admin'] = $usu_session['admin'];
 
-			if ($usu_session['usu_admin'] == "Si") {
+			//Admin = 1 (sí) - Admin = 0/NULL (no)
+			if ($_SESSION['admin'] == "si") {
 				header('location: admin.php');
-			} else if ($usu_session['usu_admin'] == "No") {
-				header('location: platos.php');
+			} else if ($_SESSION['admin'] == "no") {
+				header('location: net.php');
 			} else {
 				echo "La cuenta no existe";
 				session_destroy();
 			}
 		} else {
-			echo "Usuario o Contraseña incorrectos";
+			header('Location: error.html');
 			session_destroy();
 		}
 
@@ -54,33 +56,5 @@
 		mysqli_close($conexion);
 		header('location: index.php');
 	}
-
-	if (isset($_POST['favoritos'])) {
-		$idsesion = $_POST['elimina'];
-		$idsesiondel = $_POST['eliminado'];
-		$sql = "DELETE FROM tbl_favorito WHERE usu_id_recibe_fav='$idsesion' AND usu_id_da_fav='$idsesiondel'";
-		// echo $sql;
-		$result = mysqli_query($conexion,$sql);
-		header('location: platos.php');
-	}
-
-	if (isset($_POST['add_favoritos'])) {
-		$idsesion = $_POST['elimina'];
-		$idsesiondel = $_POST['eliminado'];
-		$sql = "INSERT INTO `tbl_favorito` (`usu_id_da_fav`, `usu_id_recibe_fav`) VALUES ($idsesiondel, $idsesion)";
-		// echo $sql;
-		$result = mysqli_query($conexion,$sql);
-		header('location: platos.php');
-	}
-
-
-
-
-
-
-
-
-
-
 
 	?>

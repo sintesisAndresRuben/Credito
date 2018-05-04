@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<![endif]-->
+		<title>Comprar <?php echo $row['pub_titulo'] ?></title>
+		<!-- BOOTSTRAP STYLE SHEET -->
+		<link href="css/compras/css/bootstrap.css" rel="stylesheet" />
+
+		<!-- CREDIT-CARD -->
+		<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+		<meta name="viewport" content="initial-scale=1">
+		<link href="css/compras/dist/card.css" rel="stylesheet" type="text/css">
+		<!-- FIN CREDIT -->
+
+		<!-- CUSTOM CSS -->
+		<style>
+			/* GENERAL STYLES */
+			body {
+				padding-top: 70px; /*REQUIRED FOR FIXED TOP NAVBAR*/
+				background-color: #FBFBFB;
+			}
+			/* CREDIT CARD DIV STYLES */
+			.credit-card-div  span {
+				padding-top:5px;
+			}
+			.credit-card-div img {
+				padding-top:30px;
+			}
+			.credit-card-div .small-font {
+				font-size:12px;
+			}
+			.credit-card-div .pad-adjust {
+				padding-top:10px;
+			}
+		</style>
+			<div class="container">
+				<h4 style="text-align: center; margin-bottom: 25px;">Ha elegido<b>.</b></h4>
+			</div>
+	</head>
+	<body>
+		<form id="buy" action="compra.proc.php" method="POST">
+		<!-- OCULTOS -->
+			<input type="hidden" name="usu_id" value="">
+			<input type="hidden" name="pub_id" value="">
+			<input type="hidden" name="restantes" value="">
+
+		<!-- FORMULARIO -->
+
+		<div class="container">
+			<div class="col-xs-12 col-sm-6 col-md-push-6" style="padding-bottom: 20px;">
+				<div class="card-wrapper"></div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-pull-6">
+				<form action="">
+					<div class="row">
+						<div class="col-sm-3 col-xs-4">
+							<span class="help-block text-muted small-font" >  Importe </span>
+							<input  title="El importe minimo es de 2€" placeholder="Importe" type="number" name="import" class="form-control" step="0.5" min="2" required="">	
+						</div>
+						<!-- <div class="col-sm-3 col-xs-4">
+							<br>
+							<br>
+							<span class="help-block" >€</span>
+						</div> -->
+					</div>
+					<div class="row">
+						<div class="col-sm-9">
+							<span class="help-block text-muted small-font" >  Número de tarjeta</span>
+							<input placeholder="Número de tarjeta" type="tel" name="number" class="form-control">
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-sm-9 pad-adjust">
+							<span class="help-block text-muted small-font" >  Nombre completo</span>
+							<input placeholder="Nombre completo" type="text" name="name" class="form-control">
+						</div>
+					</div>
+					<br>
+					<div class="row ">
+						<div class="col-sm-3 col-xs-4">
+							<span class="help-block text-muted small-font" > MM/YY</span>
+							<input placeholder="MM/YY" type="tel" name="expiry" class="form-control">
+						</div>
+						<div class="col-sm-3 col-xs-4">
+							<span class="help-block text-muted small-font" >  CCV</span>
+							<input placeholder="CVC" type="number" name="cvc" class="form-control">
+						</div>
+						<div class="col-sm-3 col-xs-4">
+							<br>
+							<img src="css/compras/img/1.png" class="img-rounded" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-9 pad-adjust">
+							<div class="checkbox">
+								<h6>Al realizar el pago, la cantidad abonada será utilizada para beneficios sociales.</h6>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-9 pad-adjust">
+							<input type="checkbox" name="vehicle" value="Bike" required=""> Estoy de acuerdo con los <b style="color:blue">Términos y condiciones</b> y el <b style="color:blue">Aviso de privacidad</b> de Friendly Food<br>
+							<br>
+					</div>
+					<div class="row">
+						<div class="col-xs-6 pad-adjust">
+							<input type="submit"  class="btn btn-danger" value="CANCELAR" />
+						</div>
+						<div class="col-xs-6 pad-adjust">
+							<input type="submit"  class="btn btn-success" id="compra" value="DONAR" />
+						</div>
+						<br><br>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<!-- REQUIRED SCRIPTS FILES -->
+		<!-- CORE JQUERY FILE -->
+		<script src="css/compras/js/jquery-1.11.1.js"></script>
+		<!-- REQUIRED BOOTSTRAP SCRIPTS -->
+		<script src="css/compras/js/bootstrap.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script src="css/compras/dist/jquery.card.js"></script>
+		<!-- TARJETIKA DE CREDITO -->
+		<script>
+		$('form').card({
+			// a selector or DOM element for the container
+			// where you want the card to appear
+			container: '.card-wrapper', // *required*
+
+			// all of the other options from above
+		});
+		</script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-36251023-1']);
+			_gaq.push(['_setDomainName', 'jqueryscript.net']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+		<!-- FIN TARJETIKA -->
+
+
+			<!-- <input type="text" name="tarjeta" placeholder="Tipo de tarjeta">
+			<input type="text" name="numtarjeta" placeholder="Numero de tarjeta"> -->
+			<!-- <button type="submit" id="compra">Comprar</button>	 -->
+		<!-- </form> -->
+
+		<!-- FIN FORMULARIO -->
+		<br>
+		<div id="info"></div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$("#buy").submit(function(e){
+				$.ajax({
+					type: "POST",
+					url: "compra.proc.php",//Archivo php donde se envian los datos
+					data: $("#buy").serialize(),//Serializa los elementos del formulario
+					beforeSend: function () {
+						$("#info").html("Procesando, espere por favor...");
+					},
+					success: function(response)
+					{
+						$("#compra").hide();
+						$("#info").html(response);
+						setInterval(function() {
+							window.location.replace("platos.php");
+						}, 5 * 1000); // 5 * 1000 milsec --> Cada 5 segundos se ejecuta
+					}
+				});
+				e.preventDefault(); //evita que se ejecute el submit del form
+			});
+		</script>
+	</body>
+</html>
