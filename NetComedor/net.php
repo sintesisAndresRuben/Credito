@@ -81,7 +81,7 @@ document.getElementById('right-top-2').appendChild(child);
     &amp;
     $root.groupsFailed &amp;
     &amp;
-    $root.modalFailed" ng-click="tutorial.open()"></a><div class="login__user"><img ng-src="" ng-show="user.avatar !== undefined" alt="avatar del usuario" class="login__avatar ng-hide"> <span class="login__username ng-binding"><?php echo $_SESSION['nombre_usuario']." ".$_SESSION['apellido_usuario']?></span></div><div class="login__controls"><a href="home.php"><img src="./img/net/logout.jpg"/></a></div></div></div></user-info><modal><div ng-controller="Modal" class="lightbox is--visible ng-scope"><a href="http://srv.net.fje.edu/net2/" class="lightbox__close ir" ng-click="lightbox.hideLightbox();
+    $root.modalFailed" ng-click="tutorial.open()"></a><div class="login__user"><img ng-src="" ng-show="user.avatar !== undefined" alt="avatar del usuario" class="login__avatar ng-hide"> <span class="login__username ng-binding"><?php echo $_SESSION['nombre_usuario']." ".$_SESSION['apellido_usuario']?></span></div><div class="login__controls"><a href="<?php session_destroy() ?>"><img src="./img/net/logout.jpg"/></a></div></div></div></user-info><modal><div ng-controller="Modal" class="lightbox is--visible ng-scope"><a href="http://srv.net.fje.edu/net2/" class="lightbox__close ir" ng-click="lightbox.hideLightbox();
         ">Cerrar</a><div class="lightbox__inner"><a target="_blank" ng-href=""><img ng-src="" alt=""></a></div></div></modal><error-message><div ng-show="$root.servicesFailed &amp;
             &amp;
             $root.familyFailed &amp;
