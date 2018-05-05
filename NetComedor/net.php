@@ -504,7 +504,7 @@ link=http://mail.google.com/a/fje.edu">
     <div class="service-item__name"><!-- ngIf: !favorite -->
         <div ng-if="!favorite" class="ng-scope ng-binding">
             <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">correo</font></font>
+                <font style="vertical-align: inherit;">Correo</font></font>
             </div><!-- end ngIf: !favorite --><!-- ngIf: favorite -->
         </div>
     </span> <!-- ngIf: item.tag -->
@@ -542,7 +542,7 @@ link=http://calendar.google.com/a/fje.edu"><span class="service-item__name-wrap"
     "><font style="vertical-align: inherit;
     ">como</font></font></span><div class="service-item__name"><!-- ngIf: !favorite --><div ng-if="!favorite" class="ng-scope ng-binding"><font style="vertical-align: inherit;
     "><font style="vertical-align: inherit;
-    ">calendario</font></font></div><!-- end ngIf: !favorite --><!-- ngIf: favorite --></div></span> <!-- ngIf: item.tag --></a><!-- end ngIf: item.link --> <!-- ngIf: !item.link --> <span ng-class="{
+    ">Calendario</font></font></div><!-- end ngIf: !favorite --><!-- ngIf: favorite --></div></span> <!-- ngIf: item.tag --></a><!-- end ngIf: item.link --> <!-- ngIf: !item.link --> <span ng-class="{
     &#39;
     favorites__add&#39;
     : !favorite, &#39;

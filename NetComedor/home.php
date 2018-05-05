@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
+<title>Comedor</title>
 <html lang="es">
 	<?php
 		//Insertamos el header general

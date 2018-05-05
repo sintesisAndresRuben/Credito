@@ -55,24 +55,24 @@ if (!isset($_SESSION['mail_usuario'])) {
   <link rel="stylesheet" type="text/css" href="/sites/all/themes/global_fje/css/comun.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="/sites/all/themes/global_fje/css/colegio.css" media="screen" />
   -->
-  <script async="" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/analytics.js.descarga"></script><script type="text/javascript" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/jquery.js.descarga"></script>
-<script type="text/javascript" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/jquery.once.js.descarga"></script>
-<script type="text/javascript" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/drupal.js.descarga"></script>
-<script type="text/javascript" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/views_slideshow.js.descarga"></script>
-<script type="text/javascript" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/jquery.cookie.js.descarga"></script>
-<script type="text/javascript" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/es_BuI5tjHt6VGvNuEp8UnM6NJi_JF11hAVAXWWemRtcMs.js.descarga"></script>
-<script type="text/javascript" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/colorbox.js.descarga"></script>
-<script type="text/javascript" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/colorbox_style.js.descarga"></script>
-<script type="text/javascript" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/jquery.cycle.all.js.descarga"></script>
-<script type="text/javascript" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/views_slideshow_cycle.js.descarga"></script>
-<script type="text/javascript" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/googleanalytics.js.descarga"></script>
+  <script async="" src="./otros/index/analytics.js.descarga"></script><script type="text/javascript" src="./otros/index/jquery.js.descarga"></script>
+<script type="text/javascript" src="./otros/index/jquery.once.js.descarga"></script>
+<script type="text/javascript" src="./otros/index/drupal.js.descarga"></script>
+<script type="text/javascript" src="./otros/index/views_slideshow.js.descarga"></script>
+<script type="text/javascript" src="./otros/index/jquery.cookie.js.descarga"></script>
+<script type="text/javascript" src="./otros/index/es_BuI5tjHt6VGvNuEp8UnM6NJi_JF11hAVAXWWemRtcMs.js.descarga"></script>
+<script type="text/javascript" src="./otros/index/colorbox.js.descarga"></script>
+<script type="text/javascript" src="./otros/index/colorbox_style.js.descarga"></script>
+<script type="text/javascript" src="./otros/index/jquery.cycle.all.js.descarga"></script>
+<script type="text/javascript" src="./otros/index/views_slideshow_cycle.js.descarga"></script>
+<script type="text/javascript" src="./otros/index/googleanalytics.js.descarga"></script>
 <script type="text/javascript">
 <!--//--><![CDATA[//><!--
 (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-28977384-4", {"cookieDomain":"auto"});ga("create", "UA-28977384-20", 'auto', 'myTracker');ga("send", "pageview");ga('myTracker.send', 'pageview');
 //--><!]]>
 </script>
-<script type="text/javascript" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/topbar-menu-escuela.js.descarga"></script>
-<script type="text/javascript" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/header-scroll-escuela.js.descarga"></script>
+<script type="text/javascript" src="./otros/index/topbar-menu-escuela.js.descarga"></script>
+<script type="text/javascript" src="./otros/index/header-scroll-escuela.js.descarga"></script>
 <script type="text/javascript">
 <!--//--><![CDATA[//><!--
 jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageState":{"theme":"escuelas_fje","theme_token":"RM8rtHjRrMoTbVXzeBI9HBUyPk-b4RuCN8FafZpamAE","js":{"0":1,"sites\/all\/modules\/eu_cookie_compliance\/js\/eu_cookie_compliance.js":1,"sites\/all\/modules\/jquery_update\/replace\/jquery\/1.8\/jquery.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/views_slideshow\/js\/views_slideshow.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/external\/jquery.cookie.js":1,"public:\/\/languages\/es_BuI5tjHt6VGvNuEp8UnM6NJi_JF11hAVAXWWemRtcMs.js":1,"sites\/all\/modules\/colorbox\/js\/colorbox.js":1,"sites\/all\/modules\/colorbox\/styles\/default\/colorbox_style.js":1,"sites\/all\/libraries\/jquery.cycle\/jquery.cycle.all.js":1,"sites\/all\/modules\/views_slideshow\/contrib\/views_slideshow_cycle\/js\/views_slideshow_cycle.js":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"1":1,"sites\/all\/themes\/escuelas_fje\/js\/topbar-menu-escuela.js":1,"sites\/all\/themes\/escuelas_fje\/js\/header-scroll-escuela.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"sites\/all\/modules\/views_slideshow\/views_slideshow.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/domain\/domain_nav\/domain_nav.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/youtube\/css\/youtube.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/colorbox\/styles\/default\/colorbox_style.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"modules\/locale\/locale.css":1,"sites\/all\/modules\/views_slideshow\/contrib\/views_slideshow_cycle\/views_slideshow_cycle.css":1,"sites\/all\/modules\/eu_cookie_compliance\/css\/eu_cookie_compliance.css":1,"0":1,"sites\/all\/themes\/escuelas_fje\/..\/global_fje\/css\/comun.css":1,"sites\/all\/themes\/escuelas_fje\/..\/global_fje\/css\/colegio.css":1}},"colorbox":{"opacity":"0.85","current":"{current} de {total}","previous":"\u00ab Anterior","next":"Siguiente \u00bb","close":"Cerrar","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"480px"},"urlIsAjaxTrusted":{"\/es\/cerca":true},"viewsSlideshow":{"slideshow-block_1":{"methods":{"goToSlide":["viewsSlideshowPager","viewsSlideshowSlideCounter","viewsSlideshowCycle"],"nextSlide":["viewsSlideshowPager","viewsSlideshowSlideCounter","viewsSlideshowCycle"],"pause":["viewsSlideshowControls","viewsSlideshowCycle"],"play":["viewsSlideshowControls","viewsSlideshowCycle"],"previousSlide":["viewsSlideshowPager","viewsSlideshowSlideCounter","viewsSlideshowCycle"],"transitionBegin":["viewsSlideshowPager","viewsSlideshowSlideCounter"],"transitionEnd":[]},"paused":0}},"viewsSlideshowPager":{"slideshow-block_1":{"bottom":{"type":"viewsSlideshowPagerFields","master_pager":"0"}}},"viewsSlideshowPagerFields":{"slideshow-block_1":{"bottom":{"activatePauseOnHover":0}}},"viewsSlideshowCycle":{"#views_slideshow_cycle_main_slideshow-block_1":{"num_divs":4,"id_prefix":"#views_slideshow_cycle_main_","div_prefix":"#views_slideshow_cycle_div_","vss_id":"slideshow-block_1","effect":"fade","transition_advanced":0,"timeout":5000,"speed":700,"delay":0,"sync":1,"random":0,"pause":0,"pause_on_click":0,"play_on_hover":0,"action_advanced":0,"start_paused":0,"remember_slide":0,"remember_slide_days":1,"pause_in_middle":0,"pause_when_hidden":0,"pause_when_hidden_type":"full","amount_allowed_visible":"","nowrap":0,"pause_after_slideshow":0,"fixed_height":1,"items_per_slide":1,"wait_for_image_load":1,"wait_for_image_load_timeout":3000,"cleartype":0,"cleartypenobg":0,"advanced_options":"{}"}},"eu_cookie_compliance":{"popup_enabled":1,"popup_agreed_enabled":0,"popup_hide_agreed":0,"popup_clicking_confirmation":1,"popup_scrolling_confirmation":0,"popup_html_info":"\u003Cdiv\u003E\n  \u003Cdiv class =\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EJesu\u00eftes Educaci\u00f3\u003C\/h2\u003E\u003Cp\u003E\u003Ca class=\u0022agree-button\u0022\u003ETancar\u003C\/a\u003E\u003C\/p\u003E\u003Cdiv class=\u0022clear\u0022\u003E\u003C\/div\u003E\u003Cp\u003EAquesta web utilitza galetes pr\u00f2pies i de tercers per mesurar i gestionar visites a la web, tamb\u00e9 per oferir una millor experi\u00e8ncia i servei. Si continueu de navegar considerem que accepta la seva utilitzaci\u00f3. Podeu canviar la configuraci\u00f3 i trobar m\u00e9s informaci\u00f3 sobre les normes de galetes al enlla\u00e7 seg\u00fcent \u003Ca href=\u0022\/avis-legal\u0022\u003Epol\u00edtica de Cookies\u003C\/a\u003E.\u003C\/p\u003E    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button\u0022\u003EAcceptar\u003C\/button\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button\u0022\u003ENo accepto\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","use_mobile_message":false,"mobile_popup_html_info":"\u003Cdiv\u003E\n  \u003Cdiv class =\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n          \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button\u0022\u003EAcceptar\u003C\/button\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button\u0022\u003ENo accepto\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n","mobile_breakpoint":"768","popup_html_agreed":"\u003Cdiv\u003E\n  \u003Cdiv class =\u0022popup-content agreed\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EThank you for accepting cookies\u003C\/h2\u003E\u003Cp\u003EYou can now hide this message or find out more about cookies.\u003C\/p\u003E    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022hide-popup-button\u0022\u003EOculta\u003C\/button\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button\u0022 \u003EMore info\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","popup_use_bare_css":false,"popup_height":"auto","popup_width":"100%","popup_delay":1000,"popup_link":"\/es\/avis-legal","popup_link_new_window":1,"popup_position":null,"popup_language":"es","better_support_for_screen_readers":0,"reload_page":0,"domain":"","popup_eu_only_js":0,"cookie_lifetime":"100","disagree_do_not_show_popup":0},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip","trackColorbox":1}});
@@ -109,11 +109,11 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
 <div id="topbar">
     <div class="container">
             <div class="logo">
-                <a href="http://www.fje.edu/"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/lg-jesuites-educacio.png" alt="Fundació Jesuïtes Educació"></a>
+                <a href="http://www.fje.edu/"><img src="./otros/index/lg-jesuites-educacio.png" alt="Fundació Jesuïtes Educació"></a>
             </div>
             
             <div class="nav">
-            	 <a id="ico-menu-escuela"><img class="ico-menu" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/ico-menu-off.png" alt="Fundació Jesuïtes Educació"></a>
+            	 <a id="ico-menu-escuela"><img class="ico-menu" src="./otros/index/ico-menu-off.png" alt="Fundació Jesuïtes Educació"></a>
                    <div class="region region-topbar">
     <div id="block-block-29" class="block block-block">
 
@@ -131,7 +131,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
     <div id="block-views-exp-cercador-page" class="block block-views buscador">
 				<div class="content">
 		<div id="mainSearch">
-			<img class="ico-busca" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/ico-busca.png">
+			<img class="ico-busca" src="./otros/index/ico-busca.png">
 			<form action="http://www.j23.fje.edu/es/cerca" method="get" id="views-exposed-form-cercador-page" accept-charset="UTF-8"><div><div class="views-exposed-form">
   <div class="views-exposed-widgets clearfix">
           <div id="edit-keys-wrapper" class="views-exposed-widget views-widget-filter-keys">
@@ -153,7 +153,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
   <div class="content">
     <div id="mainLogin">
 	<div id="mainLoginwrapper">
-        <img class="ico-busca" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/ico-net.png">
+        <img class="ico-busca" src="./otros/index/ico-net.png">
         <form id="login-form" action="conexion.proc.php" method="POST">
             <div class="loginBox">
             <input id="username" name="username" type="text" placeholder="Usuari">
@@ -188,7 +188,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
 <div id="topbar-escuela" style="background-color:#FFF;">
     <div class="container">
             <div class="logo">
-                <a href="http://www.j23.fje.edu/"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/logotop_bellvitge_fje.png"></a>
+                <a href="http://www.j23.fje.edu/"><img src="./otros/index/logotop_bellvitge_fje.png"></a>
             </div>
             
             <div class="nav">
@@ -272,13 +272,13 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
          <div class="container">
          
                 <div class="contacta-top">
-                	<a href="http://www.j23.fje.edu/contacte"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/ico-header-contacta.png" alt="contacta"></a>
+                	<a href="http://www.j23.fje.edu/contacte"><img src="./otros/index/ico-header-contacta.png" alt="contacta"></a>
                 </div>
                      
                 <ul class="redes-top">
-                    <li><a href="https://www.facebook.com/JesuitesBellvitge" target="_blank"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/ico-header-facebook.png" alt="facebook"></a></li>
-                    <li><a href="https://twitter.com/hashtag/JEbellvitge" target="_blank"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/ico-header-twitter.png" alt="twitter"></a></li>
-                    <li><a href="http://instagram.com/jesuitesedu" target="_blank"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/ico-header-instagram.png" alt="twitter"></a></li>
+                    <li><a href="https://www.facebook.com/JesuitesBellvitge" target="_blank"><img src="./otros/index/ico-header-facebook.png" alt="facebook"></a></li>
+                    <li><a href="https://twitter.com/hashtag/JEbellvitge" target="_blank"><img src="./otros/index/ico-header-twitter.png" alt="twitter"></a></li>
+                    <li><a href="http://instagram.com/jesuitesedu" target="_blank"><img src="./otros/index/ico-header-instagram.png" alt="twitter"></a></li>
                     <!--<li><a href="#"><img src="/sites/all/themes/escuelas_fje/images/ico-header-youtube.png" alt="youtube"/></a></li>-->
                 </ul>
 
@@ -298,7 +298,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
             
     <div class="container">         
             <div class="logo">
-                    <a href="http://www.j23.fje.edu/es" title="Inicio" rel="home"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/logo_bellvitge_fje.png" alt="Logotipo Fundación Jesuitas Educación"></a>
+                    <a href="http://www.j23.fje.edu/es" title="Inicio" rel="home"><img src="./otros/index/logo_bellvitge_fje.png" alt="Logotipo Fundación Jesuitas Educación"></a>
       
             </div>
             
@@ -327,83 +327,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
 
 
     <!--INI SLIDE  -->
-    <div id="slider">
-              <div class="region region-slideshow">
-    <div id="block-views-slideshow-block" class="block block-views">
-
-    
-  <div class="content">
-    <div class="view view-slideshow view-id-slideshow view-display-id-block view-dom-id-79f5c54f067ef8ea08aef5387561bf19">
-        
-  
-  
-      <div class="view-content">
-      
-  <div class="skin-default views-slideshow-cycle-processed">
-    
-    <div id="views_slideshow_cycle_main_slideshow-block_1" class="views_slideshow_cycle_main views_slideshow_main viewsSlideshowCycle-processed"><div id="views_slideshow_cycle_teaser_section_slideshow-block_1" class="views-slideshow-cycle-main-frame views_slideshow_cycle_teaser_section" style="position: relative; width: 1349px; height: 600px;">
-  <div id="views_slideshow_cycle_div_slideshow-block_1_0" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-1 views-row-first views-row-odd" aria-labelledby="views_slideshow_pager_field_item_bottom_slideshow-block_1_0" style="position: absolute; top: 0px; left: 0px; display: none; z-index: 4; opacity: 0;">
-  <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-odd views-row-first">
-    
-          <div id="slide" style="background-image:url(img/principal/slide-fje.png)"><div></div><div class="caption"><div class="container"><div class="titulo">Sobre todo, gracias</div><div class="subtitulo">Más en las obras que en las palabras</div></div></div></div>  </div>
-</div>
-<div id="views_slideshow_cycle_div_slideshow-block_1_1" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-2 views_slideshow_cycle_hidden views-row-even" aria-labelledby="views_slideshow_pager_field_item_bottom_slideshow-block_1_1" style="position: absolute; top: 0px; left: 0px; display: none; z-index: 4; opacity: 0; width: 1349px; height: 600px;">
-  <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-odd">
-    
-          <div id="slide" style="background-image:url(img/principal/bellvitge_slide_fp_1500x600.jpg)"><div></div><div class="caption"><div class="container"><div class="titulo">Le ayudamos a encontrar su vocación, el inicio de una trayectoria</div><div class="subtitulo">Formamos a los profesionales del futuro</div></div></div></div>  </div>
-</div>
-<div id="views_slideshow_cycle_div_slideshow-block_1_2" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-3 views_slideshow_cycle_hidden views-row-odd" aria-labelledby="views_slideshow_pager_field_item_bottom_slideshow-block_1_2" style="position: absolute; top: 0px; left: 0px; display: none; z-index: 4; opacity: 0; width: 1349px; height: 600px;">
-  <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-odd">
-    
-          <div id="slide" style="background-image:url(img/principal/slideshow/bellvitge_slide_secundaria_1500x600.jpg)"><div></div><div class="caption"><div class="container"><div class="titulo">Formación integral del alumno</div><div class="subtitulo">Personas con capacidad de adaptación, reflexivas y abiertas al cambio</div></div></div></div>  </div>
-</div>
-<div id="views_slideshow_cycle_div_slideshow-block_1_3" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-4 views_slideshow_cycle_hidden views-row-last views-row-even" aria-labelledby="views_slideshow_pager_field_item_bottom_slideshow-block_1_3" style="position: absolute; top: 0px; left: 0px; display: block; z-index: 5; opacity: 1; width: 1349px; height: 600px;">
-  <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-odd">
-    
-          <div id="slide" style="background-image:url(img/principal/slideshow/bellvitge_slide_primaria_1500x600.jpg)"><div></div><div class="caption"><div class="container"><div class="titulo">Despertar el gusto y la inquietud</div><div class="subtitulo">El maestro acompaña, el alumno construye su saber</div></div></div></div>  </div>
-</div>
-</div>
-</div>
-          <div class="views-slideshow-controls-bottom clearfix">
-        <div id="widget_pager_bottom_slideshow-block_1" class="views-slideshow-pager-fields widget_pager widget_pager_bottom views_slideshow_pager_field views-slideshow-pager-field-processed">
-  <div id="views_slideshow_pager_field_item_bottom_slideshow-block_1_0" class="views-slideshow-pager-field-item views_slideshow_pager_field_item views-row-odd views-row-first" aria-controls="views_slideshow_cycle_div_slideshow-block_1_0">
-  <div class="views-field-nothing">
-    <div class="views-content-nothing">
-    <a href="http://www.j23.fje.edu/es#slideshow-0"><span class="pager"></span></a>  </div>
-</div>
-</div>
-<div id="views_slideshow_pager_field_item_bottom_slideshow-block_1_1" class="views-slideshow-pager-field-item views_slideshow_pager_field_item views-row-even" aria-controls="views_slideshow_cycle_div_slideshow-block_1_1">
-  <div class="views-field-nothing">
-    <div class="views-content-nothing">
-    <a href="http://www.j23.fje.edu/es#slideshow-1"><span class="pager"></span></a>  </div>
-</div>
-</div>
-<div id="views_slideshow_pager_field_item_bottom_slideshow-block_1_2" class="views-slideshow-pager-field-item views_slideshow_pager_field_item views-row-odd" aria-controls="views_slideshow_cycle_div_slideshow-block_1_2">
-  <div class="views-field-nothing">
-    <div class="views-content-nothing">
-    <a href="http://www.j23.fje.edu/es#slideshow-2"><span class="pager"></span></a>  </div>
-</div>
-</div>
-<div id="views_slideshow_pager_field_item_bottom_slideshow-block_1_3" class="views-slideshow-pager-field-item views_slideshow_pager_field_item views-row-even views-row-last active" aria-controls="views_slideshow_cycle_div_slideshow-block_1_3">
-  <div class="views-field-nothing">
-    <div class="views-content-nothing">
-    <a href="http://www.j23.fje.edu/es#slideshow-3"><span class="pager"></span></a>  </div>
-</div>
-</div>
-</div>
-      </div>
-      </div>
-    </div>
-  
-  
-  
-  
-  
-  
-</div>  </div>
-</div>
-  </div>
-    </div>
+    <img src="img/slider/slide03.jpg" width="1349" alt="600">
     <!--FIN SLIDE  -->
 
     <!-- INI DESTACADOS -->
@@ -417,15 +341,15 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
                 <h1>Descubre</h1>
             <ul>
                 <li>
-                    <a href="http://www.j23.fje.edu/es/la-escuela/quienes-somos"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/destacado01-bellvitge.jpg"></a>
+                    <a href="http://www.j23.fje.edu/es/la-escuela/quienes-somos"><img src="./otros/index/destacado01-bellvitge.jpg"></a>
                     <p><a href="http://www.j23.fje.edu/es/la-escuela/quienes-somos">Comprometidos contigo</a></p>
                 </li>
                 <li>
-                    <a href="http://www.j23.fje.edu/es/la-escuela/instalaciones-y-equipamientos"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/destacado02-bellvitge.jpg"></a>
+                    <a href="http://www.j23.fje.edu/es/la-escuela/instalaciones-y-equipamientos"><img src="./otros/index/destacado02-bellvitge.jpg"></a>
                     <p><a href="http://www.j23.fje.edu/es/la-escuela/instalaciones-y-equipamientos">Nuevas instalaciones</a></p>
                 </li>         
                <li class="last">
-                    <a href="http://www.j23.fje.edu/es/oferta-educativa"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/destacado03-bellvitge.jpg"></a>
+                    <a href="http://www.j23.fje.edu/es/oferta-educativa"><img src="./otros/index/destacado03-bellvitge.jpg"></a>
                     <p><a href="http://www.j23.fje.edu/es/oferta-educativa">Educamos para la sociedad del siglo XXI</a></p>
                 </li>
             </ul>  </div>
@@ -452,7 +376,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
                 </div>
                 <div class="foto">
                     <a href="http://www.j23.fje.edu/es#">
-                        <img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/escuela-bellvitge_520x350.jpg">
+                        <img src="./otros/index/escuela-bellvitge_520x350.jpg">
                         <div class="caption"><h2>Centro de Estudios Joan XXIII</h2><span>Av. Mare de Déu de Bellvitge 100-110. 08907 L'Hospitalet. Tel. 933 351 543 </span></div>
                     </a>
                 </div>
@@ -496,22 +420,22 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
   
       <div class="view-content">
           <ul class="noticias">          <li class="views-row-odd views-row-first noticia-escola">  
-  <div>        <div><a href="http://www.j23.fje.edu/es/node/12116"><img typeof="foaf:Image" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/logo_cursa_ampa.jpg" width="96" height="96" alt=""></a></div>  </div>  
+  <div>        <div><a href="http://www.j23.fje.edu/es/node/12116"><img typeof="foaf:Image" src="./otros/index/logo_cursa_ampa.jpg" width="96" height="96" alt=""></a></div>  </div>  
   <div>        <h2><a href="http://www.j23.fje.edu/ca/noticies/0000012116-inscripcions-obertes-la-cursa-popular-bellvitge-2018">Inscripcions obertes a la Cursa Popular Bellvitge 2018</a></h2>  </div>  
   <div>        <div class="info"><span class="colegi"><a href="http://www.j23.fje.edu/es/origen/bellvitge" typeof="skos:Concept" property="rdfs:label skos:prefLabel">Bellvitge</a></span> <span class="categoria"></span> <span class="fecha">26/04/2018</span>
 </div>  </div></li>
           <li class="views-row-even noticia-escola">  
-  <div>        <div><a href="http://www.j23.fje.edu/es/node/12100"><img typeof="foaf:Image" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/book.png" width="96" height="96" alt=""></a></div>  </div>  
+  <div>        <div><a href="http://www.j23.fje.edu/es/node/12100"><img typeof="foaf:Image" src="./otros/index/book.png" width="96" height="96" alt=""></a></div>  </div>  
   <div>        <h2><a href="http://www.j23.fje.edu/ca/noticies/actualitat/0000012100-inventem-un-llibre">Inventem un llibre?</a></h2>  </div>  
   <div>        <div class="info"><span class="colegi"><a href="http://www.j23.fje.edu/es/origen/bellvitge" typeof="skos:Concept" property="rdfs:label skos:prefLabel">Bellvitge</a></span> <span class="categoria"><a href="http://www.j23.fje.edu/es/categorias/actualitat" typeof="skos:Concept" property="rdfs:label skos:prefLabel">Actualidad</a></span> <span class="fecha">19/04/2018</span>
 </div>  </div></li>
           <li class="views-row-odd noticia-escola">  
-  <div>        <div><a href="http://www.j23.fje.edu/es/node/12015"><img typeof="foaf:Image" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/icon_hort.jpg" width="96" height="96" alt=""></a></div>  </div>  
+  <div>        <div><a href="http://www.j23.fje.edu/es/node/12015"><img typeof="foaf:Image" src="./otros/index/icon_hort.jpg" width="96" height="96" alt=""></a></div>  </div>  
   <div>        <h2><a href="http://www.j23.fje.edu/ca/noticies/eso/0000012015-canvi-destacio-noves-plantacions">Canvi d'estació, noves plantacions!</a></h2>  </div>  
   <div>        <div class="info"><span class="colegi"><a href="http://www.j23.fje.edu/es/origen/bellvitge" typeof="skos:Concept" property="rdfs:label skos:prefLabel">Bellvitge</a></span> <span class="categoria"><a href="http://www.j23.fje.edu/es/categorias/eso" typeof="skos:Concept" property="rdfs:label skos:prefLabel">ESO</a></span> <span class="fecha">22/03/2018</span>
 </div>  </div></li>
           <li class="views-row-even views-row-last noticia-escola">  
-  <div>        <div><a href="http://www.j23.fje.edu/es/node/12008"><img typeof="foaf:Image" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/icon_cursa_entreculturas_2018.jpg" width="96" height="96" alt=""></a></div>  </div>  
+  <div>        <div><a href="http://www.j23.fje.edu/es/node/12008"><img typeof="foaf:Image" src="./otros/index/icon_cursa_entreculturas_2018.jpg" width="96" height="96" alt=""></a></div>  </div>  
   <div>        <h2><a href="http://www.j23.fje.edu/ca/noticies/actualitat/0000012008-entrecultures-corre-una-causa">Entrecultures: Corre per una causa</a></h2>  </div>  
   <div>        <div class="info"><span class="colegi"><a href="http://www.j23.fje.edu/es/origen/bellvitge" typeof="skos:Concept" property="rdfs:label skos:prefLabel">Bellvitge</a></span> <span class="categoria"><a href="http://www.j23.fje.edu/es/categorias/actualitat" typeof="skos:Concept" property="rdfs:label skos:prefLabel">Actualidad</a></span> <span class="fecha">21/03/2018</span>
 </div>  </div></li>
@@ -583,7 +507,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
         <div class="container">
                     
                     <div class="logo">
-                        <a href="http://www.fje.edu/" target="_blank"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/logo-pie.png"></a>
+                        <a href="http://www.fje.edu/" target="_blank"><img src="./otros/index/logo-pie.png"></a>
                     </div>
                     
                     <div class="menu-copyright">
@@ -608,10 +532,10 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
                         <div class="redes">
                         <span>Conecta con nosotros</span>
                         <ul>
-                            <li><a href="https://www.youtube.com/channel/UCh3CVlavlAb6jMoQ_46RO5w" target="_blank"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/ico-youtube.png"></a></li>
-                            <li><a href="http://instagram.com/jesuitesedu" target="_blank"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/ico-instagram.png"></a></li>
-                            <li><a href="https://twitter.com/JesuitesEdu" target="_blank"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/ico-twitter.png"></a></li>
-                            <li><a href="https://www.facebook.com/JesuitesEducacio" target="_blank"><img src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/ico-facebook.png"></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCh3CVlavlAb6jMoQ_46RO5w" target="_blank"><img src="./otros/index/ico-youtube.png"></a></li>
+                            <li><a href="http://instagram.com/jesuitesedu" target="_blank"><img src="./otros/index/ico-instagram.png"></a></li>
+                            <li><a href="https://twitter.com/JesuitesEdu" target="_blank"><img src="./otros/index/ico-twitter.png"></a></li>
+                            <li><a href="https://www.facebook.com/JesuitesEducacio" target="_blank"><img src="./otros/index/ico-facebook.png"></a></li>
                        </ul>
                    </div>  </div>
 </div>
@@ -625,7 +549,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"es\/","ajaxPageSta
 var eu_cookie_compliance_cookie_name = "";
 //--><!]]>
 </script>
-<script type="text/javascript" src="./Inici _ Jesuïtes Bellvitge - Centre d&#39;estudis Joan XXIII_files/eu_cookie_compliance.js.descarga"></script>
+<script type="text/javascript" src="./otros/index/eu_cookie_compliance.js.descarga"></script>
 
 
 </body>
