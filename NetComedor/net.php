@@ -788,7 +788,7 @@ float: left;
 width: 100%;
 "><h1 class="title gray">Texto original</h1></div><div class="middle" style="padding: 8px;
 "><div class="original-text"></div></div><div class="bottom" style="padding: 8px;
-"><div class="activity-links"><span class="activity-link">Sugiere una traducción mejor</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC;
+"><!-- <div class="activity-links"><span class="activity-link">Sugiere una traducción mejor</span><span class="activity-link"></span></div> --><div class="started-activity-container"><hr style="color: #CCC;
 background-color: #CCC;
 height: 1px;
 border: none;
