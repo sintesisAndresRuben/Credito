@@ -11,8 +11,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <!-- FIN BOOTSTRAP 4 -->
 
+  <!-- ICONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!--Estilo propio cabecera-->
-  <!-- <link rel="stylesheet" type="text/css" href="css/header.css" media="all"> -->
+  <link rel="stylesheet" type="text/css" href="css/footer.css" media="all">
+  <link rel="stylesheet" type="text/css" href="css/header.css" media="all">
 </head>
 
 <body>
@@ -21,11 +24,18 @@
 
   	<!--Inicio header-->
   	<header id="masthead" class="site-header--fixed site-header" role="banner">
+      <div class="row">
+        <div class="col-sm3">
+          <img src="img/logo-fje.png" width="400"/>
+        </div>
+        <div class="col-sm9 img-cole">
+          <img src="img/LogoColegio.png">
 
-     <!-- aqui dentro ira el menu -->
+        </div>
+      </div>
 
 
-</header>
-<!--Final header -->
-</section>
-<!-- Final section -->
+    </header>
+    <!--Final header -->
+  </section>
+  <!-- Final section -->

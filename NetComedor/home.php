@@ -9,9 +9,15 @@
 
 	<!--Inicio de la página en sí-->
 	<!--Inicio del contenido--> 
-	
+	<div class="container" style="background-color: gray;">
+		<br><br><br><br><br><br><br><br><br><br>
+		<h1 style="text-align: center;">AQUI IRÁ EL CONTENIDO</h1>
+		<br><br><br><br><br><br><br><br><br><br>
 
 
+
+
+	</div>
 	
 	<!--Final del contenido-->
 
