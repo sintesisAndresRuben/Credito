@@ -1,15 +1,9 @@
 <?php 
 session_start();
 include("conexion.proc.php");
-if (!isset($_SESSION['mail_usuario'])) {
+if (!isset($_SESSION['user'])) {
     header('location: index.php');
-} else {
-    $_SESSION['id_usuario'];
-    $_SESSION['nombre_usuario'];
-    $_SESSION['apellido_usuario'];
-    $_SESSION['tipo_usuario'];
-    $_SESSION['mail_usuario'];
-    $_SESSION['admin'];
+}
     ?>
 <link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
 <title>Comedor</title>
@@ -57,6 +51,6 @@ require_once 'foothead/header.php';
 require_once 'foothead/footer.php';
 ?>
 <!-- Fin footr -->
-<?php
+<!-- <?php
 }
-?>
+?> -->

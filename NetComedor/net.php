@@ -1,15 +1,9 @@
 <?php 
 session_start();
 include("conexion.proc.php");
-if (!isset($_SESSION['mail_usuario'])) {
+if (!isset($_SESSION['user'])) {
     header('location: index.php');
-} else {
-    $_SESSION['id_usuario'];
-    $_SESSION['nombre_usuario'];
-    $_SESSION['apellido_usuario'];
-    $_SESSION['tipo_usuario'];
-    $_SESSION['mail_usuario'];
-    $_SESSION['admin'];
+}
     ?>
     <!DOCTYPE html> <!-- saved from url=(0035)http://srv.net.fje.edu/net2/#/lanet -->
     <link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon"> 
@@ -87,7 +81,7 @@ document.getElementById('right-top-2').appendChild(child);
     &amp;
     $root.groupsFailed &amp;
     &amp;
-    $root.modalFailed" ng-click="tutorial.open()"></a><div class="login__user"><img ng-src="" ng-show="user.avatar !== undefined" alt="avatar del usuario" class="login__avatar ng-hide"> <span class="login__username ng-binding"><?php echo $_SESSION['nombre_usuario']." ".$_SESSION['apellido_usuario']?></span></div><div class="login__controls"><a href="<?php session_destroy() ?>"><img src="./img/net/logout.jpg"/></a></div></div></div></user-info><modal><div ng-controller="Modal" class="lightbox is--visible ng-scope"><a href="http://srv.net.fje.edu/net2/" class="lightbox__close ir" ng-click="lightbox.hideLightbox();
+    $root.modalFailed" ng-click="tutorial.open()"></a><div class="login__user"><img ng-src="" ng-show="user.avatar !== undefined" alt="avatar del usuario" class="login__avatar ng-hide"> <span class="login__username ng-binding"><?php echo $_SESSION['user']['nombre_usuario']." ".$_SESSION['user']['apellido_usuario']?></span></div><div class="login__controls"><a href="<?php session_destroy() ?>"><img src="./img/net/logout.jpg"/></a></div></div></div></user-info><modal><div ng-controller="Modal" class="lightbox is--visible ng-scope"><a href="http://srv.net.fje.edu/net2/" class="lightbox__close ir" ng-click="lightbox.hideLightbox();
         ">Cerrar</a><div class="lightbox__inner"><a target="_blank" ng-href=""><img ng-src="" alt=""></a></div></div></modal><error-message><div ng-show="$root.servicesFailed &amp;
             &amp;
             $root.familyFailed &amp;
@@ -800,6 +794,3 @@ height: 1px;
 border: none;
 "><div class="activity-root"></div></div></div><div class="status-message" style="display: none;
 "></div></div> <div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>
-<?php
-}
-?>

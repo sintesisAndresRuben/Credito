@@ -26,19 +26,12 @@
 
 		if (mysqli_num_rows($result)>0) {
 			$usu_session = (mysqli_fetch_array($result));
-			$_SESSION['id_usuario'] = $usu_session['id_usuario'];
-			$_SESSION['nombre_usuario'] = $usu_session['nombre_usuario'];
-			$_SESSION['apellido_usuario'] = $usu_session['apellido_usuario'];
-			$_SESSION['tipo_usuario'] = $usu_session['tipo_usuario'];
-			$_SESSION['mail_usuario'] = $user;
-			$_SESSION['admin'] = $usu_session['admin'];
-
-			//Admin = 1 (sí) - Admin = 0/NULL (no)
-			if ($_SESSION['admin'] == "si") {
+			$_SESSION['user'] = $usu_session;
+			if ($_SESSION['user']['admin'] == 'si') {
 				header('location: admin.php');
-			} else if ($_SESSION['admin'] == "no") {
+			} else if ($_SESSION['user']['admin'] == 'no') {
 				header('location: net.php');
-			} else {
+			}else{
 				echo "La cuenta no existe";
 				session_destroy();
 			}
@@ -46,8 +39,6 @@
 			header('Location: error.html');
 			session_destroy();
 		}
-
-		// header('Location: platos.php');
 	}
 	// Comprueba que la opción "Cerrar Sesión" se ha seleccionado
 	if (isset($_GET['logout'])) {

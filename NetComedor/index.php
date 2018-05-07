@@ -1,8 +1,9 @@
 <?php
 session_start();
 include 'conexion.proc.php';
-if (!isset($_SESSION['mail_usuario'])) {
-  session_destroy();
+if (isset($_SESSION['user'])) {
+header('location: home.php');
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <!-- saved from url=(0025)http://www.j23.fje.edu/es -->
@@ -554,8 +555,3 @@ var eu_cookie_compliance_cookie_name = "";
 
 </body>
 </html>
-<?php
-} else {
-header('location: home.php');
-}
-?>
