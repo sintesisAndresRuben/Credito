@@ -1,12 +1,12 @@
 <?php 
 session_start();
 include("conexion.proc.php");
-if (!isset($_SESSION['user'])) {
-    header('location: index.php');
-}
+// if (!isset($_SESSION['user'])) {
+//     header('location: index.php');
+// }
     ?>
 <link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
-<title>Comedor</title>
+<title>NetComedor</title>
 <html lang="es">
 <?php
 		//Insertamos el header general
@@ -33,7 +33,7 @@ require_once 'foothead/header.php';
 				</div>
 				<?php  if ($_SESSION['admin']="si"){?>
 				<div class="col-sm4 rectanguloAbajo homeimage">
-					<a href="#"><img src="img/home/gestion.jpg"/></a>
+					<a href="gestionUsuarios.php"><img src="img/home/gestion.jpg"/></a>
 
 				</div>
 				<?php } ?>
@@ -50,7 +50,4 @@ require_once 'foothead/header.php';
 		//Insertamos el footer
 require_once 'foothead/footer.php';
 ?>
-<!-- Fin footr -->
-<!-- <?php
-}
-?> -->
+<!-- Fin footer -->

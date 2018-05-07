@@ -1,9 +1,9 @@
 <?php 
 session_start();
 include("conexion.proc.php");
-if (!isset($_SESSION['user'])) {
-    header('location: index.php');
-}
+// if (!isset($_SESSION['user'])) {
+//     header('location: index.php');
+// }
 
 	?>
 	<!DOCTYPE html>
