@@ -4,6 +4,12 @@ include("conexion.proc.php");
 if (!isset($_SESSION['mail_usuario'])) {
     header('location: index.php');
 } else {
+    $_SESSION['id_usuario'];
+    $_SESSION['nombre_usuario'];
+    $_SESSION['apellido_usuario'];
+    $_SESSION['tipo_usuario'];
+    $_SESSION['mail_usuario'];
+    $_SESSION['admin'];
     ?>
     <!DOCTYPE html> <!-- saved from url=(0035)http://srv.net.fje.edu/net2/#/lanet -->
     <link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon"> 
@@ -128,26 +134,26 @@ document.getElementById('right-top-2').appendChild(child);
             show(item);
             " data-ga-track="" ng-attr-data-ga-label="{
             {
-             item.ID 
-         }
-     }
-     " ng-attr-data-content="{
-     {
-         item.tooltip() 
-     }
- }
- " ng-show="item.shown" class="service-item is--tutorship-1 has--content has--tooltip" ng-class="{
- &#39;
- has--content&#39;
- : item.isGroup() || item.contents, &#39;
- has--spinner&#39;
- : !item.isLoaded(), &#39;
- has--external&#39;
- : item.link &amp;
- &amp;
- item.isLoaded(), &#39;
- has--tooltip&#39;
- : item.tooltip() 
+               item.ID 
+           }
+       }
+       " ng-attr-data-content="{
+       {
+           item.tooltip() 
+       }
+   }
+   " ng-show="item.shown" class="service-item is--tutorship-1 has--content has--tooltip" ng-class="{
+   &#39;
+   has--content&#39;
+   : item.isGroup() || item.contents, &#39;
+   has--spinner&#39;
+   : !item.isLoaded(), &#39;
+   has--external&#39;
+   : item.link &amp;
+   &amp;
+   item.isLoaded(), &#39;
+   has--tooltip&#39;
+   : item.tooltip() 
 }
 " data-ga-label="tutoria.2a.daw_cfs.17.joan23" data-content="tutoria 2a daw_cfs 17 joan23"><!-- ngIf: item.link --> <!-- ngIf: !item.link --><a service-icon="" href="http://srv.net.fje.edu/net2/" target="_blank" class="nav__label ng-scope" ng-if="!item.link" ng-click="logger.logService(item, null, user)"><span class="service-item__name-wrap"><span class="service-item__icon"><span ng-show="$root.hasImage(item.icon()) &amp;
     &amp;
@@ -166,13 +172,13 @@ document.getElementById('right-top-2').appendChild(child);
         show(item);
         " data-ga-track="" ng-attr-data-ga-label="{
         {
-         item.ID 
-     }
- }
- " ng-attr-data-content="{
- {
-     item.tooltip() 
- }
+           item.ID 
+       }
+   }
+   " ng-attr-data-content="{
+   {
+       item.tooltip() 
+   }
 }
 " ng-show="item.shown" class="service-item is--global-1 has--content has--tooltip" ng-class="{
 &#39;
@@ -204,12 +210,12 @@ has--tooltip&#39;
     show(item);
     " data-ga-track="" ng-attr-data-ga-label="{
     {
-     item.ID 
- }
+       item.ID 
+   }
 }
 " ng-attr-data-content="{
 {
- item.tooltip() 
+   item.tooltip() 
 }
 }
 " ng-show="item.shown" class="service-item is--global-2 has--content has--tooltip" ng-class="{
@@ -242,12 +248,12 @@ has--tooltip&#39;
     show(item);
     " data-ga-track="" ng-attr-data-ga-label="{
     {
-     item.ID 
- }
+       item.ID 
+   }
 }
 " ng-attr-data-content="{
 {
- item.tooltip() 
+   item.tooltip() 
 }
 }
 " ng-show="item.shown" class="service-item is--global-3 has--content has--tooltip" ng-class="{
@@ -280,12 +286,12 @@ has--tooltip&#39;
     show(item);
     " data-ga-track="" ng-attr-data-ga-label="{
     {
-     item.ID 
- }
+       item.ID 
+   }
 }
 " ng-attr-data-content="{
 {
- item.tooltip() 
+   item.tooltip() 
 }
 }
 " ng-show="item.shown" class="service-item is--global-4 has--content has--tooltip" ng-class="{
@@ -318,12 +324,12 @@ has--tooltip&#39;
     show(item);
     " data-ga-track="" ng-attr-data-ga-label="{
     {
-     item.ID 
- }
+       item.ID 
+   }
 }
 " ng-attr-data-content="{
 {
- item.tooltip() 
+   item.tooltip() 
 }
 }
 " ng-show="item.shown" class="service-item is--global-5 has--content has--tooltip" ng-class="{
@@ -356,12 +362,12 @@ has--tooltip&#39;
     show(item);
     " data-ga-track="" ng-attr-data-ga-label="{
     {
-     item.ID 
- }
+       item.ID 
+   }
 }
 " ng-attr-data-content="{
 {
- item.tooltip() 
+   item.tooltip() 
 }
 }
 " ng-show="item.shown" class="service-item is--global-6 has--content has--tooltip" ng-class="{
@@ -394,12 +400,12 @@ has--tooltip&#39;
     show(item);
     " data-ga-track="" ng-attr-data-ga-label="{
     {
-     item.ID 
- }
+       item.ID 
+   }
 }
 " ng-attr-data-content="{
 {
- item.tooltip() 
+   item.tooltip() 
 }
 }
 " ng-show="item.shown" class="service-item is--global-7 has--content has--tooltip" ng-class="{
@@ -432,12 +438,12 @@ has--tooltip&#39;
     show(item);
     " data-ga-track="" ng-attr-data-ga-label="{
     {
-     item.ID 
- }
+       item.ID 
+   }
 }
 " ng-attr-data-content="{
 {
- item.tooltip() 
+   item.tooltip() 
 }
 }
 " ng-show="item.shown" class="service-item is--global-8 has--content has--tooltip" ng-class="{
@@ -471,8 +477,8 @@ has--tooltip&#39;
     show(item);
     " data-ga-track="" ng-attr-data-ga-label="{
     {
-     item.id 
- }
+       item.id 
+   }
 }
 " ng-show="item.shown" class="service-item service-item--small is--personal-1 has--external" ng-class="{
 &#39;
@@ -520,8 +526,8 @@ favorites__remove&#39;
     show(item);
     " data-ga-track="" ng-attr-data-ga-label="{
     {
-     item.id 
- }
+       item.id 
+   }
 }
 " ng-show="item.shown" class="service-item service-item--small is--personal-2 has--external" ng-class="{
 &#39;
@@ -553,8 +559,8 @@ link=http://calendar.google.com/a/fje.edu"><span class="service-item__name-wrap"
     show(item);
     " data-ga-track="" ng-attr-data-ga-label="{
     {
-     item.id 
- }
+       item.id 
+   }
 }
 " ng-show="item.shown" class="service-item service-item--small is--personal-3 has--external" ng-class="{
 &#39;
@@ -584,11 +590,11 @@ link=http://drive.google.com/a/fje.edu"><span class="service-item__name-wrap"><s
 }
 " ng-show="favorites_sidebar.active" ng-click="favorites_sidebar.toggleFavorite(item, $event)" class="ng-hide favorites__add"><img ng-src="images/icon-star-empty.svg" src="./LaNeta - Jesuitas Educación_files/icon-star-empty.svg"></span> <!-- ngIf: !item.loaded --></div></div><!-- end ngRepeat: (id, item) in $root.services -->
 <div class="service-item__wrap ng-scope" ng-repeat="(id, item) in $root.services"><div service-item="" ng-click="sidebar.close();
- show(item);
- " data-ga-track="" ng-attr-data-ga-label="{
- {
-     item.id 
- }
+   show(item);
+   " data-ga-track="" ng-attr-data-ga-label="{
+   {
+       item.id 
+   }
 }
 " ng-show="item.shown" class="service-item service-item--small is--personal-4 has--external" ng-class="{
 &#39;
@@ -613,11 +619,11 @@ link=http://serveis.fje.edu/areaempresa/ofertes/">
         item.image() === undefined" class="icon icon-borsadetreball ng-hide"></span> <!-- ngIf: item.image() -->
     </span> 
     <span ng-hide="$root.hasImage(item.icon()) || item.image() !== undefined" class="service-item__initials ng-binding">
-     <font style="vertical-align: inherit;">
-         <font style="vertical-align: inherit;">Bo</font>
-     </font>
- </span>
- <div class="service-item__name"><!-- ngIf: !favorite -->
+       <font style="vertical-align: inherit;">
+           <font style="vertical-align: inherit;">Bo</font>
+       </font>
+   </span>
+   <div class="service-item__name"><!-- ngIf: !favorite -->
     <div ng-if="!favorite" class="ng-scope ng-binding">
         <font style="vertical-align: inherit;">
             <font style="vertical-align: inherit;">Bolsa de Trabajo</font>
@@ -685,8 +691,8 @@ item.isLoaded()
     $root.detail.hideLVL2();
     " ng-href="" target="_blank" class="nav__label"><span class="service-item__name-wrap"><span class="service-item__icon"><span ng-show="$root.hasImage(parent.icon())" class="icon icon- ng-hide"></span> <!-- ngIf: parent.image() --></span> <span ng-hide="$root.hasImage(parent.icon()) || parent.image() !== undefined" class="service-item__initials ng-binding"></span> <span class="service-item__name ng-binding"></span></span> <!-- ngIf: parent.tag --> <span class="service-item__compress-title"><span ng-show="$root.hasImage(parent.icon())" class="icon icon- ng-hide"></span> <span class="ng-binding"></span></span></a></div></first-level-tab><second-level-tab><div ng-show="$root.detail.hasDetailLVL2" class="ng-hide"><div class="service-item service-item--tab2 is---"><a ng-href="" target="_blank" class="nav__label"><span class="service-item__name-wrap"><span class="service-item__icon"><div ng-show="$root.hasImage(contents.icon())" class="icon icon- ng-hide"></div><!-- ngIf: contents.image() --></span> <span class="service-item__initials ng-binding" style="display:none"></span> <span class="service-item__name ng-binding"></span></span> <!-- ngIf: contents.tag --></a></div></div></second-level-tab><div ng-attr-data-ga-label="{
     {
-     contents.ID 
- }
+       contents.ID 
+   }
 }
 " class="page-detail is---" data-ga-label=""><div class="page-detail__header clearfix is---"><a data-ga-category="Group" data-ga-action="Close" data-ga-track="" ng-click="close()" href="http://srv.net.fje.edu/net2/" class="ir page-detail__close"><font style="vertical-align: inherit;
 "><font style="vertical-align: inherit;
@@ -743,30 +749,30 @@ item.isLoaded()
                                 $root.groupsFailed &amp;
                                 &amp;
                                 $root.modalFailed" class="ng-hide"></div><script type="text/javascript">function tellAngular() {
-                                 var interval = setInterval(function() {
-                                     var domElt = document.getElementsByClassName('page-sidebar')[0], header = document.getElementsByClassName('page-sidebar__header')[0], banner = document.getElementsByClassName('sidebar__banner')[0], titles = document.getElementsByClassName('sidebar__message-title'), scope = angular.element(domElt).scope(), height = domElt.clientHeight;
-                                     if(header) {
-                                         height = height - header.clientHeight;
-                                     }
-                                     if(banner) {
-                                         height = height - banner.clientHeight;
-                                     }
-                                     for(var title = 0;
-                                         title < titles.length;
-                                         ++title) {
-                                         height = height - titles[title].clientHeight;
-                                 }
-                                 if(height <= window.innerHeight && titles.length != 0) {
-                                     scope.$apply(function() {
-                                         scope.height = height;
-                                     }
-                                     );
-                                     clearInterval(interval);
-                                 }
-                                 else scope = angular.element(domElt).scope();
-                             }
-                             , 1000);
-                             }
+                                   var interval = setInterval(function() {
+                                       var domElt = document.getElementsByClassName('page-sidebar')[0], header = document.getElementsByClassName('page-sidebar__header')[0], banner = document.getElementsByClassName('sidebar__banner')[0], titles = document.getElementsByClassName('sidebar__message-title'), scope = angular.element(domElt).scope(), height = domElt.clientHeight;
+                                       if(header) {
+                                           height = height - header.clientHeight;
+                                       }
+                                       if(banner) {
+                                           height = height - banner.clientHeight;
+                                       }
+                                       for(var title = 0;
+                                           title < titles.length;
+                                           ++title) {
+                                           height = height - titles[title].clientHeight;
+                                   }
+                                   if(height <= window.innerHeight && titles.length != 0) {
+                                       scope.$apply(function() {
+                                           scope.height = height;
+                                       }
+                                       );
+                                       clearInterval(interval);
+                                   }
+                                   else scope = angular.element(domElt).scope();
+                               }
+                               , 1000);
+                               }
  //first call of tellAngular when the dom is loaded document.addEventListener("DOMContentLoaded", tellAngular, false);
  //calling tellAngular on resize event window.onresize = tellAngular;
  </script><!-- Google Tag Manager --><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KNHV6R" height="0" width="0" style="display:none;
