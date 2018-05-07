@@ -12,10 +12,12 @@
   <!-- FIN BOOTSTRAP 4 -->
 
   <!-- ICONS -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!--Estilo propio cabecera-->
   <link rel="stylesheet" type="text/css" href="css/footer.css" media="all">
   <link rel="stylesheet" type="text/css" href="css/header.css" media="all">
+  <link rel="stylesheet" type="text/css" href="css/contenido.css" media="all">
 </head>
 
 <body>
