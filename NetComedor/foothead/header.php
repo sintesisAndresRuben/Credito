@@ -25,11 +25,11 @@
   	<!--Inicio header-->
   	<header id="masthead" class="site-header--fixed site-header" role="banner">
       <div class="row">
-        <div class="col-sm3">
-          <img src="img/logo-fje.png" width="400"/>
+        <div class="col-sm3 img-logo">
+          <img src="img/header/logo-fje.png" width="400"/>
         </div>
         <div class="col-sm9 img-cole">
-          <img src="img/LogoColegio.png">
+          <img src="img/header/LogoColegio.png">
 
         </div>
       </div>

@@ -13,10 +13,11 @@
 		<br><br><br><br><br><br><br><br><br><br>
 		<h1 style="text-align: center;">AQUI IRÁ EL CONTENIDO</h1>
 		<br><br><br><br><br><br><br><br><br><br>
-
-
-
-
+<!-- 		<img src="img/home/gestion.jpg"/>
+		<img src="img/home/.jpg"/>
+		<img src="img/home/gestion.jpg"/>
+		<img src="img/home/gestion.jpg"/>
+		<img src="img/home/gestion.jpg"/> -->
 	</div>
 	
 	<!--Final del contenido-->
