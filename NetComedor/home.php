@@ -16,7 +16,8 @@ require_once 'foothead/header.php';
 
 <!--Inicio de la página en sí-->
 <!--Inicio del contenido--> 
-<div class="container" >
+<div class="container">
+
 	<div class="col-sm12">
 		<div class="col-sm10">
 			<div class="row justify-content-md-center">
@@ -29,7 +30,7 @@ require_once 'foothead/header.php';
 			</div>
 			<div class="row justify-content-md-center">
 				<div class="col-sm4 rectanguloAbajo homeimage">
-					<a href="#"><img src="img/home/inscripcion.jpg" /></a>
+					<a href="inscripcion.php"><img src="img/home/inscripcion.jpg" /></a>
 				</div>
 				<?php  if ($_SESSION['admin']="si"){?>
 				<div class="col-sm4 rectanguloAbajo homeimage">

@@ -2,6 +2,8 @@
 session_start();
 include 'conexion.proc.php';
 if (isset($_SESSION['user'])) {
+//   session_destroy();
+// } else {
 header('location: home.php');
 }
 ?>

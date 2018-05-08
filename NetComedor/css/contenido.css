@@ -26,3 +26,10 @@ h4{
 	backface-visibility: hidden;
 }
 /*FIN BOTONES HOME*/
+
+/*FORMULARIO TIQUET*/
+.formIzq{
+	padding-right: 5%;
+}
+
+/*FIN FORMULARIO TIQUET*/
