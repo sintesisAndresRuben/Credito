@@ -28,8 +28,12 @@ h4{
 /*FIN BOTONES HOME*/
 
 /*FORMULARIO TIQUET*/
-.formIzq{
-	padding-right: 5%;
+.be{
+	text-align: right !important;
+}
+
+.caca{
+	text-align: right !important;
 }
 
 /*FIN FORMULARIO TIQUET*/
