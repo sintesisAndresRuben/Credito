@@ -13,7 +13,7 @@
 		echo "Error de depuración: " . mysqli_connect_error () . PHP_EOL;
 		exit;
 	}
-
+// Login desde la NET
 	if (isset($_POST['login'])) {
 		session_start();
 		$user = $_POST['username'];
@@ -40,6 +40,36 @@
 			session_destroy();
 		}
 	}
+// Login hecho por nosotros
+	if (isset($_POST['login_propio'])) {
+		session_start();
+		$user = $_POST['username'];
+		$pwd1 = $_POST['password'];
+
+		$pwd = md5($pwd1);
+
+		$sqlLogin = "SELECT * FROM tbl_usuarios WHERE mail_usuario = '$user' AND password_usuario = '$pwd'";
+		$result = mysqli_query($conexion,$sqlLogin);
+
+		if (mysqli_num_rows($result)>0) {
+			$usu_session = (mysqli_fetch_array($result));
+			$_SESSION['user'] = $usu_session;
+			if ($_SESSION['user']['admin'] == 'si') {
+				header('location: home.php');
+			} else if ($_SESSION['user']['admin'] == 'no') {
+				header('location: home.php');
+			}else{
+				echo "La cuenta no existe";
+				session_destroy();
+			}
+		} else {
+			$_SESSION['error']="Login incorrecto";
+			session_destroy();
+		}
+	}
+
+
+
 	// Comprueba que la opción "Cerrar Sesión" se ha seleccionado
 	if (isset($_GET['logout'])) {
 		session_destroy();
