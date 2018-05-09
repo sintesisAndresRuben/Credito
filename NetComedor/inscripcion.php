@@ -1,3 +1,10 @@
+<?php 
+session_start();
+include("conexion.proc.php");
+if (!isset($_SESSION['user'])) {
+    header('location: index.php');
+}
+?>
 <!DOCTYPE html>
 <link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
 <title>Comedor</title>
@@ -17,32 +24,33 @@ require_once 'foothead/header.php';
 			<!-- ############################################################## -->
 		<div class="row">
 			<div class="col-7">
-			<form action="#">
+			<form action="inscripcion.proc.php" method="get">
+				<input type="hidden" name="fecha" value="30/05/2019">
 				<div class="col">
 					<!-- NOMBRE Y APELLIDO -->
 					<div class="form-group row">
 						<div class="col-xs-3 mr-5">
 							<label for="nombre">Nombre:</label>
-							<input type="text" class="form-control" id="nombre" name="nombreU" value="Rubén" disabled>
+							<input type="text" class="form-control" id="nombre" name="nombreU" value="<?php echo $_SESSION['user']['nombre_usuario']; ?>" disabled>
 						</div>
 						<div class="col-xs-3">
 							<label for="apellido">Apellido:</label>
-							<input type="text" class="form-control" id="apellido" name="apellidoU" value="Díaz Ruiz" disabled>
+							<input type="text" class="form-control" id="apellido" name="apellidoU" value="<?php echo $_SESSION['user']['apellido_usuario']; ?>" disabled>
 						</div>
 					</div>
 					<!-- TIPO TIQUET y CANTIDAD -->
 					<div class="form-group row">
 						<div class="col-xs-3 mr-4">
 							<label for="nombre">Tipo ticket:</label>
-							<select class="form-control" id="tipoTicket">
-								<option value=""></option>
-								<option value="">Servicio comedor 5 dias</option>
-								<option value="">Servicio comedor 4 dias</option>
-								<option value="">Servicio comedor 3 dias</option>
-								<option value="">Servicio comedor 2 dias</option>
-								<option value="">Servicio comedor 1 dias</option>
-								<option value="">Servicio comedor 1 dias</option>
-								<option value="">Ticket comedor</option>
+							<select class="form-control" id="tipoTicket" name="tipoT" required>
+								<option value="" selected="selected"></option>
+								<option value="1">Servicio comedor 5 dias</option>
+								<option value="2">Servicio comedor 4 dias</option>
+								<option value="3">Servicio comedor 3 dias</option>
+								<option value="4">Servicio comedor 2 dias</option>
+								<option value="5">Servicio comedor 1 dias</option>
+								<option value="6">Servicio comedor 1 dias</option>
+								<option value="7">Ticket comedor</option>
 							</select>
 						</div>
 						<div class="col-xs-3">
@@ -55,20 +63,10 @@ require_once 'foothead/header.php';
 					<div class="form-group row">
 						<div class="col-xs-3">
 							<label for="apellido">Fecha caducidad:</label>
-							<input type="text" class="form-control" id="FechaCadTicket" name="FechaCadT" disabled value="30/05/2019">
+							<input type="text" class="form-control" id="FechaCadTicket" name="fecha" disabled value="30/05/2019">
 						</div>
 					</div>
 				</div>
-
-
-
-
-
-
-
-
-
-
 				<!-- ############################################################## -->
 
 				
@@ -83,12 +81,33 @@ require_once 'foothead/header.php';
 					<div class="card">
 						<h3 class="card-header text-center">FACTURA</h3>
 						<div class="card-body">
-							<p class="card-text"><b>TIPO TIQUET:</b> <b class="be">tiquet blanco</b></p>
+							<div class="row">
+							<div class="col-6">
+								<b>TIPO TIQUET:</b>
+							</div>
+							<div class="col-6" id="txtTicket">
+							</div>
+							</div>
 							<hr>
-							<p class="card-text"><b>CANTIDAD:</b></p>
-							
+							<div class="row">
+							<div class="col-9">
+								<b id="cantidad">CANTIDAD:</b>
+							</div>
+							<div class="col-3">
+								<h7 id="textoCant"></h7>
+							</div>
+							</div>							
 						</div>
-						<div class="card-footer"><h5><b>TOTAL:</b></h5></div>
+						<div class="card-footer">
+							<div class="row">
+							<div class="col-8">
+								<h3>TOTAL:</h3>
+							</div>
+							<div class="col-4">
+								<h4>00.00€</h4>
+							</div>
+							</div>
+						</div>
 					</div>	
 			</div>
 
