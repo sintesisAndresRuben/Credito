@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-05-2018 a las 20:54:16
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 5.6.24
+-- Tiempo de generación: 10-05-2018 a las 18:46:50
+-- Versión del servidor: 10.1.28-MariaDB
+-- Versión de PHP: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -58,7 +60,8 @@ INSERT INTO `tbl_etapa` (`id_etapa`, `nombre_etapa`) VALUES
 (12, 'Grado Superior'),
 (13, 'Profesorado'),
 (14, 'Personal'),
-(15, 'Padres');
+(15, 'Padres'),
+(16, 'Todas las etapas');
 
 -- --------------------------------------------------------
 
@@ -68,11 +71,44 @@ INSERT INTO `tbl_etapa` (`id_etapa`, `nombre_etapa`) VALUES
 
 CREATE TABLE `tbl_menu` (
   `id_menu` int(11) NOT NULL,
-  `tipo_menu` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `pdf_menu` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `nombre_menu` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `tipo_menu` enum('Menu General','Menu Adaptado') COLLATE utf8_unicode_ci NOT NULL,
+  `ruta_menu` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `fecha_menu` date NOT NULL,
   `id_etapa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_menu`
+--
+
+INSERT INTO `tbl_menu` (`id_menu`, `nombre_menu`, `tipo_menu`, `ruta_menu`, `fecha_menu`, `id_etapa`) VALUES
+(3, 'Menú Mayo', 'Menu General', '.\\menu_pdf\\menugeneral\\Menu_Maig.pdf', '2018-05-03', 16),
+(4, 'Propuesta Cenas Mayo', 'Menu General', '.\\menu_pdf\\menugeneral\\Propuesta_Cenas_Mayo.pdf', '2018-05-01', 16),
+(5, 'Informe del valor nutricional', 'Menu General', '.\\menu_pdf\\menugeneral\\Informe del valor nutricional menú nº3 primavera-estiu.pdf', '2018-05-01', 16),
+(6, 'Menú Vgetariano', 'Menu Adaptado', '.\\menu_pdf\\menuadaptado\\Vegetariano.pdf', '2018-05-01', 16);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_normativa`
+--
+
+CREATE TABLE `tbl_normativa` (
+  `id_normativa` int(11) NOT NULL,
+  `nombre_normativa` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `tipo_ruta` enum('1','2','3') COLLATE utf8_unicode_ci NOT NULL,
+  `ruta_normativa` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_normativa` date NOT NULL,
+  `id_etapa` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_normativa`
+--
+
+INSERT INTO `tbl_normativa` (`id_normativa`, `nombre_normativa`, `tipo_ruta`, `ruta_normativa`, `fecha_normativa`, `id_etapa`) VALUES
+(1, 'Menú del alumno/a', '1', './normativa_pdf/Menu_del_alumno_a.pdf', '2018-05-01', 16);
 
 -- --------------------------------------------------------
 
@@ -143,7 +179,7 @@ CREATE TABLE `tbl_usuarios` (
 --
 
 INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `mail_usuario`, `password_usuario`, `tipo_usuario`, `admin`, `id_etapa`) VALUES
-(3, 'Andrés', 'González', '1379.joan23@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'alumno', 'no', 12),
+(3, 'Andrés', 'González', '1379.joan23', '1fa3356b1eb65f144a367ff8560cb406', 'alumno', 'no', 12),
 (4, 'Ruben', 'Díaz', '93295.joan23@fje.edu', '8af3982673455323883c06fa59d2872a', 'alumno', 'no', 12),
 (7, 'David', 'Marín Salvador', 'david.marin@fje.edu', '47496afd0bb349059c000e89235b1d87', 'profesor', 'no', 13),
 (8, 'Agnes', 'Plans Berenguer', 'agnes.plans@fje.edu', '058b451ee66762862ed52239cf6cd53d', 'profesor', 'no', 13),
@@ -190,6 +226,13 @@ ALTER TABLE `tbl_menu`
   ADD KEY `id_etapa` (`id_etapa`);
 
 --
+-- Indices de la tabla `tbl_normativa`
+--
+ALTER TABLE `tbl_normativa`
+  ADD PRIMARY KEY (`id_normativa`),
+  ADD KEY `id_etapa` (`id_etapa`);
+
+--
 -- Indices de la tabla `tbl_padres_alu_profe`
 --
 ALTER TABLE `tbl_padres_alu_profe`
@@ -227,36 +270,49 @@ ALTER TABLE `tbl_usuario_ticket`
 --
 ALTER TABLE `tbl_asistencia`
   MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tbl_etapa`
 --
 ALTER TABLE `tbl_etapa`
-  MODIFY `id_etapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_etapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT de la tabla `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_normativa`
+--
+ALTER TABLE `tbl_normativa`
+  MODIFY `id_normativa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT de la tabla `tbl_padres_alu_profe`
 --
 ALTER TABLE `tbl_padres_alu_profe`
   MODIFY `id_pap` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tbl_ticket`
 --
 ALTER TABLE `tbl_ticket`
   MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuario_ticket`
 --
 ALTER TABLE `tbl_usuario_ticket`
   MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- Restricciones para tablas volcadas
 --
@@ -273,6 +329,12 @@ ALTER TABLE `tbl_asistencia`
 --
 ALTER TABLE `tbl_menu`
   ADD CONSTRAINT `tbl_menu_ibfk_1` FOREIGN KEY (`id_etapa`) REFERENCES `tbl_etapa` (`id_etapa`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `tbl_normativa`
+--
+ALTER TABLE `tbl_normativa`
+  ADD CONSTRAINT `tbl_normativa_ibfk_1` FOREIGN KEY (`id_etapa`) REFERENCES `tbl_etapa` (`id_etapa`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tbl_padres_alu_profe`
@@ -298,6 +360,7 @@ ALTER TABLE `tbl_usuarios`
 ALTER TABLE `tbl_usuario_ticket`
   ADD CONSTRAINT `tbl_usuario_ticket_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`) ON UPDATE CASCADE,
   ADD CONSTRAINT `tbl_usuario_ticket_ibfk_2` FOREIGN KEY (`id_ticket`) REFERENCES `tbl_ticket` (`id_ticket`) ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

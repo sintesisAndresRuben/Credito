@@ -78,7 +78,7 @@ require_once 'foothead/header.php';
 		<div class="col-8">
 			<div class="collapse" id="collapseExample">
 				<div class="card-body">
-					<form action="normativaSubida.proc.php" method="post" enctype="multipart/form-data">
+					<form action="normativaSubida.proc.php" method="get" enctype="multipart/form-data">
 						<input type="file" name="archivo" id="archivo"></input>
 						<input type="submit" value="Subir archivo" class="btn btn-primary"></input>
 					</form>
