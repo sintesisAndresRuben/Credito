@@ -25,7 +25,7 @@ require_once 'foothead/header.php';
 		<div class="row">
 			<div class="col-lg-6">
 				<form action="inscripcion.proc.php" method="get">
-					<input type="hidden" name="fecha" value="30/05/2019">
+					<input type="hidden" name="fecha" value="2018-08-30">
 					<div class="col">
 						<!-- NOMBRE Y APELLIDO -->
 						<div class="form-group row">
@@ -40,7 +40,7 @@ require_once 'foothead/header.php';
 						</div>
 						<!-- TIPO TIQUET y CANTIDAD -->
 						<div class="form-group row">
-							<div class="col mr-md-2 mr-lg-5">
+							<div class="col-12 col-sm mr-md-2 mr-lg-5">
 								<label for="nombre">Tipo ticket:</label>
 								<select class="form-control" id="tipoTicket" name="tipoT" required="">
 									<option value="" selected="selected"></option>
@@ -52,77 +52,78 @@ require_once 'foothead/header.php';
 										while ($option = (mysqli_fetch_array($result))){
 											$tbl_T['ticket']=$option;
 											?>
-											<option value="<?php echo $tbl_T['ticket']['importe_ticket'] ?>"><?php echo $tbl_T['ticket']['tipo_ticket']?></option>
+											<!-- <option value="<?php echo $tbl_T['ticket']['importe_ticket'] ?>"><?php echo $tbl_T['ticket']['tipo_ticket']?></option> -->
+											<option value="<?php echo $tbl_T['ticket']['id_ticket'] ?>"><?php echo $tbl_T['ticket']['tipo_ticket']?></option>
 											<?php
 										}
 									}
 									?>
 								</select>
+								<input type="hidden" id="valor_ticket" name="valor_ticket" value=""><!-- modificar y ponerlo hidden (PONER EL PRECIO Y MULTIPLICAR TIPO TICKET POR CANTIDAD) -->
 							</div>
-							<div class="col">
+							<div class="col-12 col-sm">
 								<label for="apellido">Cantidad:</label>
-								<input type="number" class="form-control" id="cantidadTicket" name="cantidadT" min="1">
+								<input type="number" class="form-control" id="cantidadTicket" name="cantidadT" value="1" min="1">
 							</div>
 						</div>
 
 						<!-- FECHA CAD -->
 						<div class="form-group row">
-							<div class="col mr-5">
+							<div class="col-12 col-sm mr-md-2 mr-lg-5">
 								<label for="apellido">Fecha caducidad:</label>
 								<input type="text" class="form-control" id="FechaCadTicket" name="fecha" disabled="" value="30/05/2019">
 							</div>
-							<div class="col"></div>
+							<div class="col mb-5"></div>
 						</div>
 
-						<br>
-						<br>
-						<button type="submit" class="btn btn-primary">COMPRAR</button>
-						
+
 					</div>
 					<!-- ############################################################## -->
-
-
-					
-
-				</form>	
-			</div>
-			<div class="offset-lg-1"></div>
-			<div class="col-lg-5">
-				<div class="card">
-					<h3 class="card-header text-center">FACTURA</h3>
-					<div class="card-body">
-						<div class="row">
-							<div class="col-6">
-								<b>TIPO TIQUET:</b>
+				</div>
+				<div class="offset-lg-1"></div>
+				<div class="col-lg-5">
+					<div class="card">
+						<h3 class="card-header text-center">FACTURA</h3>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-6">
+									<b>TIPO TIQUET:</b>
+								</div>
+								<div class="col-6" id="txtTicket">Ticket comedor </div>
 							</div>
-							<div class="col-6" id="txtTicket">Ticket comedor </div>
+							<hr>
+							<div class="row">
+								<div class="col-9">
+									<b id="cantidad">CANTIDAD:</b>
+								</div>
+								<div class="col-3">
+									<h7 id="textoCant"></h7>
+								</div>
+							</div>							
 						</div>
-						<hr>
-						<div class="row">
-							<div class="col-9">
-								<b id="cantidad">CANTIDAD:</b>
-							</div>
-							<div class="col-3">
-								<h7 id="textoCant"></h7>
-							</div>
-						</div>							
-					</div>
-					<div class="card-footer">
-						<div class="row">
-							<div class="col-8">
-								<h3>TOTAL:</h3>
-							</div>
-							<div class="col-4">
-								<h4>00.00€</h4>
+						<div class="card-footer">
+							<div class="row">
+								<div class="col-8">
+									<h3>TOTAL:</h3>
+								</div>
+								<div class="col-4">
+									<h4>00.00€</h4>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>	
+					</div>	
+				</div>
 			</div>
-
-		</div>
+			<div class="col-lg-2 col-sm">
+				<br>
+			<br>
+			<button type="submit" class="btn btn-primary btn-block"><i class="fas fa-shopping-cart"></i> COMPRAR</button>
+			<br>
+			<br>
+			</div>
+			
+		</form>
 	</div>
-
 	<!-- FIN CONTAINTER -->
 </div>
 <br><br>

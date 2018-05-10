@@ -1,44 +1,45 @@
 <?php 
-session_start();
+// session_start();
 include("conexion.proc.php");
 if (!isset($_SESSION['user'])) {
+    //echo "no hay sesión";
     header('location: index.php');
 }
-    ?>
-    <!DOCTYPE html> <!-- saved from url=(0035)http://srv.net.fje.edu/net2/#/lanet -->
-    <link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon"> 
-    <html class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths boxsizing translated-ltr" data-livestyle-extension="available" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html;
-        charset=UTF-8"><style type="text/css">@charset "UTF-8";
+?>
+<!DOCTYPE html> <!-- saved from url=(0035)http://srv.net.fje.edu/net2/#/lanet -->
+<link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon"> 
+<html class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths boxsizing translated-ltr" data-livestyle-extension="available" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html;
+    charset=UTF-8"><style type="text/css">@charset "UTF-8";
 
-        [ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{
-            display:none !important;
-        }
-        ng\:form{
-            display:block;
-        }
-        .ng-animate-block-transitions{
-            transition:0s all!important;
-            -webkit-transition:0s all!important;
-        }
-    </style><title>LaNET - Jesuitas Educación</title><meta name="description" content=""><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><meta name="apple-mobile-web-app-capable" content="yes"><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel="stylesheet" href="./LaNeta - Jesuitas Educación_files/screen.css"> <link rel="stylesheet" href="./LaNeta - Jesuitas Educación_files/icons.data.svg.css" media="all"><script type="text/javascript" async="" src="./LaNeta - Jesuitas Educación_files/analytics.js.descarga"></script><script async="" src="./LaNeta - Jesuitas Educación_files/gtm.js.descarga"></script><script>
-        /* grunticon Stylesheet Loader | https://github.com/filamentgroup/grunticon | (c) 2012 Scott Jehl, Filament Group, Inc. | MIT license. */
-        window.grunticon=function(e){
-            if(e&&3===e.length){
-                var t=window,n=!(!t.document.createElementNS||!t.document.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect||!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||window.opera&&-1===navigator.userAgent.indexOf("Chrome")),o=function(o){
-                    var a=t.document.createElement("link"),r=t.document.getElementsByTagName("script")[0];
-                    a.rel="stylesheet",a.href=e[o&&n?0:o?1:2],a.media="only x",r.parentNode.insertBefore(a,r),setTimeout(function(){
-                        a.media="all"
-                    }
-                    )
+    [ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{
+        display:none !important;
+    }
+    ng\:form{
+        display:block;
+    }
+    .ng-animate-block-transitions{
+        transition:0s all!important;
+        -webkit-transition:0s all!important;
+    }
+</style><title>LaNET - Jesuitas Educación</title><meta name="description" content=""><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><meta name="apple-mobile-web-app-capable" content="yes"><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel="stylesheet" href="./LaNeta - Jesuitas Educación_files/screen.css"> <link rel="stylesheet" href="./LaNeta - Jesuitas Educación_files/icons.data.svg.css" media="all"><script type="text/javascript" async="" src="./LaNeta - Jesuitas Educación_files/analytics.js.descarga"></script><script async="" src="./LaNeta - Jesuitas Educación_files/gtm.js.descarga"></script><script>
+    /* grunticon Stylesheet Loader | https://github.com/filamentgroup/grunticon | (c) 2012 Scott Jehl, Filament Group, Inc. | MIT license. */
+    window.grunticon=function(e){
+        if(e&&3===e.length){
+            var t=window,n=!(!t.document.createElementNS||!t.document.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect||!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||window.opera&&-1===navigator.userAgent.indexOf("Chrome")),o=function(o){
+                var a=t.document.createElement("link"),r=t.document.getElementsByTagName("script")[0];
+                a.rel="stylesheet",a.href=e[o&&n?0:o?1:2],a.media="only x",r.parentNode.insertBefore(a,r),setTimeout(function(){
+                    a.media="all"
                 }
-                ,a=new t.Image;
-                a.onerror=function(){
-                    o(!1)
-                }
-                ,a.onload=function(){
-                    o(1===a.width&&1===a.height)
-                }
-                ,a.src="data:image/gif;
+                )
+            }
+            ,a=new t.Image;
+            a.onerror=function(){
+                o(!1)
+            }
+            ,a.onload=function(){
+                o(1===a.width&&1===a.height)
+            }
+            ,a.src="data:image/gif;
         base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
     }
 }
@@ -81,7 +82,11 @@ document.getElementById('right-top-2').appendChild(child);
     &amp;
     $root.groupsFailed &amp;
     &amp;
-    $root.modalFailed" ng-click="tutorial.open()"></a><div class="login__user"><img ng-src="" ng-show="user.avatar !== undefined" alt="avatar del usuario" class="login__avatar ng-hide"> <span class="login__username ng-binding"><?php echo $_SESSION['user']['nombre_usuario']." ".$_SESSION['user']['apellido_usuario']?></span></div><div class="login__controls"><a href="<?php session_destroy() ?>"><img src="./img/net/logout.jpg"/></a></div></div></div></user-info><modal><div ng-controller="Modal" class="lightbox is--visible ng-scope"><a href="http://srv.net.fje.edu/net2/" class="lightbox__close ir" ng-click="lightbox.hideLightbox();
+    $root.modalFailed" ng-click="tutorial.open()"></a><div class="login__user"><img ng-src="" ng-show="user.avatar !== undefined" alt="avatar del usuario" class="login__avatar ng-hide"> <span class="login__username ng-binding"><?php echo $_SESSION['user']['nombre_usuario']." ".$_SESSION['user']['apellido_usuario']?></span></div><div class="login__controls">
+
+        <a href="conexion.proc.php?net=net" ><img src="./img/net/logout.jpg"/></a>
+
+        </div></div></div></user-info><modal><div ng-controller="Modal" class="lightbox is--visible ng-scope"><a href="http://srv.net.fje.edu/net2/" class="lightbox__close ir" ng-click="lightbox.hideLightbox();
         ">Cerrar</a><div class="lightbox__inner"><a target="_blank" ng-href=""><img ng-src="" alt=""></a></div></div></modal><error-message><div ng-show="$root.servicesFailed &amp;
             &amp;
             $root.familyFailed &amp;
@@ -668,7 +673,7 @@ item.isLoaded()
 
 
 
-<a service-icon="" target="_blank" class="nav__label ng-scope" href="home.php"><span class="service-item__name-wrap"><span class="service-item__icon"><span ng-show="$root.hasImage(item.icon()) &amp;
+<a service-icon="" target="_blank" class="nav__label ng-scope" href="login.php"><span class="service-item__name-wrap"><span class="service-item__icon"><span ng-show="$root.hasImage(item.icon()) &amp;
     &amp;
     item.image() === undefined" class="icon icon-incidències ng-hide"></span> <!-- ngIf: item.image() --></span> <span ng-hide="$root.hasImage(item.icon()) || item.image() !== undefined" class="service-item__initials ng-binding"><font style="vertical-align: inherit;
     "><font style="vertical-align: inherit;
@@ -786,7 +791,7 @@ item.isLoaded()
 "><div><div class="logo"><img src="./LaNeta - Jesuitas Educación_files/translate_24dp.png" width="20" height="20" alt="Google Traductor de Google"></div></div></div><div class="top" style="padding: 8px;
 float: left;
 width: 100%;
-"><h1 class="title gray">Texto original</h1></div><div class="middle" style="padding: 8px;
+"><h1 class="title gray"></h1></div><div class="middle" style="padding: 8px;
 "><div class="original-text"></div></div><div class="bottom" style="padding: 8px;
 "><!-- <div class="activity-links"><span class="activity-link">Sugiere una traducción mejor</span><span class="activity-link"></span></div> --><div class="started-activity-container"><hr style="color: #CCC;
 background-color: #CCC;

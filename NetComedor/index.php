@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 include 'conexion.proc.php';
 if (isset($_SESSION['user'])) {
 //   session_destroy();

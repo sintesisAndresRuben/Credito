@@ -1,9 +1,9 @@
 <?php 
-session_start();
+//session_start();
 include("conexion.proc.php");
-// if (!isset($_SESSION['user'])) {
-//     header('location: index.php');
-// }
+if (!isset($_SESSION['user'])) {
+    header('location: login.php');
+}
 ?>
 <link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
 <title>Menú</title>

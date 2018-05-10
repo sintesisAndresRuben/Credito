@@ -1,10 +1,10 @@
 <?php 
-session_start();
+// session_start();
 include("conexion.proc.php");
-// if (!isset($_SESSION['user'])) {
-//     header('location: login.php');
-// }
-    ?>
+if (!isset($_SESSION['user'])) {
+    header('location: login.php');
+}
+?>
 <link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
 <title>NetComedor</title>
 <html lang="es">
@@ -33,22 +33,27 @@ require_once 'foothead/header.php';
 					<a href="inscripcion.php"><img src="img/home/inscripcion.jpg" /></a>
 				</div>
 				<?php  if ($_SESSION['admin']="si"){?>
-				<div class="col-sm4 rectanguloAbajo homeimage">
-					<a href="gestionUsuarios.php"><img src="img/home/gestion.jpg"/></a>
+					<div class="col-sm4 rectanguloAbajo homeimage">
+						<a href="gestionUsuarios.php"><img src="img/home/gestion.jpg"/></a>
 
+					</div>
+					<?php } ?>
 				</div>
-				<?php } ?>
 			</div>
+			<form method="get" action="conexion.proc.php">
+				<button type="text" name="home" class="btn btn-danger" style="color:white">
+					<span class="fas fa-power-off"></span>
+				</button>
+			</form>
 		</div>
 	</div>
-</div>
 
-<!--Final del contenido-->
+	<!--Final del contenido-->
 
-<!--Final de la página en sí-->
+	<!--Final de la página en sí-->
 
-<?php
+	<?php
 		//Insertamos el footer
-require_once 'foothead/footer.php';
-?>
+	require_once 'foothead/footer.php';
+	?>
 <!-- Fin footer -->

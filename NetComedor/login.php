@@ -1,5 +1,6 @@
 <?php
-session_start();
+include("conexion.proc.php");
+//session_start();
 if(isset($_SESSION['user'])){
 	header("location: home.php");
 } else if(isset($_SESSION['error'])){

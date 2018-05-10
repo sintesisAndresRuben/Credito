@@ -1,9 +1,9 @@
 <?php 
-session_start();
+//session_start();
 include("conexion.proc.php");
-// if (!isset($_SESSION['user'])) {
-//     header('location: index.php');
-// }
+if (!isset($_SESSION['user'])) {
+	header('location: index.php');
+}
 ?>
 <link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
 <title>Normativa</title>
@@ -64,9 +64,30 @@ require_once 'foothead/header.php';
 		}
 		?>
 	</br>
-	<form method="get" action="home.php">
-		<button type="text" class="btn btn-warning" style="color:white"><span class="fas fa-arrow-alt-circle-left"></span></button>
-	</form>
+	<div class="container">
+	<div class="row">
+		<form method="get" action="home.php">
+			<button type="text" class="btn btn-warning mr-3 ml-4" style="color:white"><span class="fas fa-arrow-alt-circle-left"></span></button>
+		</form>
+		<!-- boton de herraminetas -->
+		<p>
+			<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><span class="fas fa-wrench"></span></button>
+		</p>
+	</div>
+	<div class="row">
+		<div class="col-8">
+			<div class="collapse" id="collapseExample">
+				<div class="card-body">
+					<form action="normativaSubida.proc.php" method="post" enctype="multipart/form-data">
+						<input type="file" name="archivo" id="archivo"></input>
+						<input type="submit" value="Subir archivo" class="btn btn-primary"></input>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- fin boton de herramientas -->
 </br>
 </div>
 <!--Final del contenido-->
