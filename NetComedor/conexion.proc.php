@@ -69,13 +69,4 @@
 	}
 
 
-
-	// Comprueba que la opción "Cerrar Sesión" se ha seleccionado
-	if (isset($_GET['logout'])) {
-		session_destroy();
-		unset($_SESSION['usu_email']);
-		mysqli_close($conexion);
-		header('location: index.php');
-	}
-
 	?>

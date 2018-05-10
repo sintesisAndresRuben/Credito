@@ -16,7 +16,6 @@ $(document).ready(function(){
     var str = "";
     $( "select option:selected" ).each(function() {
       str += $( this ).text() + " ";
-      $
     });
     $( "#txtTicket" ).html( str );
   })
