@@ -1,4 +1,6 @@
 <?php
+session_start();
+// echo "dentro conexion";
 	$dbServer = "127.0.0.1"; // Nombre o IP del servidor 10.4.11.200
 	$dbUser = "root"; // Nombre de usuario
 	$dbPwd = ""; // Contraseña del servidor
@@ -15,7 +17,7 @@
 	}
 // Login desde la NET
 	if (isset($_POST['login'])) {
-		session_start();
+		// echo "isset post login";
 		$user = $_POST['username'];
 		$pwd1 = $_POST['password'];
 
@@ -36,13 +38,14 @@
 				session_destroy();
 			}
 		} else {
-			header('Location: error.html');
+			header('location: error.html');
 			session_destroy();
 		}
 	}
 // Login hecho por nosotros
 	if (isset($_POST['login_propio'])) {
-		session_start();
+		echo "isset post login_propio";
+		//session_start();
 		$user = $_POST['username'];
 		$pwd1 = $_POST['password'];
 
@@ -50,7 +53,6 @@
 
 		$sqlLogin = "SELECT * FROM tbl_usuarios WHERE mail_usuario = '$user' AND password_usuario = '$pwd'";
 		$result = mysqli_query($conexion,$sqlLogin);
-
 		if (mysqli_num_rows($result)>0) {
 			$usu_session = (mysqli_fetch_array($result));
 			$_SESSION['user'] = $usu_session;
@@ -64,18 +66,23 @@
 			}
 		} else {
 			$_SESSION['error']="Login incorrecto";
-			session_destroy();
+			header('location: login.php');
+			
 		}
 	}
 
-
-
-	// Comprueba que la opción "Cerrar Sesión" se ha seleccionado
-	if (isset($_GET['logout'])) {
-		session_destroy();
-		unset($_SESSION['usu_email']);
+	//Cerrar Sesión
+	if (isset($_REQUEST['home'])) {
+		session_start();
+		unset($_SESSION['user']);
 		mysqli_close($conexion);
+		session_destroy();
+		header('location: login.php');
+	}elseif (isset($_GET['net'])) {
+		session_start();
+		unset($_SESSION['user']);
+		mysqli_close($conexion);
+		session_destroy();
 		header('location: index.php');
 	}
-
 	?>
