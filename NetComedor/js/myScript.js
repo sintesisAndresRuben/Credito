@@ -1,5 +1,10 @@
 $(document).ready(function(){
   // FUNCION PARA QUE ESCRIBA EL CONTENIDO DEL INPUT CANTIDAD EN EL CAMPO CANTIDAD (FACTURA)
+  $("#cantidadTicket").change(function(){
+    var numticket = $(this).val();
+    $("#textoCant").html(numticket);
+  });
+
   $("#cantidadTicket").keyup(function(){
     var numticket = $(this).val();
     $("#textoCant").html(numticket);

@@ -2,7 +2,7 @@
 session_start();
 include("conexion.proc.php");
 if (!isset($_SESSION['user'])) {
-    header('location: index.php');
+	header('location: index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -19,96 +19,105 @@ require_once 'foothead/header.php';
 <div class="container" style="/*background-color: gray*/;">
 	
 	<div class="col-12">
-			<h3>Nueva Compra</h3>
-			<hr>
-			<!-- ############################################################## -->
+		<h3>Nueva Compra</h3>
+		<hr>
+		<!-- ############################################################## -->
 		<div class="row">
-			<div class="col-7">
-			<form action="inscripcion.proc.php" method="get">
-				<input type="hidden" name="fecha" value="30/05/2019">
-				<div class="col">
-					<!-- NOMBRE Y APELLIDO -->
-					<div class="form-group row">
-						<div class="col-xs-3 mr-5">
-							<label for="nombre">Nombre:</label>
-							<input type="text" class="form-control" id="nombre" name="nombreU" value="<?php echo $_SESSION['user']['nombre_usuario']; ?>" disabled>
+			<div class="col-lg-6">
+				<form action="inscripcion.proc.php" method="get">
+					<input type="hidden" name="fecha" value="30/05/2019">
+					<div class="col">
+						<!-- NOMBRE Y APELLIDO -->
+						<div class="form-group row">
+							<div class="col-12 col-sm mr-md-2 mr-lg-5">
+								<label for="nombre">Nombre:</label>
+								<input type="text" class="form-control" id="nombre" name="nombreU" value="Ruben" disabled="">
+							</div>
+							<div class="col-12 col-sm">
+								<label for="apellido">Apellido:</label>
+								<input type="text" class="form-control" id="apellido" name="apellidoU" value="Díaz" disabled="">
+							</div>
 						</div>
-						<div class="col-xs-3">
-							<label for="apellido">Apellido:</label>
-							<input type="text" class="form-control" id="apellido" name="apellidoU" value="<?php echo $_SESSION['user']['apellido_usuario']; ?>" disabled>
-						</div>
-					</div>
-					<!-- TIPO TIQUET y CANTIDAD -->
-					<div class="form-group row">
-						<div class="col-xs-3 mr-4">
-							<label for="nombre">Tipo ticket:</label>
-							<select class="form-control" id="tipoTicket" name="tipoT" required>
-								<option value="" selected="selected"></option>
-								<option value="1">Servicio comedor 5 dias</option>
-								<option value="2">Servicio comedor 4 dias</option>
-								<option value="3">Servicio comedor 3 dias</option>
-								<option value="4">Servicio comedor 2 dias</option>
-								<option value="5">Servicio comedor 1 dias</option>
-								<option value="6">Servicio comedor 1 dias</option>
-								<option value="7">Ticket comedor</option>
-							</select>
-						</div>
-						<div class="col-xs-3">
-							<label for="apellido">Cantidad:</label>
-							<input type="number" class="form-control" id="cantidadTicket" name="cantidadT" min="1">
-						</div>
-					</div>
+						<!-- TIPO TIQUET y CANTIDAD -->
+						<div class="form-group row">
+							<div class="col mr-md-2 mr-lg-5">
+								<label for="nombre">Tipo ticket:</label>
+								<select class="form-control" id="tipoTicket" name="tipoT" required="">
+									<option value="" selected="selected"></option>
+									<?php
+									$sqlOption = "SELECT * FROM `tbl_ticket` WHERE id_etapa=".$_SESSION['user']['id_etapa'];
+									$result = mysqli_query($conexion,$sqlOption);
 
-					<!-- FECHA CAD -->
-					<div class="form-group row">
-						<div class="col-xs-3">
-							<label for="apellido">Fecha caducidad:</label>
-							<input type="text" class="form-control" id="FechaCadTicket" name="fecha" disabled value="30/05/2019">
+									if (mysqli_num_rows($result)>0) {
+										while ($option = (mysqli_fetch_array($result))){
+											$tbl_T['ticket']=$option;
+											?>
+											<option value="<?php echo $tbl_T['ticket']['importe_ticket'] ?>"><?php echo $tbl_T['ticket']['tipo_ticket']?></option>
+											<?php
+										}
+									}
+									?>
+								</select>
+							</div>
+							<div class="col">
+								<label for="apellido">Cantidad:</label>
+								<input type="number" class="form-control" id="cantidadTicket" name="cantidadT" min="1">
+							</div>
 						</div>
-					</div>
-				</div>
-				<!-- ############################################################## -->
 
-				
-				<br><br>
-				<div class="row">
+						<!-- FECHA CAD -->
+						<div class="form-group row">
+							<div class="col mr-5">
+								<label for="apellido">Fecha caducidad:</label>
+								<input type="text" class="form-control" id="FechaCadTicket" name="fecha" disabled="" value="30/05/2019">
+							</div>
+							<div class="col"></div>
+						</div>
+
+						<br>
+						<br>
 						<button type="submit" class="btn btn-primary">COMPRAR</button>
+						
 					</div>
+					<!-- ############################################################## -->
 
-			</form>	
+
+					
+
+				</form>	
 			</div>
-			<div class="col-5">
-					<div class="card">
-						<h3 class="card-header text-center">FACTURA</h3>
-						<div class="card-body">
-							<div class="row">
+			<div class="offset-lg-1"></div>
+			<div class="col-lg-5">
+				<div class="card">
+					<h3 class="card-header text-center">FACTURA</h3>
+					<div class="card-body">
+						<div class="row">
 							<div class="col-6">
 								<b>TIPO TIQUET:</b>
 							</div>
-							<div class="col-6" id="txtTicket">
-							</div>
-							</div>
-							<hr>
-							<div class="row">
+							<div class="col-6" id="txtTicket">Ticket comedor </div>
+						</div>
+						<hr>
+						<div class="row">
 							<div class="col-9">
 								<b id="cantidad">CANTIDAD:</b>
 							</div>
 							<div class="col-3">
 								<h7 id="textoCant"></h7>
 							</div>
-							</div>							
-						</div>
-						<div class="card-footer">
-							<div class="row">
+						</div>							
+					</div>
+					<div class="card-footer">
+						<div class="row">
 							<div class="col-8">
 								<h3>TOTAL:</h3>
 							</div>
 							<div class="col-4">
 								<h4>00.00€</h4>
 							</div>
-							</div>
 						</div>
-					</div>	
+					</div>
+				</div>	
 			</div>
 
 		</div>
@@ -117,11 +126,6 @@ require_once 'foothead/header.php';
 	<!-- FIN CONTAINTER -->
 </div>
 <br><br>
-
-
-
-
-
 
 
 <!--Final del contenido-->
