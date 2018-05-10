@@ -32,12 +32,14 @@ require_once 'foothead/header.php';
 				<div class="col-sm4 rectanguloAbajo homeimage">
 					<a href="inscripcion.php"><img src="img/home/inscripcion.jpg" /></a>
 				</div>
-				<?php  if ($_SESSION['admin']="si"){?>
+				
 					<div class="col-sm4 rectanguloAbajo homeimage">
 						<a href="gestionUsuarios.php"><img src="img/home/gestion.jpg"/></a>
-
+						
 					</div>
-					<?php } ?>
+					<!-- <?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+					<button><?php echo "Hola ".$_SESSION['user']['tipo_usuario'];?></button>
+					<?php } ?> -->
 				</div>
 			</div>
 			<form method="get" action="conexion.proc.php">
