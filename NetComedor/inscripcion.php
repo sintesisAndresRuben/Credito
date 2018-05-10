@@ -1,5 +1,4 @@
 <?php 
-session_start();
 include("conexion.proc.php");
 if (!isset($_SESSION['user'])) {
 	header('location: index.php');
@@ -43,7 +42,7 @@ require_once 'foothead/header.php';
 							<div class="col-12 col-sm mr-md-2 mr-lg-5">
 								<label for="nombre">Tipo ticket:</label>
 								<select class="form-control" id="tipoTicket" name="tipoT" required="">
-									<option value="" selected="selected"></option>
+									<option value="" id="0" selected="selected"></option>
 									<?php
 									$sqlOption = "SELECT * FROM `tbl_ticket` WHERE id_etapa=".$_SESSION['user']['id_etapa'];
 									$result = mysqli_query($conexion,$sqlOption);
@@ -53,13 +52,13 @@ require_once 'foothead/header.php';
 											$tbl_T['ticket']=$option;
 											?>
 											<!-- <option value="<?php echo $tbl_T['ticket']['importe_ticket'] ?>"><?php echo $tbl_T['ticket']['tipo_ticket']?></option> -->
-											<option value="<?php echo $tbl_T['ticket']['id_ticket'] ?>"><?php echo $tbl_T['ticket']['tipo_ticket']?></option>
+											<option value="<?php echo $tbl_T['ticket']['id_ticket'] ?>" id="<?php echo $tbl_T['ticket']['importe_ticket'] ?>"><?php echo $tbl_T['ticket']['tipo_ticket']?></option>
 											<?php
 										}
 									}
 									?>
 								</select>
-								<input type="hidden" id="valor_ticket" name="valor_ticket" value=""><!-- modificar y ponerlo hidden (PONER EL PRECIO Y MULTIPLICAR TIPO TICKET POR CANTIDAD) -->
+								<input type="text" id="valor_ticket" name="valor_ticket" value=""><!-- modificar y ponerlo hidden (PONER EL PRECIO Y MULTIPLICAR TIPO TICKET POR CANTIDAD) -->
 							</div>
 							<div class="col-12 col-sm">
 								<label for="apellido">Cantidad:</label>
