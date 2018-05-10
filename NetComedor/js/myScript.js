@@ -4,34 +4,37 @@ $(document).ready(function(){
   $("#cantidadTicket").change(function(){
     var numticket = $(this).val();
     $("#textoCant").html(numticket);
+    var precio = $("#valor_ticket").val();
+    var suma = precio*numticket;
+    $( "#precio" ).html(suma);
   });
   // AL CAMBIAR DE NUMERO CON LAS FLECHAS DEL INPUT
   $("#cantidadTicket").keyup(function(){
     var numticket = $(this).val();
     $("#textoCant").html(numticket);
+    var precio = $("#valor_ticket").val();
+    var suma = precio*numticket;
+    $( "#precio" ).html(suma);
+
+
   });
-
-
-
-
-
-
-
-
 
   //FUNCION PARA QUE ESCRIBA LA OPCION SELECCIONADA EN EL CAMPO TIPO TIQUET
   $( "select" ).change(function () {
     var str = "";
-    var precio =5;
+    var precio;
     var cantidad = $("#cantidadTicket").val();
     $( "select option:selected" ).each(function() {
       str += $( this ).text() + " ";
-      //precio = $(this).attr("id");
+      precio = parseFloat($(this).attr("id"));
       //EL PROBLEMA ESTA EN EL PRECIO, HAY QUE CONVERTIRLO EN INTEGER
     });
     $( "#txtTicket" ).html( str );
     var suma = precio*cantidad;
     $("#valor_ticket").val(suma);
+    var total = $("#valor_ticket").val()+"€"
+    $( "#precio" ).html(total);
+
   })
   .change();
 

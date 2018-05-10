@@ -58,7 +58,7 @@ require_once 'foothead/header.php';
 									}
 									?>
 								</select>
-								<input type="text" id="valor_ticket" name="valor_ticket" value=""><!-- modificar y ponerlo hidden (PONER EL PRECIO Y MULTIPLICAR TIPO TICKET POR CANTIDAD) -->
+								<input type="hidden" id="valor_ticket" name="valor_ticket" value=""><!-- modificar y ponerlo hidden (PONER EL PRECIO Y MULTIPLICAR TIPO TICKET POR CANTIDAD) -->
 							</div>
 							<div class="col-12 col-sm">
 								<label for="apellido">Cantidad:</label>
@@ -106,7 +106,7 @@ require_once 'foothead/header.php';
 									<h3>TOTAL:</h3>
 								</div>
 								<div class="col-4">
-									<h4>00.00€</h4>
+									<h4 id="precio"></h4>
 								</div>
 							</div>
 						</div>
