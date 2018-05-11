@@ -52,8 +52,9 @@ require_once 'foothead/header.php';
 											$tbl_T['ticket']=$option;
 											?>
 											<!-- <option value="<?php echo $tbl_T['ticket']['importe_ticket'] ?>"><?php echo $tbl_T['ticket']['tipo_ticket']?></option> -->
-											<option value="<?php echo $tbl_T['ticket']['id_ticket'] ?>" id="<?php echo $tbl_T['ticket']['importe_ticket'] ?>"><?php echo $tbl_T['ticket']['tipo_ticket']?></option>
+											<option value="<?php echo $tbl_T['ticket']['id_ticket'] ?>" name="<?php echo $tbl_T['ticket']['tipo_ticket'] ?>" id="<?php echo $tbl_T['ticket']['importe_ticket'] ?>"><?php echo $tbl_T['ticket']['tipo_ticket']?></option>
 											<?php
+
 										}
 									}
 									?>
@@ -61,7 +62,7 @@ require_once 'foothead/header.php';
 								<input type="hidden" id="valor_ticket" name="valor_ticket" value=""><!-- modificar y ponerlo hidden (PONER EL PRECIO Y MULTIPLICAR TIPO TICKET POR CANTIDAD) -->
 							</div>
 							<div class="col-12 col-sm">
-								<label for="apellido">Cantidad:</label>
+								<label for="apellido" id="david">Cantidad:</label>
 								<input type="number" class="form-control" id="cantidadTicket" name="cantidadT" value="1" min="1">
 							</div>
 						</div>
