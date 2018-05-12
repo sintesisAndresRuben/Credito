@@ -27,170 +27,195 @@ require_once 'foothead/header.php';
 	$tablaMenu = mysqli_query($conexion, $q);
 	if (mysqli_num_rows($tablaMenu)>0) {
 		?>
-		<div class="table-responsive" style="margin: auto;  ">
-			<h6>Menú general</h6>
-			<table id="mytable" class="table table-bordred table-striped"> 
-				<thead>
-					<tr>
-						<th>Titulo</th>
-						<th>Última modificación</th>
-						<th>Eliminar</th>
-					</tr>
-				</thead>
-				<?php
-				while ($menu=mysqli_fetch_array($tablaMenu)){
-					$id_menu=$menu['id_menu'];
-					$nombre_menu=$menu['nombre_menu'];
-					$ruta_menu=$menu['ruta_menu'];
-					$fecha_menu=$menu['fecha_menu'];	
-					?>	
-					<tr>
-						<td style="display:none;">
-							<?php echo $id_menu; ?>
-						</td> 
-						<td>
-							<a href="<?php echo"$ruta_menu"; ?>" target="_blank"><?php echo $nombre_menu; ?></a>
-						</td>
-						<td>
-							<!--  -->
-							<?php  
-							$date = new DateTime($fecha_menu);
-							echo $date->format('d-m-Y');
-							?>
-						</td>
-						<td>
-							<a href="menuEliminar.proc.php?id=<?php echo $id_menu; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
-						</td>
-					</tr>
-					<?php
-                // FIN WHILE
-				}
-				?>
-			</table>
-			<!-- FIN TABLA -->
-			<?php
-		// FIN ARRAY
-		}else{
-			?>
-			<div class="table-responsive" style="margin: auto;  ">
-				<table id="mytable" class="table table-bordred table-striped"> 
-					<thead>
-						<tr>
-							<th>Titulo</th>
-							<th>Última modificación</th>
+		<!-- EJEMPLO PARA OCULTAR LAS TABLAS -->
+		<p>
+			<a class="btn btn-success" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><span class="fas fa-eye-slash"></span> Menu General</a>
 
-							<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-								<th>Eliminar</th>
+		</p>
+		<div class="col">
+			<div class="collapse" id="multiCollapseExample1">
+				<div class="card-body">
+					<!-- EMPIEZA MENU GENERAL -->
+					<h6>Menú general</h6>
+					<div class="table-responsive" style="margin: auto;  ">
+						<table id="mytable" class="table table-bordred table-striped"> 
+							<thead>
+								<tr>
+									<th>Titulo</th>
+									<th>Última modificación</th>
+									<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){
+										?>
+										<th>Eliminar</th>
+										<?php
+									}
+									?>
+								</tr>
+							</thead>
+							<?php
+							while ($menu=mysqli_fetch_array($tablaMenu)){
+								$id_menu=$menu['id_menu'];
+								$nombre_menu=$menu['nombre_menu'];
+								$ruta_menu=$menu['ruta_menu'];
+								$fecha_menu=$menu['fecha_menu'];	
+								?>	
+								<tr>
+									<td style="display:none;">
+										<?php echo $id_menu; ?>
+									</td> 
+									<td>
+										<a href="<?php echo"$ruta_menu"; ?>" target="_blank"><?php echo $nombre_menu; ?></a>
+									</td>
+									<td>
+										<!--  -->
+										<?php  
+										$date = new DateTime($fecha_menu);
+										echo $date->format('d-m-Y');
+										?>
+									</td>
+									<td>
+										<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+											<a href="menuEliminar.proc.php?id=<?php echo $id_menu; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
+										</td>
+										<?php
+									}
+									?>  
+								</tr>
 								<?php
+                // FIN WHILE
 							}
 							?>
-						</tr>
-					</thead>
-					<tr>
-						<td colspan="3">
-							No hay datos que mostrar
-						</td> 
-					</tr>
-				</table>
-			</div>
-			<?php	
-		}
-		?>
-	</br>
-
-
-
-
-
-
-
-	<!-- MENU ADAPTADO -->
-	<h6>Menú adaptado</h6>
-	<?php
-	$w = "SELECT * FROM tbl_menu WHERE tipo_menu='Menu Adaptado'";
-	$tablaMenu = mysqli_query($conexion, $w);
-	if (mysqli_num_rows($tablaMenu)>0) {
-		?>
-		<table id="mytable" class="table table-bordred table-striped"> 
-			<thead>
-				<tr>
-					<th>Titulo</th>
-					<th>Última modificación</th>
-					<th>Eliminar</th>
-				</tr>
-			</thead>
-			<?php
-			while ($menu=mysqli_fetch_array($tablaMenu)){
-				$id_menu=$menu['id_menu'];
-				$nombre_menu=$menu['nombre_menu'];
-				$ruta_menu=$menu['ruta_menu'];
-				$fecha_menu=$menu['fecha_menu'];	
-				?>	
-				<tr>
-					<td style="display:none;">
-						<?php echo $id_menu; ?>
-					</td> 
-					<td>
-						<a href="<?php echo"$ruta_menu"; ?>" target="_blank"><?php echo $nombre_menu; ?></a>
-					</td>
-					<td>
-						<!--  -->
-						<?php  
-						$date = new DateTime($fecha_menu);
-						echo $date->format('d-m-Y');
-						?>
-					</td>
-					<td>
-						<!--  -->
-						<?php  
-						$date = new DateTime($fecha_menu);
-						echo $date->format('d-m-Y');
-						?>
-					</td>
-					<td>
-						<a href="menuEliminar.proc.php?id=<?php echo $id_menu; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
-					</td>
-				</tr>
-				<?php
-                // FIN WHILE
-			}
-			?>
-		</table>
-		<!-- FIN TABLA -->
-		<?php
+						</table>
+						<!-- FIN TABLA -->
+						<?php
 		// FIN ARRAY
-	}else{
-		?>
-		<div class="table-responsive" style="margin: auto;  ">
-			<table id="mytable" class="table table-bordred table-striped"> 
-				<thead>
-					<tr>
-						<th>Titulo</th>
-						<th>Última modificación</th>
-
-						<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-							<th>Eliminar</th>
-							<?php
-						}
+					}else{
 						?>
-					</tr>
-				</thead>
-				<tr>
-					<td colspan="3">
-						No hay datos que mostrar
-					</td> 
-				</tr>
-			</table>
+						<div class="table-responsive" style="margin: auto;  ">
+							<table id="mytable" class="table table-bordred table-striped"> 
+								<thead>
+									<tr>
+										<th>Titulo</th>
+										<th>Última modificación</th>
+
+										<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+											<th>Eliminar</th>
+											<?php
+										}
+										?>
+									</tr>
+								</thead>
+								<tr>
+									<td colspan="3">
+										No hay datos que mostrar
+									</td> 
+								</tr>
+							</table>
+						</div>
+						<?php	
+					}
+					?>
+					<!-- FIN MENU GENERAL -->
+				</div>
+			</div>
 		</div>
-		<?php	
-	}
-	?>
-<!-- FIN DE LAS TABLAS -->
+		<p>
+			<button class="btn btn-success" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"><span class="fas fa-eye-slash"></span> Menu Adaptado</button>
+		</p>
+		<div class="col">
+			<div class="collapse" id="multiCollapseExample2">
+				<div class="card-body">
+					<!-- MENU ADAPTADO -->
 
+					<h6>Menú adaptado</h6>
+					<?php
+					$w = "SELECT * FROM tbl_menu WHERE tipo_menu='Menu Adaptado'";
+					$tablaMenu = mysqli_query($conexion, $w);
+					if (mysqli_num_rows($tablaMenu)>0) {
+						?>
+						<table id="mytable" class="table table-bordred table-striped"> 
+							<thead>
+								<tr>
+									<th>Titulo</th>
+									<th>Última modificación</th>
+									<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+										<th>Eliminar</th>
+										<?php
+									}
+									?>
+								</tr>
+							</thead>
+							<?php
+							while ($menu=mysqli_fetch_array($tablaMenu)){
+								$id_menu=$menu['id_menu'];
+								$nombre_menu=$menu['nombre_menu'];
+								$ruta_menu=$menu['ruta_menu'];
+								$fecha_menu=$menu['fecha_menu'];	
+								?>	
+								<tr>
+									<td style="display:none;">
+										<?php echo $id_menu; ?>
+									</td> 
+									<td>
+										<a href="<?php echo"$ruta_menu"; ?>" target="_blank"><?php echo $nombre_menu; ?></a>
+									</td>
+									<td>
+										<!--  -->
+										<?php  
+										$date = new DateTime($fecha_menu);
+										echo $date->format('d-m-Y');
+										?>
+									</td>
+									<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+										<td>
+											<a href="menuEliminar.proc.php?id=<?php echo $id_menu; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
+										</td>
+										<?php
+									}
+									?>
+								</tr>
+								<?php
+                // FIN WHILE
+							}
+							?>
+						</table>
+						<!-- FIN TABLA -->
+						<?php
+		// FIN ARRAY
+					}else{
+						?>
+						<div class="table-responsive" style="margin: auto;  ">
+							<table id="mytable" class="table table-bordred table-striped"> 
+								<thead>
+									<tr>
+										<th>Titulo</th>
+										<th>Última modificación</th>
 
-
+										<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+											<th>Eliminar</th>
+											<?php
+										}
+										?>
+									</tr>
+								</thead>
+								<tr>
+									<td colspan="3">
+										No hay datos que mostrar
+									</td> 
+								</tr>
+							</table>
+						</div>
+						<?php	
+					}
+					?>
+					<!-- FIN DE LAS TABLAS -->
+					<!-- FIN MENU ADAPTADO -->
+				</div>
+			</div>
+		</div>
+		<!-- FIN EJEMPLO PARA OCULTAR LAS TABLAS -->
+	</br>
 </br>
-</br>
+<!-- EMPIEZA EL BOTON DE VOLVER Y DE SUBIDA DE FICHEROS -->
 <div class="container">
 	<div class="row">
 		<form method="get" action="home.php">
@@ -209,6 +234,13 @@ require_once 'foothead/header.php';
 						<form action="menuSubida.proc.php" method="post" enctype="multipart/form-data">
 							<input type="file" name="foto" id="archivo" accept="application/pdf"></input>
 							<input type="submit" value="Subir archivo" class="btn btn-primary"></input>
+							<h6>Selecciona el tipo de Menú:</h6>
+							<div class="radio">
+								<label><input type="radio" name="menu" id="menu" value="Menu General" checked> Menú general</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="menu" id="menu" value="Menu Adaptado"> Menú adaptado</label>
+							</div>
 						</form>
 					</div>
 
@@ -241,16 +273,15 @@ unset($_SESSION['error']);
 unset($_SESSION['error2']);
 ?>
 <!-- fin boton de herramientas -->
-</br>
+</br></br></br>
 <?php
 }
 ?>
-
 </div>
 <!--Final del contenido-->
 <!--Final de la página en sí-->
 <?php
-		//Insertamos el footer
+//Insertamos el footer
 require_once 'foothead/footer.php';
 ?>
 </html>

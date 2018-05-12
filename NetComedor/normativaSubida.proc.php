@@ -3,11 +3,11 @@ include("conexion.proc.php");
 if(!isset($_SESSION['user'])) {
 	header('location: index.php');
 }else {
+	$tipo_norma=$_POST['norma'];
 	$pdf = $_FILES['foto']['name'];
 	$fecha= date("Y-n-j");
-	$destino_a= './normativa_pdf/'.$pdf;
-	$destino_b='/normativa_pdf';
-
+	$destino_a= '/normativa_pdf/'.$tipo_norma.'/'.$pdf;
+	$destino_b='/normativa_pdf/'.$tipo_norma.'/';
 	$q = "SELECT * FROM tbl_normativa WHERE nombre_normativa='$pdf'";
 	$tablaNormativa = mysqli_query($conexion, $q);
 	if ($pdf=="") {
@@ -18,12 +18,10 @@ if(!isset($_SESSION['user'])) {
 		$_SESSION['error']="Fichero repetido";
 		header("location: normativa.php");
 	} else {
-
-		$q = "INSERT INTO tbl_normativa (nombre_normativa, ruta_normativa, fecha_normativa, id_etapa) VALUES ('$pdf','$destino_a', '$fecha', 16)";
+		$q = "INSERT INTO tbl_normativa (nombre_normativa, tipo_normativa, ruta_normativa, fecha_normativa, id_etapa) VALUES ('$pdf','$tipo_norma', '$destino_a', '$fecha', 16)";
 		$subirPdf=mysqli_query($conexion, $q);
-
 	// Mover los ficheros al directorio que nosotros queremos
-		$carpeta= "normativa_pdf/";
+		$carpeta= "normativa_pdf/".$tipo_norma."/";
 		opendir($carpeta);
 		$destino= $carpeta.$_FILES['foto']['name'];
 		copy($_FILES['foto']['tmp_name'],$destino);
@@ -35,7 +33,7 @@ if(!isset($_SESSION['user'])) {
 		//echo $_FILES['foto']['type'];
 	//Fin subida de fichero
 	//Vuelve a la pagina normativa
-		header("location:normativa.php");
+	header("location:normativa.php");
 	}
 
 }
