@@ -3,3 +3,5 @@ Tanto en normativa.php y menu.php --> Tengo que dejar los collapse abiertos cuan
 En la pagina normativa.php no he metido el contenido en el collapse porque baila.
 
 En la pagina de menu.php baila las cajas no se si se ha aplicado algun estilo de css. 
+
+Cambiar los campos de la base de datos y poner tipo_normativa 

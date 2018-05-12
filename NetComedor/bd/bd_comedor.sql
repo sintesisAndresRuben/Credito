@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-05-2018 a las 15:49:18
--- Versión del servidor: 10.1.28-MariaDB
--- Versión de PHP: 7.1.11
+-- Tiempo de generación: 12-05-2018 a las 20:17:43
+-- Versión del servidor: 10.1.26-MariaDB
+-- Versión de PHP: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -86,7 +86,14 @@ INSERT INTO `tbl_menu` (`id_menu`, `nombre_menu`, `tipo_menu`, `ruta_menu`, `fec
 (3, 'Menú Mayo', 'Menu General', '.\\menu_pdf\\menugeneral\\Menu_Maig.pdf', '2018-05-03', 16),
 (4, 'Propuesta Cenas Mayo', 'Menu General', '.\\menu_pdf\\menugeneral\\Propuesta_Cenas_Mayo.pdf', '2018-05-01', 16),
 (5, 'Informe del valor nutricional', 'Menu General', '.\\menu_pdf\\menugeneral\\Informe del valor nutricional menú nº3 primavera-estiu.pdf', '2018-05-01', 16),
-(6, 'Menú Vgetariano', 'Menu Adaptado', '.\\menu_pdf\\menuadaptado\\Vegetariano.pdf', '2018-05-01', 16);
+(20, 'Vegetariano.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Vegetariano.pdf', '2018-05-12', 16),
+(21, 'NO PORC.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/NO PORC.pdf', '2018-05-12', 16),
+(22, 'NO CARN DE VEDELLA.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/NO CARN DE VEDELLA.pdf', '2018-05-12', 16),
+(23, 'Menú Diabètic (5 racions HC).pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Menú Diabètic (5 racions HC).pdf', '2018-05-12', 16),
+(24, 'Intolerància al GLUTEN (CELIAQUIA).pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Intolerància al GLUTEN (CELIAQUIA).pdf', '2018-05-12', 16),
+(25, 'Intolerància a la FRUCTOSA-SORBITOL.pdf', 'Menu General', './menu_pdf/Menu General/Intolerància a la FRUCTOSA-SORBITOL.pdf', '2018-05-12', 16),
+(26, 'Al·lèrgia als LLEGUMS.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Al·lèrgia als LLEGUMS.pdf', '2018-05-12', 16),
+(27, 'Al·lèrgia als FRUITS SECS.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Al·lèrgia als FRUITS SECS.pdf', '2018-05-12', 16);
 
 -- --------------------------------------------------------
 
@@ -97,18 +104,11 @@ INSERT INTO `tbl_menu` (`id_menu`, `nombre_menu`, `tipo_menu`, `ruta_menu`, `fec
 CREATE TABLE `tbl_normativa` (
   `id_normativa` int(11) NOT NULL,
   `nombre_normativa` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `tipo_ruta` enum('1','2','3') COLLATE utf8_unicode_ci NOT NULL,
+  `tipo_normativa` enum('Normativa','Guías y comunicados Servicio de comedor','Guías, Consejos, y Comunicados Administración pública') COLLATE utf8_unicode_ci NOT NULL,
   `ruta_normativa` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `fecha_normativa` date NOT NULL,
   `id_etapa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `tbl_normativa`
---
-
-INSERT INTO `tbl_normativa` (`id_normativa`, `nombre_normativa`, `tipo_ruta`, `ruta_normativa`, `fecha_normativa`, `id_etapa`) VALUES
-(1, 'Menú del alumno/a', '1', './normativa_pdf/Menu_del_alumno_a.pdf', '2018-05-01', 16);
 
 -- --------------------------------------------------------
 
@@ -183,7 +183,7 @@ INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, 
 (4, 'Ruben', 'Díaz', '93295.joan23@fje.edu', '8af3982673455323883c06fa59d2872a', 'alumno', 'no', 12),
 (7, 'David', 'Marín Salvador', 'david.marin@fje.edu', '47496afd0bb349059c000e89235b1d87', 'profesor', 'no', 13),
 (8, 'Agnes', 'Plans Berenguer', 'agnes.plans@fje.edu', '058b451ee66762862ed52239cf6cd53d', 'profesor', 'no', 13),
-(15, 'José Antonio ', 'López Rodríguez', 'jantonio.lopez@fje.edu', '7ab49765efbcc55a5fb50d4588db19b7', 'personal', 'si', 14),
+(15, 'José Antonio ', 'López Rodríguez', 'jantonio.lopez@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'personal', 'si', 14),
 (16, 'Núria ', 'García Sánchez', 'nuria.garcia@fje.edu', '02ae76732a5d1d4476a88e74c1f06728', 'personal', 'no', 14);
 
 -- --------------------------------------------------------
@@ -199,6 +199,13 @@ CREATE TABLE `tbl_usuario_ticket` (
   `fecha_caducidad` date NOT NULL,
   `cantidad_ticket` varchar(3) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_usuario_ticket`
+--
+
+INSERT INTO `tbl_usuario_ticket` (`id_usuario_ticket`, `id_usuario`, `id_ticket`, `fecha_caducidad`, `cantidad_ticket`) VALUES
+(1, 3, 16, '2018-08-30', '12');
 
 --
 -- Índices para tablas volcadas
@@ -281,13 +288,13 @@ ALTER TABLE `tbl_etapa`
 -- AUTO_INCREMENT de la tabla `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_normativa`
 --
 ALTER TABLE `tbl_normativa`
-  MODIFY `id_normativa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_normativa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_padres_alu_profe`
@@ -311,7 +318,7 @@ ALTER TABLE `tbl_usuarios`
 -- AUTO_INCREMENT de la tabla `tbl_usuario_ticket`
 --
 ALTER TABLE `tbl_usuario_ticket`
-  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
