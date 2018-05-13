@@ -73,7 +73,34 @@ require_once 'foothead/header.php';
 								<label for="apellido">Fecha caducidad:</label>
 								<input type="text" class="form-control" id="FechaCadTicket" name="fecha" disabled="" value="30/05/2019">
 							</div>
-							<div class="col mb-5"></div>
+							<div class="col mb-5">
+								<label for="apellido">:</label>
+								<div class="form-check form-check-inline">
+									<label class="form-check-label">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> Lun.
+									</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<label class="form-check-label">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> Mar.
+									</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<label class="form-check-label">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> Mie.
+									</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<label class="form-check-label">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> Jue.
+									</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<label class="form-check-label">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> Vie.
+									</label>
+								</div>
+							</div>
 						</div>
 
 
@@ -116,10 +143,10 @@ require_once 'foothead/header.php';
 			</div>
 			<div class="col-lg-2 col-sm">
 				<br>
-			<br>
-			<button type="submit" class="btn btn-primary btn-block"><i class="fas fa-shopping-cart"></i> COMPRAR</button>
-			<br>
-			<br>
+				<br>
+				<button type="submit" class="btn btn-primary btn-block"><i class="fas fa-shopping-cart"></i> COMPRAR</button>
+				<br>
+				<br>
 			</div>
 			
 		</form>
