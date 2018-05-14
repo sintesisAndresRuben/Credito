@@ -7,14 +7,40 @@ if(!isset($_SESSION['user'])){
 	$idTicket = $_REQUEST['tipoT'];
 	$cantidad = $_REQUEST['cantidadT'];
 	$fechaCad = $_REQUEST['fecha'];
+	
 	if (isset($_REQUEST['lunes'])) {
 		$lunes = $_REQUEST['lunes'];	
+	} else {
+		$lunes='0';
 	}
 	
-	$martes = $_REQUEST['martes'];
-	$miercoles = $_REQUEST['miercoles'];
-	$jueves = $_REQUEST['jueves'];
-	$viernes = $_REQUEST['viernes'];
+	if (isset($_REQUEST['martes'])) {
+		$martes = $_REQUEST['martes'];	
+	} else {
+		$martes='0';
+	}
+
+	if (isset($_REQUEST['miercoles'])) {
+		$miercoles = $_REQUEST['miercoles'];	
+	} else {
+		$miercoles='0';
+	} 
+
+	if (isset($_REQUEST['jueves'])) {
+		$jueves = $_REQUEST['jueves'];	
+	} else {
+		$jueves='0';
+	} 
+
+	if (isset($_REQUEST['viernes'])) {
+		$viernes = $_REQUEST['viernes'];	
+	} else {
+		$viernes='0';
+	}
+	
+	
+	
+	
 
 	$q = "INSERT INTO tbl_usuario_ticket (id_usuario,id_ticket,fecha_caducidad,cantidad_ticket) VALUES (".$_SESSION['user']['id_usuario'].", $idTicket, '$fechaCad', $cantidad)";
 	$comprarTicket=mysqli_query($conexion, $q);
@@ -26,7 +52,7 @@ if(!isset($_SESSION['user'])){
 	} else {
 		echo "Error al hacer la compra. VOLVER A INTENTAR";
 	}
-	// header("location:home.php");
+	header("location:home.php");
 	}
 
 

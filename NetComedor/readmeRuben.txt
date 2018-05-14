@@ -1,0 +1,2 @@
+ - Relacionar la tabla dias_reserva con usuario_ticket
+ - Validar que si es servicio comedor 3 dias esten marcados 3 checks
