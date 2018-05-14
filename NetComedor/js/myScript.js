@@ -1,7 +1,7 @@
 $(document).ready(function(){
   //Al cargar la pagina pone el valor de cantidad en el campo cantidad (FACTURA)
   $("#textoCant").html($("#cantidadTicket").val());
-  // FUNCION PARA QUE ESCRIBA EL CONTENIDO DEL INPUT CANTIDAD EN EL CAMPO CANTIDAD (FACTURA)
+  ///////////////////////// FUNCION PARA QUE ESCRIBA EL CONTENIDO DEL INPUT CANTIDAD EN EL CAMPO CANTIDAD (FACTURA) /////////////
   //AL LEVANTAR LA TECLA
   $("#cantidadTicket").change(function(){
     var numticket = $(this).val();
@@ -21,7 +21,7 @@ $(document).ready(function(){
 
   });
 
-  //FUNCION PARA QUE ESCRIBA LA OPCION SELECCIONADA EN EL CAMPO TIPO TIQUET
+  ////////////////////FUNCION PARA QUE ESCRIBA LA OPCION SELECCIONADA EN EL CAMPO TIPO TIQUET //////////////////////////////
   $( "select" ).change(function () {
     var str = "";
     var precio;
@@ -31,20 +31,43 @@ $(document).ready(function(){
       str += $( this ).text() + " ";
       caca = $(this).text();
       precio = parseFloat($(this).attr("id"));
-      //EL PROBLEMA ESTA EN EL PRECIO, HAY QUE CONVERTIRLO EN INTEGER
     });
     // alert(caca);
     
-if (caca=='Ticket comedor') {
+    if (caca=='Ticket comedor') {
       $("#cantidadTicket").prop("type","number");
       $("#david").css("visibility", "visible");
+      $("#checks").css("visibility", "hidden");
 
-    } else {
+    } else if (caca=='Servicio comedor 5 días') {
       $("#cantidadTicket").prop("type","hidden");
       $("#david").css("visibility", "hidden");
       //CAMBIAR EL VALOR DEL INPUT A UNO PARA QUE NO MULTIPLIQUE  
       $("#david").val('1');
+      $("input[type=checkbox]").prop('checked', true);
+      $("#cantidad").val('5');
+      $("#checks").css("visibility", "visible");
 
+
+    } else if (caca=='Servicio comedor 4 días') {
+      $("#cantidadTicket").prop("type","hidden");
+      $("#david").css("visibility", "hidden");
+      //CAMBIAR EL VALOR DEL INPUT A UNO PARA QUE NO MULTIPLIQUE  
+      $("#david").val('1');
+      $("input[type=checkbox]").prop('checked', false);
+      $("#cantidad").val('4');
+      $("#checks").css("visibility", "visible");
+
+    } else if (caca=='Servicio comedor 3 días') {
+      $("#cantidadTicket").prop("type","hidden");
+      $("#david").css("visibility", "hidden");
+      //CAMBIAR EL VALOR DEL INPUT A UNO PARA QUE NO MULTIPLIQUE  
+      $("#david").val('1');
+      $("input[type=checkbox]").prop('checked', false);
+      $("#cantidad").val('3');
+      $("#checks").css("visibility", "visible");
+
+      
     }
 
 
@@ -58,45 +81,92 @@ if (caca=='Ticket comedor') {
   .change();
 
 
-// jQuery(document).on('keyup', '#cantidadTicket' function)
+
+  /////////////////////////////////////////// EVENTO QUE VALIDA CUANTOS CHECKBOX ESTAN MARCADOS ///////////////////////////////
+
+  // Evento que se ejecuta al soltar una tecla en el input
+  $("#cantidad").keydown(function(){
+    $("input[type=checkbox]").prop('checked', false);
+    $("#seleccionados").html("0");
+  });
+
+  // Evento que se ejecuta al pulsar en un checkbox
+  $("input[type=checkbox]").change(function(){
+
+    // Cogemos el elemento actual
+    var elemento=this;
+    var contador=0;
+
+    // Recorremos todos los checkbox para contar los que estan seleccionados
+    $("input[type=checkbox]").each(function(){
+      if($(this).is(":checked"))
+        contador++;
+    });
+
+    var cantidadMaxima=parseInt($("#cantidad").val()) || 0;
+
+    // Comprovamos si supera la cantidad máxima indicada
+    if(contador>cantidadMaxima)
+    {
+      alert("Has seleccionado mas dias de los que permite el tipo de ticket");
+
+      // Desmarcamos el ultimo elemento
+      $(elemento).prop('checked', false);
+      contador--;
+    }
+
+    $("#seleccionados").html(contador);
+  });
 
 
-// Al seleccionar una opcion diferente a ticket comedor poner en hidden el input cantidad
 
 
-// -------------------------------------------------------------------------------------------------------------
-//             $("#key").click(function(){
-//                 if($(this).hasClass("fa-eye")){
-//                     $("#pwd").prop("type","text")
-//                     $(this).removeClass("fa-eye");
-//                     $(this).addClass("fa-eye-slash");
-//                 } else  {
-//                     $("#pwd").prop("type","password")
-//                     $(this).removeClass("fa-eye-slash");
-//                     $(this).addClass("fa-eye");
-//                 }
-//             });
-                        
-//             $('#Nom').keypress(function () {
-//                 $('#mensaje').load('nombreDisponible',
-//                     "Nom=" + $('#Nom').val())
-// //                    var mensaje= document.getElementById("mensaje").innerHTML
-// //                    alert(mensaje);
-//             }
-//             );
-    
-//             $('#pwd').focus(function () {
-//                     var mensaje= document.getElementById("mensaje").innerHTML
-//                     if(mensaje=="nombre si disponible"){
-// //                        alert("disponible")
-//                     }else{
-//                        $('#Button').attr('disabled','disabled');
-//                     }
-// //                    alert(mensaje);
-//             }
-//             );
-    
-    
+  ///////////////////////////////////////////// CAMBIAR VALOR DE LOS CHECK AL SELECCIONAR //////////////////////////////////////////
+  //busca los checks seleccionados y les cambia el valor
+  $("#checks").find("input").each(function(){
+    $(this).click(function(){
+    if($(this).is(":checked")){
+      $(this).val('1');
+      // alert('seleccionado');
+    }else{
+      $(this).val('0');
+    }
+  });
+  });
+
+
+
+  //FUNCION PARA CAMBIAR EL ICONO OCULTAR/MOSTRAR TABLAS
+  $("#key").click(function(){
+    if($("#ojo").hasClass("fas fa-eye-slash")){
+      $("#ojo").removeClass("fas fa-eye-slash");
+      $("#ojo").addClass("fas fa-eye");
+    } else  {
+      $("#ojo").removeClass("fas fa-eye");
+      $("#ojo").addClass("fas fa-eye-slash");
+    }
+  });
+  $("#key1").click(function(){
+    if($("#ojo1").hasClass("fas fa-eye-slash")){
+      $("#ojo1").removeClass("fas fa-eye-slash");
+      $("#ojo1").addClass("fas fa-eye");
+    } else  {
+      $("#ojo1").removeClass("fas fa-eye");
+      $("#ojo1").addClass("fas fa-eye-slash");
+    }
+  });
+    $("#key2").click(function(){
+    if($("#ojo2").hasClass("fas fa-eye-slash")){
+      $("#ojo2").removeClass("fas fa-eye-slash");
+      $("#ojo2").addClass("fas fa-eye");
+    } else  {
+      $("#ojo2").removeClass("fas fa-eye");
+      $("#ojo2").addClass("fas fa-eye-slash");
+    }
+  });
+  //FINALIZA LA FUNCION PARA CAMBIAR EL ICONO OCULTAR/MOSTRAR TABLAS
+
+
 // FIN DOCUMENT ready 
 });
 

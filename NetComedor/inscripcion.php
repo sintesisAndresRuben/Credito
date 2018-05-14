@@ -64,6 +64,10 @@ require_once 'foothead/header.php';
 							<div class="col-12 col-sm">
 								<label for="apellido" id="david">Cantidad:</label>
 								<input type="number" class="form-control" id="cantidadTicket" name="cantidadT" value="1" min="1">
+
+
+
+
 							</div>
 						</div>
 
@@ -74,31 +78,37 @@ require_once 'foothead/header.php';
 								<input type="text" class="form-control" id="FechaCadTicket" name="fecha" disabled="" value="30/05/2019">
 							</div>
 							<div class="col mb-5">
-								<label for="apellido">:</label>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> Lun.
-									</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> Mar.
-									</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> Mie.
-									</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> Jue.
-									</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> Vie.
-									</label>
+								<!-- CANTIDAD DE CHECKBOX SELECCIONADOS -->
+								<div id="checks">
+									<input type="hidden" id="cantidad" value="0">
+
+									<label for="apellido">Elegir los dias de la semana:</label>
+									<div class="form-check form-check-inline">
+										<label class="form-check-label">
+											<input class="form-check-input" type="checkbox" name="lunes" id="lunes" value="0"> LUN.
+										</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<label class="form-check-label">
+											<input class="form-check-input" type="checkbox" name="martes" id="martes" value="0"> MAR.
+										</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<label class="form-check-label">
+											<input class="form-check-input" type="checkbox" name="miercoles" id="miercoles" value="0"> MIE.
+										</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<label class="form-check-label">
+											<input class="form-check-input" type="checkbox" name="jueves" id="jueves" value="0"> JUE.
+										</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<label class="form-check-label">
+											<input class="form-check-input" type="checkbox" name="viernes" id="viernes" value="0"> VIE.
+										</label>
+									</div>
+									<div><span id="seleccionados" hidden="true">0</span></div>
 								</div>
 							</div>
 						</div>
