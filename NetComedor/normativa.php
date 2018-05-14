@@ -20,18 +20,17 @@ require_once 'foothead/header.php';
 <!--Inicio del contenido--> 
 <div class="container">
 	<br><br>
-	<h4>Normativa y Guías</h4>
-	<br>
+	<h3>Normativa y Guías</h3>
+	<br></br>
 	<!-- EJEMPLO PARA OCULTAR LAS TABLAS -->
 	<p>
-		<a class="btn btn-success" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><span class="fas fa-eye-slash"></span> Normativa</a>
+		<a class="btn btn-primary btn-block" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" id="key"><span class="fas fa-eye-slash" id="ojo"></span> Normativa</a>
 
 	</p>
 	<div class="col">
-		<div class="collapse" id="multiCollapseExample1">
+		<div class="collapse show" id="multiCollapseExample1">
 			<div class="card-body">
 				<!-- TABLA NORMATIVA -->
-				<h6>Normativa</h6>
 				<?php
 				$q = "SELECT * FROM tbl_normativa WHERE tipo_normativa='Normativa'";
 				$tablaNormativa = mysqli_query($conexion, $q);
@@ -122,34 +121,77 @@ require_once 'foothead/header.php';
 			</div>
 		</div>
 	</div>
-	<p>
-		<button class="btn btn-success" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"><span class="fas fa-eye-slash"></span> Guías y comunicados Servicio de comedor</button>
-	</p>
-	<div class="col">
-		<div class="collapse" id="multiCollapseExample2">
-			<div class="card-body">
-				Guias1
-			</div>
-		</div>
-	</div>
-	<p>
-		<button class="btn btn-success" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3"><span class="fas fa-eye-slash"></span> Guías, Consejos, y Comunicados Administración pública</button>
-	</p>
-	<div class="col">
-		<div class="collapse" id="multiCollapseExample3">
-			<div class="card-body">
-				<!-- TABLA GUIAS, CONSEJOS, Y COMUNICADOS ADMINISTRACION PUBLICA -->
-				<h6>Guías, Consejos, y Comunicados Administración pública</h6>
-				<?php
-				$w = "SELECT * FROM tbl_normativa WHERE tipo_normativa='Guías, Consejos, y Comunicados Administración pública'";
-				$tablanormativa = mysqli_query($conexion, $w);
-				if (mysqli_num_rows($tablanormativa)>0) {
+</div>
+<p>
+	<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2" id="key1"><span class="fas fa-eye-slash" id="ojo1"></span> Guías y comunicados Servicio de comedor</button>
+</p>
+<div class="col">
+	<div class="collapse show" id="multiCollapseExample2">
+		<div class="card-body">
+			<!-- TABLA GUIAS Y COMUNICADOS SERVICIO COMEDOR -->
+			<?php
+			$w = "SELECT * FROM tbl_normativa WHERE tipo_normativa='Guías y comunicados Servicio de comedor'";
+			$tablanormativa = mysqli_query($conexion, $w);
+			if (mysqli_num_rows($tablanormativa)>0) {
+				?>
+				<table id="mytable" class="table table-bordred table-striped"> 
+					<thead>
+						<tr>
+							<th>Titulo</th>
+							<th>Última modificación</th>
+							<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+								<th>Eliminar</th>
+								<?php
+							}
+							?>
+						</tr>
+					</thead>
+					<?php
+					while ($normativa=mysqli_fetch_array($tablanormativa)){
+						$id_normativa=$normativa['id_normativa'];
+						$nombre_normativa=$normativa['nombre_normativa'];
+						$ruta_normativa=$normativa['ruta_normativa'];
+						$fecha_normativa=$normativa['fecha_normativa'];	
+						?>	
+						<tr>
+							<td style="display:none;">
+								<?php echo $id_normativa; ?>
+							</td> 
+							<td>
+								<a href="<?php echo"$ruta_normativa"; ?>" target="_blank"><?php echo $nombre_normativa; ?></a>
+							</td>
+							<td>
+								<!--  -->
+								<?php  
+								$date = new DateTime($fecha_normativa);
+								echo $date->format('d-m-Y');
+								?>
+							</td>
+							<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+								<td>
+									<a href="normativaEliminar.proc.php?id=<?php echo $id_normativa; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
+								</td>
+								<?php
+							}
+							?>
+						</tr>
+						<?php
+                // FIN WHILE
+					}
 					?>
+				</table>
+				<!-- FIN TABLA -->
+				<?php
+		// FIN ARRAY
+			}else{
+				?>
+				<div class="table-responsive" style="margin: auto;  ">
 					<table id="mytable" class="table table-bordred table-striped"> 
 						<thead>
 							<tr>
 								<th>Titulo</th>
 								<th>Última modificación</th>
+
 								<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
 									<th>Eliminar</th>
 									<?php
@@ -157,161 +199,114 @@ require_once 'foothead/header.php';
 								?>
 							</tr>
 						</thead>
+						<tr>
+							<td colspan="3">
+								No hay datos que mostrar
+							</td> 
+						</tr>
+					</table>
+				</div>
+				<?php	
+			}
+			?>
+			<!-- FIN TABLA GUIAS Y COMUNICADOS SERVICIO COMEDOR -->
+		</div>
+	</div>
+</div>
+<p>
+	<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3" id="key2"><span class="fas fa-eye-slash" id="ojo2"></span> Guías, Consejos, y Comunicados Administración pública</button>
+</p>
+<div class="col">
+	<div class="collapse show" id="multiCollapseExample3">
+		<div class="card-body">
+			<!-- TABLA GUIAS, CONSEJOS, Y COMUNICADOS ADMINISTRACION PUBLICA -->
+			<?php
+			$w = "SELECT * FROM tbl_normativa WHERE tipo_normativa='Guías, Consejos, y Comunicados Administración pública'";
+			$tablanormativa = mysqli_query($conexion, $w);
+			if (mysqli_num_rows($tablanormativa)>0) {
+				?>
+				<table id="mytable" class="table table-bordred table-striped"> 
+					<thead>
+						<tr>
+							<th>Titulo</th>
+							<th>Última modificación</th>
+							<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+								<th>Eliminar</th>
+								<?php
+							}
+							?>
+						</tr>
+					</thead>
+					<?php
+					while ($normativa=mysqli_fetch_array($tablanormativa)){
+						$id_normativa=$normativa['id_normativa'];
+						$nombre_normativa=$normativa['nombre_normativa'];
+						$ruta_normativa=$normativa['ruta_normativa'];
+						$fecha_normativa=$normativa['fecha_normativa'];	
+						?>	
+						<tr>
+							<td style="display:none;">
+								<?php echo $id_normativa; ?>
+							</td> 
+							<td>
+								<a href="<?php echo"$ruta_normativa"; ?>" target="_blank"><?php echo $nombre_normativa; ?></a>
+							</td>
+							<td>
+								<!--  -->
+								<?php  
+								$date = new DateTime($fecha_normativa);
+								echo $date->format('d-m-Y');
+								?>
+							</td>
+							<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+								<td>
+									<a href="normativaEliminar.proc.php?id=<?php echo $id_normativa; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
+								</td>
+								<?php
+							}
+							?>
+						</tr>
 						<?php
-						while ($normativa=mysqli_fetch_array($tablanormativa)){
-							$id_normativa=$normativa['id_normativa'];
-							$nombre_normativa=$normativa['nombre_normativa'];
-							$ruta_normativa=$normativa['ruta_normativa'];
-							$fecha_normativa=$normativa['fecha_normativa'];	
-							?>	
+                // FIN WHILE
+					}
+					?>
+				</table>
+				<!-- FIN TABLA -->
+				<?php
+		// FIN ARRAY
+			}else{
+				?>
+				<div class="table-responsive" style="margin: auto;  ">
+					<table id="mytable" class="table table-bordred table-striped"> 
+						<thead>
 							<tr>
-								<td style="display:none;">
-									<?php echo $id_normativa; ?>
-								</td> 
-								<td>
-									<a href="<?php echo"$ruta_normativa"; ?>" target="_blank"><?php echo $nombre_normativa; ?></a>
-								</td>
-								<td>
-									<!--  -->
-									<?php  
-									$date = new DateTime($fecha_normativa);
-									echo $date->format('d-m-Y');
-									?>
-								</td>
+								<th>Titulo</th>
+								<th>Última modificación</th>
+
 								<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-									<td>
-										<a href="normativaEliminar.proc.php?id=<?php echo $id_normativa; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
-									</td>
+									<th>Eliminar</th>
 									<?php
 								}
 								?>
 							</tr>
-							<?php
-                // FIN WHILE
-						}
-						?>
+						</thead>
+						<tr>
+							<td colspan="3">
+								No hay datos que mostrar
+							</td> 
+						</tr>
 					</table>
-					<!-- FIN TABLA -->
-					<?php
-		// FIN ARRAY
-				}else{
-					?>
-					<div class="table-responsive" style="margin: auto;  ">
-						<table id="mytable" class="table table-bordred table-striped"> 
-							<thead>
-								<tr>
-									<th>Titulo</th>
-									<th>Última modificación</th>
-
-									<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-										<th>Eliminar</th>
-										<?php
-									}
-									?>
-								</tr>
-							</thead>
-							<tr>
-								<td colspan="3">
-									No hay datos que mostrar
-								</td> 
-							</tr>
-						</table>
-					</div>
-					<?php	
-				}
-				?>
-				<!-- FIN TABLA GUIAS, CONSEJOS, Y COMUNICADOS ADMINISTRACION PUBLICA -->
-			</div>
-		</div>
-	</div>
-	<!-- FIN EJEMPLO PARA OCULTAR LAS TABLAS -->
-	
-	<!-- TABLA GUIAS Y COMUNICADOS SERVICIO COMEDOR -->
-	<h6>Guías y comunicados Servicio de comedor</h6>
-
-	<?php
-	$w = "SELECT * FROM tbl_normativa WHERE tipo_normativa='Guías y comunicados Servicio de comedor'";
-	$tablanormativa = mysqli_query($conexion, $w);
-	if (mysqli_num_rows($tablanormativa)>0) {
-		?>
-		<table id="mytable" class="table table-bordred table-striped"> 
-			<thead>
-				<tr>
-					<th>Titulo</th>
-					<th>Última modificación</th>
-					<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-						<th>Eliminar</th>
-						<?php
-					}
-					?>
-				</tr>
-			</thead>
-			<?php
-			while ($normativa=mysqli_fetch_array($tablanormativa)){
-				$id_normativa=$normativa['id_normativa'];
-				$nombre_normativa=$normativa['nombre_normativa'];
-				$ruta_normativa=$normativa['ruta_normativa'];
-				$fecha_normativa=$normativa['fecha_normativa'];	
-				?>	
-				<tr>
-					<td style="display:none;">
-						<?php echo $id_normativa; ?>
-					</td> 
-					<td>
-						<a href="<?php echo"$ruta_normativa"; ?>" target="_blank"><?php echo $nombre_normativa; ?></a>
-					</td>
-					<td>
-						<!--  -->
-						<?php  
-						$date = new DateTime($fecha_normativa);
-						echo $date->format('d-m-Y');
-						?>
-					</td>
-					<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-						<td>
-							<a href="normativaEliminar.proc.php?id=<?php echo $id_normativa; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
-						</td>
-						<?php
-					}
-					?>
-				</tr>
-				<?php
-                // FIN WHILE
+				</div>
+				<?php	
 			}
 			?>
-		</table>
-		<!-- FIN TABLA -->
-		<?php
-		// FIN ARRAY
-	}else{
-		?>
-		<div class="table-responsive" style="margin: auto;  ">
-			<table id="mytable" class="table table-bordred table-striped"> 
-				<thead>
-					<tr>
-						<th>Titulo</th>
-						<th>Última modificación</th>
-
-						<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-							<th>Eliminar</th>
-							<?php
-						}
-						?>
-					</tr>
-				</thead>
-				<tr>
-					<td colspan="3">
-						No hay datos que mostrar
-					</td> 
-				</tr>
-			</table>
+			<!-- FIN TABLA GUIAS, CONSEJOS, Y COMUNICADOS ADMINISTRACION PUBLICA -->
 		</div>
-		<?php	
-	}
-	?>
-	<!-- FIN TABLA GUIAS Y COMUNICADOS SERVICIO COMEDOR -->
-
-	<!-- BOTON DE VOLVER Y SUBIR LOS FICHEROS DE LAS TABLAS -->
+	</div>
+</div>
+</div>
+<!-- FIN EJEMPLO PARA OCULTAR LAS TABLAS -->
+<!-- BOTON DE VOLVER Y SUBIR LOS FICHEROS DE LAS TABLAS -->
 </br>
 <div class="container">
 	<div class="row">
@@ -333,17 +328,16 @@ require_once 'foothead/header.php';
 							<input type="submit" value="Subir archivo" class="btn btn-primary"></input>
 							<h6>Selecciona el tipo de Normativa o Guía:</h6>
 							<div class="radio">
-								<label><input type="radio" name="norma" id="norma" value="Normativa" checked> Normativa</label>
+								<label><input type="radio" name="norma" id="norma" value="Normativa"> Normativa</label>
 							</div>
 							<div class="radio">
-								<label><input type="radio" name="norma" id="norma" value="Guías y comunicados Servicio de comedor"> Guías y comunicados Servicio de comedor</label>
+								<label><input type="radio" name="norma" id="norma" value="Guías y comunicados Servicio de comedor"  checked> Guías y comunicados Servicio de comedor</label>
 							</div>
 							<div class="radio">
 								<label><input type="radio" name="norma" id="norma" value="Guías, Consejos, y Comunicados Administración pública"> Guías, Consejos, y Comunicados Administración pública</label>
 							</div>
 						</form>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -373,12 +367,12 @@ unset($_SESSION['error']);
 unset($_SESSION['error2']);
 ?>
 <!-- fin boton de herramientas -->
-</br>
 <?php
 }
 ?>
 
 </div>
+</br></br>
 <!--Final del contenido-->
 <!--Final de la página en sí-->
 <?php

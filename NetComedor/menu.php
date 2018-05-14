@@ -20,8 +20,8 @@ require_once 'foothead/header.php';
 <!--Inicio del contenido--> 
 <div class="container">
 	<br><br>
-	<h4>Menú</h4>
-	<br>
+	<h3>Menú</h3>
+	<br></br>
 	<?php
 	$q = "SELECT * FROM tbl_menu WHERE tipo_menu='Menu General'";
 	$tablaMenu = mysqli_query($conexion, $q);
@@ -29,14 +29,13 @@ require_once 'foothead/header.php';
 		?>
 		<!-- EJEMPLO PARA OCULTAR LAS TABLAS -->
 		<p>
-			<a class="btn btn-success" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><span class="fas fa-eye-slash"></span> Menu General</a>
+			<a class="btn btn-primary btn-block" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" id="key"><span class="fas fa-eye-slash" id="ojo"></span> Menu General</a>
 
 		</p>
 		<div class="col">
-			<div class="collapse" id="multiCollapseExample1">
+			<div class="collapse show" id="multiCollapseExample1">
 				<div class="card-body">
 					<!-- EMPIEZA MENU GENERAL -->
-					<h6>Menú general</h6>
 					<div class="table-responsive" style="margin: auto;  ">
 						<table id="mytable" class="table table-bordred table-striped"> 
 							<thead>
@@ -118,15 +117,15 @@ require_once 'foothead/header.php';
 				</div>
 			</div>
 		</div>
+	</div>
+
 		<p>
-			<button class="btn btn-success" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"><span class="fas fa-eye-slash"></span> Menu Adaptado</button>
+			<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"id="key1"><span class="fas fa-eye-slash"id="ojo1"></span> Menu Adaptado</button>
 		</p>
 		<div class="col">
-			<div class="collapse" id="multiCollapseExample2">
+			<div class="collapse show" id="multiCollapseExample2">
 				<div class="card-body">
 					<!-- MENU ADAPTADO -->
-
-					<h6>Menú adaptado</h6>
 					<?php
 					$w = "SELECT * FROM tbl_menu WHERE tipo_menu='Menu Adaptado'";
 					$tablaMenu = mysqli_query($conexion, $w);
@@ -214,12 +213,11 @@ require_once 'foothead/header.php';
 		</div>
 		<!-- FIN EJEMPLO PARA OCULTAR LAS TABLAS -->
 	</br>
-</br>
 <!-- EMPIEZA EL BOTON DE VOLVER Y DE SUBIDA DE FICHEROS -->
 <div class="container">
 	<div class="row">
 		<form method="get" action="home.php">
-			<button type="text" class="btn btn-warning mr-3 ml-4" style="color:white"><span class="fas fa-arrow-alt-circle-left"></span></button>
+			<button type="text" class="btn btn-warning mr-3 ml-3" style="color:white"><span class="fas fa-arrow-alt-circle-left"></span></button>
 		</form>
 		<!-- boton de herraminetas -->
 		<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
@@ -273,11 +271,12 @@ unset($_SESSION['error']);
 unset($_SESSION['error2']);
 ?>
 <!-- fin boton de herramientas -->
-</br></br></br>
+
 <?php
 }
 ?>
 </div>
+</br></br></br></br>
 <!--Final del contenido-->
 <!--Final de la página en sí-->
 <?php

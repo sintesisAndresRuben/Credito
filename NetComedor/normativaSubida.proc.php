@@ -6,9 +6,14 @@ if(!isset($_SESSION['user'])) {
 	$tipo_norma=$_POST['norma'];
 	$pdf = $_FILES['foto']['name'];
 	$fecha= date("Y-n-j");
-	$destino_a= '/normativa_pdf/'.$tipo_norma.'/'.$pdf;
+	$destino_a= './normativa_pdf/'.$tipo_norma.'/'.$pdf;
 	$destino_b='/normativa_pdf/'.$tipo_norma.'/';
-	$q = "SELECT * FROM tbl_normativa WHERE nombre_normativa='$pdf'";
+	// echo "$tipo_norma </br>";
+	// echo "$pdf </br>";
+	// echo "$destino_a </br>";
+	// echo "$destino_b </br>";
+	$q = "SELECT * FROM tbl_normativa WHERE nombre_normativa="."'$pdf'";
+	// echo "$q </br>";
 	$tablaNormativa = mysqli_query($conexion, $q);
 	if ($pdf=="") {
 		//echo "No hay fichero pdf";
@@ -19,6 +24,8 @@ if(!isset($_SESSION['user'])) {
 		header("location: normativa.php");
 	} else {
 		$q = "INSERT INTO tbl_normativa (nombre_normativa, tipo_normativa, ruta_normativa, fecha_normativa, id_etapa) VALUES ('$pdf','$tipo_norma', '$destino_a', '$fecha', 16)";
+		// echo "</br>";
+		// echo $q;
 		$subirPdf=mysqli_query($conexion, $q);
 	// Mover los ficheros al directorio que nosotros queremos
 		$carpeta= "normativa_pdf/".$tipo_norma."/";
