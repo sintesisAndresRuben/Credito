@@ -30,11 +30,11 @@ require_once 'foothead/header.php';
 						<div class="form-group row">
 							<div class="col-12 col-sm mr-md-2 mr-lg-5">
 								<label for="nombre">Nombre:</label>
-								<input type="text" class="form-control" id="nombre" name="nombreU" value="Ruben" disabled="">
+								<input type="text" class="form-control" id="nombre" name="nombreU" value="<?php echo $_SESSION['user']['nombre_usuario'];?>" disabled="">
 							</div>
 							<div class="col-12 col-sm">
 								<label for="apellido">Apellido:</label>
-								<input type="text" class="form-control" id="apellido" name="apellidoU" value="Díaz" disabled="">
+								<input type="text" class="form-control" id="apellido" name="apellidoU" value="<?php echo $_SESSION['user']['apellido_usuario'];?>" disabled="">
 							</div>
 						</div>
 						<!-- TIPO TIQUET y CANTIDAD -->
@@ -63,7 +63,7 @@ require_once 'foothead/header.php';
 							</div>
 							<div class="col-12 col-sm">
 								<label for="apellido" id="david">Cantidad:</label>
-								<input type="number" class="form-control" id="cantidadTicket" name="cantidadT" value="1" min="1">
+								<input type="number" class="form-control" id="cantidadTicket" name="cantidadT" value="1" min="1" max="200">
 
 
 
