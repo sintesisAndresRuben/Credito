@@ -23,7 +23,7 @@ require_once 'foothead/header.php';
 		<!-- ############################################################## -->
 		<div class="row">
 			<div class="col-lg-6">
-				<form action="inscripcion.proc.php" method="get">
+				<form action="inscripcion.proc.php" method="get" id="compra">
 					<input type="hidden" name="fecha" value="2018-08-30">
 					<div class="col">
 						<!-- NOMBRE Y APELLIDO -->
@@ -113,8 +113,6 @@ require_once 'foothead/header.php';
 							</div>
 						</div>
 						<input type="hidden" id="insertPrecio" value="" name="insertPrecio">
-
-
 					</div>
 					<!-- ############################################################## -->
 				</div>
@@ -153,11 +151,10 @@ require_once 'foothead/header.php';
 				</div>
 			</div>
 			<div class="col-lg-2 col-sm">
+				
+				<button type="submit" class="btn btn-primary btn-block" id="submit" ><i class="fas fa-shopping-cart"></i> COMPRAR</button>
 				<br>
-				<br>
-				<button type="submit" class="btn btn-primary btn-block"><i class="fas fa-shopping-cart"></i> COMPRAR</button>
-				<br>
-				<br>
+				
 			</div>
 			
 		</form>

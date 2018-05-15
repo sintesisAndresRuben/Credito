@@ -41,6 +41,7 @@ $(document).ready(function(){
       $("#checks").css("visibility", "hidden");
 
     } else if (caca=='Servicio comedor 5 días') {
+      $("#cantidadTicket").val('1');
       $("#cantidadTicket").prop("type","hidden");
       $("#david").css("visibility", "hidden");
       //CAMBIAR EL VALOR DEL INPUT A UNO PARA QUE NO MULTIPLIQUE  
@@ -48,9 +49,11 @@ $(document).ready(function(){
       $("input[type=checkbox]").prop('checked', true);
       $("#cantidad").val('5');
       $("#checks").css("visibility", "visible");
+      $("#seleccionados").html('5');
 
 
     } else if (caca=='Servicio comedor 4 días') {
+      $("#cantidadTicket").val('1');
       $("#cantidadTicket").prop("type","hidden");
       $("#david").css("visibility", "hidden");
       //CAMBIAR EL VALOR DEL INPUT A UNO PARA QUE NO MULTIPLIQUE  
@@ -58,8 +61,10 @@ $(document).ready(function(){
       $("input[type=checkbox]").prop('checked', false);
       $("#cantidad").val('4');
       $("#checks").css("visibility", "visible");
+      $("#seleccionados").html('0');
 
     } else if (caca=='Servicio comedor 3 días') {
+      $("#cantidadTicket").val('1');
       $("#cantidadTicket").prop("type","hidden");
       $("#david").css("visibility", "hidden");
       //CAMBIAR EL VALOR DEL INPUT A UNO PARA QUE NO MULTIPLIQUE  
@@ -67,6 +72,7 @@ $(document).ready(function(){
       $("input[type=checkbox]").prop('checked', false);
       $("#cantidad").val('3');
       $("#checks").css("visibility", "visible");
+      $("#seleccionados").html('0');
 
       
     }
@@ -121,14 +127,32 @@ $(document).ready(function(){
   });
 
 
+  // COMPROBAR QUE LOS CHECKS ESTEN MARCADOS SEGUN EL TIPO DE TIQUET
+
+
+  $("#submit").click(function(){
+    //e.preventDefault();
+    var cantidad = $("#cantidad").val();
+    var seleccionados = $("#seleccionados").html();
+    // alert("Cantidad: "+ cantidad + "-" + "Seleccionados: " + seleccionados);
+    if (cantidad==seleccionados) {
+      $("#compra").submit();
+        //return true;
+      } else {
+        alert("Has seleccionado menos dias de los que permite el tipo de ticket0");
+        return false;
+      }
+    });
+
+
 
 
   ///////////////////////////////////////////// CAMBIAR VALOR DE LOS CHECK AL SELECCIONAR //////////////////////////////////////////
   //busca los checks seleccionados y les cambia el valor
   $("#checks").find("input").each(function(){
     $(this).click(function(){
-    if($(this).is(":checked")){
-      $(this).val('1');
+      if($(this).is(":checked")){
+        $(this).val('1');
       // alert('seleccionado');
     }else{
       $(this).val('0');
@@ -157,7 +181,7 @@ $(document).ready(function(){
       $("#ojo1").addClass("fas fa-eye-slash");
     }
   });
-    $("#key2").click(function(){
+  $("#key2").click(function(){
     if($("#ojo2").hasClass("fas fa-eye-slash")){
       $("#ojo2").removeClass("fas fa-eye-slash");
       $("#ojo2").addClass("fas fa-eye");
