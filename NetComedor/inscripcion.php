@@ -154,14 +154,44 @@ require_once 'foothead/header.php';
 				
 				<button type="submit" class="btn btn-primary btn-block" id="submit" ><i class="fas fa-shopping-cart"></i> COMPRAR</button>
 				<br>
+
 				
 			</div>
 			
 		</form>
+		<!-- <button onclick="notify('error')">Err</button> -->
 	</div>
 	<!-- FIN CONTAINTER -->
 </div>
 <br><br>
+<script type="text/javascript">
+    function notify1(style) {
+        $.notify({
+            title: 'ERROR!',
+            text: 'Selecciona el numero de dias que permite el ticket seleccionado <br><br>',
+            // image: "<img src='images/Mail.png'/>"
+        }, {
+            style: 'metro',
+            className: style,
+            autoHide: true,
+            clickToHide: true
+        });
+    }
+
+
+     function notify2(style) {
+        $.notify({
+            title: 'ERROR!',
+            text: 'No puedes seleccionar mas días de los que permite el tipo de ticket <br><br>',
+            // image: "<img src='images/Mail.png'/>"
+        }, {
+            style: 'metro',
+            className: style,
+            autoHide: true,
+            clickToHide: true
+        });
+    }
+</script>
 
 
 <!--Final del contenido-->

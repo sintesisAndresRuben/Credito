@@ -116,8 +116,7 @@ $(document).ready(function(){
     // Comprovamos si supera la cantidad máxima indicada
     if(contador>cantidadMaxima)
     {
-      alert("Has seleccionado mas dias de los que permite el tipo de ticket");
-
+      notify2('error')
       // Desmarcamos el ultimo elemento
       $(elemento).prop('checked', false);
       contador--;
@@ -139,7 +138,8 @@ $(document).ready(function(){
       $("#compra").submit();
         //return true;
       } else {
-        alert("Has seleccionado menos dias de los que permite el tipo de ticket0");
+        // alert("Has seleccionado menos dias de los que permite el tipo de ticket");
+        notify1('error')
         return false;
       }
     });
@@ -191,10 +191,6 @@ $(document).ready(function(){
     }
   });
   //FINALIZA LA FUNCION PARA CAMBIAR EL ICONO OCULTAR/MOSTRAR TABLAS
-
-  // var precio = $("#precio").html();
-  // $("#insertPrecio").val(precio);
-  // alert(precio);
 
 // FIN DOCUMENT ready 
 });
