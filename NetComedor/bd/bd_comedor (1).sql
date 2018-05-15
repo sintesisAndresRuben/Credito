@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2018 at 05:18 PM
+-- Generation Time: May 15, 2018 at 08:53 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -51,6 +51,17 @@ CREATE TABLE `tbl_dias_reserva` (
   `jueves` tinyint(1) NOT NULL,
   `viernes` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_dias_reserva`
+--
+
+INSERT INTO `tbl_dias_reserva` (`id_dias_reserva`, `id_usuario_ticket`, `lunes`, `martes`, `miercoles`, `jueves`, `viernes`) VALUES
+(10, 4, 1, 1, 1, 0, 0),
+(11, 4, 1, 0, 1, 1, 0),
+(12, 4, 0, 1, 1, 1, 0),
+(13, 4, 0, 0, 0, 0, 0),
+(14, 4, 1, 1, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -150,8 +161,19 @@ INSERT INTO `tbl_normativa` (`id_normativa`, `nombre_normativa`, `tipo_normativa
 
 CREATE TABLE `tbl_padres_alu_profe` (
   `id_pap` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `id_usuario` int(11) NOT NULL,
+  `id_padre` int(11) DEFAULT NULL,
+  `id_padre2` int(11) DEFAULT NULL,
+  `id_profesor` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `tbl_padres_alu_profe`
+--
+
+INSERT INTO `tbl_padres_alu_profe` (`id_pap`, `id_usuario`, `id_padre`, `id_padre2`, `id_profesor`) VALUES
+(1, 18, 17, NULL, 8),
+(2, 19, 17, NULL, 7);
 
 -- --------------------------------------------------------
 
@@ -216,7 +238,10 @@ INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, 
 (7, 'David', 'Marín Salvador', 'david.marin@fje.edu', '47496afd0bb349059c000e89235b1d87', 'profesor', 'no', 13),
 (8, 'Agnes', 'Plans Berenguer', 'agnes.plans@fje.edu', '058b451ee66762862ed52239cf6cd53d', 'profesor', 'no', 13),
 (15, 'José Antonio ', 'López Rodríguez', 'jantonio.lopez@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'personal', 'si', 14),
-(16, 'Núria ', 'García Sánchez', 'nuria.garcia@fje.edu', '02ae76732a5d1d4476a88e74c1f06728', 'personal', 'no', 14);
+(16, 'Núria ', 'García Sánchez', 'nuria.garcia@fje.edu', '02ae76732a5d1d4476a88e74c1f06728', 'personal', 'no', 14),
+(17, 'Ramon', 'García García', 'ramon.garcia@fje.edu', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 15),
+(18, 'Judith', 'García Perez', '1234.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 8),
+(19, 'Javi', 'García Perez', '4321.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 9);
 
 -- --------------------------------------------------------
 
@@ -238,8 +263,9 @@ CREATE TABLE `tbl_usuario_ticket` (
 --
 
 INSERT INTO `tbl_usuario_ticket` (`id_usuario_ticket`, `id_usuario`, `id_ticket`, `fecha_caducidad`, `cantidad_ticket`, `precio_ticket`) VALUES
-(3, 4, 9, '2018-08-30', '4', '38.8'),
-(5, 3, 16, '2018-08-30', '5', '19.5');
+(17, 4, 8, '2018-08-30', '1', '110.83'),
+(18, 4, 6, '2018-08-30', '1', '168.84'),
+(19, 4, 8, '2018-08-30', '1', '886.64');
 
 --
 -- Indexes for dumped tables
@@ -257,7 +283,8 @@ ALTER TABLE `tbl_asistencia`
 -- Indexes for table `tbl_dias_reserva`
 --
 ALTER TABLE `tbl_dias_reserva`
-  ADD PRIMARY KEY (`id_dias_reserva`);
+  ADD PRIMARY KEY (`id_dias_reserva`),
+  ADD KEY `id_usuario_ticket` (`id_usuario_ticket`);
 
 --
 -- Indexes for table `tbl_etapa`
@@ -284,7 +311,10 @@ ALTER TABLE `tbl_normativa`
 --
 ALTER TABLE `tbl_padres_alu_profe`
   ADD PRIMARY KEY (`id_pap`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_padre` (`id_padre`),
+  ADD KEY `id_padre2` (`id_padre2`),
+  ADD KEY `id_profesor` (`id_profesor`);
 
 --
 -- Indexes for table `tbl_ticket`
@@ -322,7 +352,7 @@ ALTER TABLE `tbl_asistencia`
 -- AUTO_INCREMENT for table `tbl_dias_reserva`
 --
 ALTER TABLE `tbl_dias_reserva`
-  MODIFY `id_dias_reserva` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dias_reserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_etapa`
@@ -346,7 +376,7 @@ ALTER TABLE `tbl_normativa`
 -- AUTO_INCREMENT for table `tbl_padres_alu_profe`
 --
 ALTER TABLE `tbl_padres_alu_profe`
-  MODIFY `id_pap` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_ticket`
@@ -358,13 +388,13 @@ ALTER TABLE `tbl_ticket`
 -- AUTO_INCREMENT for table `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tbl_usuario_ticket`
 --
 ALTER TABLE `tbl_usuario_ticket`
-  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
@@ -393,7 +423,10 @@ ALTER TABLE `tbl_normativa`
 -- Constraints for table `tbl_padres_alu_profe`
 --
 ALTER TABLE `tbl_padres_alu_profe`
-  ADD CONSTRAINT `tbl_padres_alu_profe_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `tbl_padres_alu_profe_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_padres_alu_profe_ibfk_2` FOREIGN KEY (`id_padre`) REFERENCES `tbl_usuarios` (`id_usuario`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_padres_alu_profe_ibfk_3` FOREIGN KEY (`id_padre2`) REFERENCES `tbl_usuarios` (`id_usuario`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_padres_alu_profe_ibfk_4` FOREIGN KEY (`id_profesor`) REFERENCES `tbl_usuarios` (`id_usuario`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tbl_ticket`
