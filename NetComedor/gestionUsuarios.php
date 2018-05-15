@@ -4,120 +4,103 @@ include("conexion.proc.php");
 //     header('location: index.php');
 // }
 
-	?>
-	<!DOCTYPE html>
-	<link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
-	<title>Comedor</title>
-	<html lang="es">
-	<?php
+?>
+<?php
 		//Insertamos el header general
-	require_once 'foothead/header.php';
+require_once 'foothead/header.php';
 
+?>
+<title>Gestion Usuarios</title>
+<html lang="es">
+<head>
+	<link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.bootstrap4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.colVis.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css"></script>
+	<script src="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.1/css/buttons.bootstrap4.min.css"></script>
+	<script src="js/table.js"></script>
+</head>
+<!--Inicio de la página en sí-->
+<!--Inicio del contenido-->
+<?php
+$q="SELECT `tbl_usuarios`.`nombre_usuario`, `tbl_usuarios`.`apellido_usuario`, `tbl_usuarios`.`mail_usuario`, `tbl_etapa`.`nombre_etapa`, `tbl_usuario_ticket`.`cantidad_ticket`, `tbl_ticket`.`tipo_ticket`, `tbl_usuario_ticket`.`precio_ticket` FROM `tbl_ticket` INNER JOIN `tbl_usuario_ticket` ON `tbl_usuario_ticket`.`id_ticket` = `tbl_ticket`.`id_ticket` INNER JOIN `tbl_etapa` ON `tbl_ticket`.`id_etapa` = `tbl_etapa`.`id_etapa` INNER JOIN `tbl_usuarios` ON `tbl_usuarios`.`id_etapa` = `tbl_etapa`.`id_etapa`";
+
+$tablaTicketUsuarios = mysqli_query($conexion, $q);
+if (mysqli_num_rows($tablaTicketUsuarios)>0) {
 	?>
-
-	<!--Inicio de la página en sí-->
-	<!--Inicio del contenido-->
-	<?php
-
-	$q = "SELECT * FROM tbl_usuarios";
-
-	$tablaUsuarios = mysqli_query($conexion, $q);
-	if (mysqli_num_rows($tablaUsuarios)>0) {
-		?>
-
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<br><br>
-					<h4>Gestion Usuarios</h4>
-					<br>
-					<div class="table-responsive" style="margin: auto;  ">
-						<table id="mytable" class="table table-bordred table-striped"> 
-							<thead>
-								<tr>
-									<th style="display:none;">ID</th>
-									<th>Nombre</th>
-									<th>Apellido</th>
-									<th>Mail</th>
-									<th>Tipo</th>
-									<th>Admin</th>
-									<th>Id_etapa</th>
-									<th>Editar</th>
-									<th>Eliminar</th>
-								</tr>
-							</thead>
-
-							<?php
-			//echo "<img src='$foto'>";
-							while ($usuarios=mysqli_fetch_array($tablaUsuarios)){
-								$idU=$usuarios['id_usuario'];
-								$nombreU=$usuarios['nombre_usuario'];
-								$apellidoU=$usuarios['apellido_usuario'];
-								$mailU=$usuarios['mail_usuario'];
-								$tipoU=$usuarios['tipo_usuario'];
-								$adminU=$usuarios['admin'];
-								$idEtapaU=$usuarios['id_etapa'];		
-								?>	
-
-
-								<tr>
-									<td style="display:none;">
-										<?php echo $idU; ?>
-									</td> 
-									<td>
-										<?php echo $nombreU; ?>
-									</td>
-									<td>
-										<?php echo $apellidoU; ?>
-									</td>
-									<td>
-										<?php echo $mailU; ?>
-									</td>
-									<td>
-										<?php echo $tipoU; ?>
-									</td>
-									<td>
-										<?php echo $adminU; ?>
-									</td>
-									<td>
-										<?php echo $idEtapaU; ?>
-									</td>
-
-									<td>
-										<!--MODIFICAR-->
-										<a href="modificarusuari?id=<?php echo $mailU; ?>"><p data-placement="top" data-toggle="tooltip" title="Editar producto"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><i class="fas fa-pencil-alt"></i></button></p></a>
-									</td> 
-									<td>
-										<!--ELIMINAR-->
-										<a href="eliminarusuari?id=<?php echo $mailU; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
-									</td>
-								</tr>
-								<?php
-                // FIN WHILE
-							}
-							?>
-						</table>
-						<div class="row">
-							<form method="get" action="home.php">
-								<button type="text" class="btn btn-success" style="color:white; margin-left: 40%;"><span class="fas fa-user-plus"></span></button>
-							</form>
-							<form method="get" action="home.php">
-								<button type="text" class="btn btn-warning" style="color:white; margin-left: 60%"><span class="fas fa-arrow-alt-circle-left"></span></button>
-							</form>
-						</div>
-						<br><br>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<br><br>
+				<h3>Gestion Usuarios</h3>
+				<br><br>
+				<table id="example" class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Mail</th>
+							<th>Etapa</th>
+							<th>Cantidad tickets</th>
+							<th>Tipo ticket</th>
+							<th>Precio_total</th>
+						</tr>
+					</thead>
+					<tbody>
 						<?php
+						while ($ticket_usuario=mysqli_fetch_array($tablaTicketUsuarios)){
+							$nombre=$ticket_usuario['nombre_usuario'];
+							$apellido=$ticket_usuario['apellido_usuario'];
+							$mail=$ticket_usuario['mail_usuario'];
+							$etapa=$ticket_usuario['nombre_etapa'];
+							$cantidad=$ticket_usuario['cantidad_ticket'];
+							$tipo=$ticket_usuario['tipo_ticket'];
+							$precio=$ticket_usuario['precio_ticket'];	
+							?>	
 
+							<tr>
+								<td><?php echo $nombre; ?></td>
+								<td><?php echo $apellido; ?></td>
+								<td><?php echo $mail; ?></td>
+								<td><?php echo $etapa; ?></td>
+								<td><?php echo $cantidad; ?></td>
+								<td><?php echo $tipo; ?></td>
+								<td><?php echo "$precio €"; ?></td> 
+							</tr>
+							<?php
+
+    // FIN WHILE
+						}
+						?>
+					</tbody>
+				</table>
+			</div>
+			<div class="row">
+				<form method="get" action="home.php">
+					<button type="text" class="btn btn-warning" style="color:white; margin-left: 60%"><span class="fas fa-arrow-alt-circle-left"></span></button>
+				</form>
+			</div></div></div>
+			<br><br>
+			<?php
 // FIN ARRAY
-					}
-					?>
+		}
+		?>
+		<!--Final del contenido-->
 
-					<!--Final del contenido-->
+		<!--Final de la página en sí-->
 
-					<!--Final de la página en sí-->
-
-					<?php
+		<?php
 		//Insertamos el footer
-					require_once 'foothead/footer.php';
-					?>
-					</html>
+		require_once 'foothead/footer.php';
+		?>
+		</html>

@@ -118,7 +118,6 @@ require_once 'foothead/header.php';
 			</div>
 		</div>
 	</div>
-
 		<p>
 			<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"id="key1"><span class="fas fa-eye-slash"id="ojo1"></span> Menu Adaptado</button>
 		</p>
