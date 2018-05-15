@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-05-2018 a las 20:17:43
--- Versión del servidor: 10.1.26-MariaDB
--- Versión de PHP: 7.1.9
+-- Tiempo de generación: 15-05-2018 a las 15:45:15
+-- Versión del servidor: 10.1.28-MariaDB
+-- Versión de PHP: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,6 +35,22 @@ CREATE TABLE `tbl_asistencia` (
   `contador_asistencia` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
   `id_etapa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_dias_reserva`
+--
+
+CREATE TABLE `tbl_dias_reserva` (
+  `id_dias_reserva` int(3) NOT NULL,
+  `id_usuario_ticket` int(11) NOT NULL,
+  `lunes` tinyint(1) NOT NULL,
+  `martes` tinyint(1) NOT NULL,
+  `miercoles` tinyint(1) NOT NULL,
+  `jueves` tinyint(1) NOT NULL,
+  `viernes` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -83,17 +99,17 @@ CREATE TABLE `tbl_menu` (
 --
 
 INSERT INTO `tbl_menu` (`id_menu`, `nombre_menu`, `tipo_menu`, `ruta_menu`, `fecha_menu`, `id_etapa`) VALUES
-(3, 'Menú Mayo', 'Menu General', '.\\menu_pdf\\menugeneral\\Menu_Maig.pdf', '2018-05-03', 16),
-(4, 'Propuesta Cenas Mayo', 'Menu General', '.\\menu_pdf\\menugeneral\\Propuesta_Cenas_Mayo.pdf', '2018-05-01', 16),
-(5, 'Informe del valor nutricional', 'Menu General', '.\\menu_pdf\\menugeneral\\Informe del valor nutricional menú nº3 primavera-estiu.pdf', '2018-05-01', 16),
-(20, 'Vegetariano.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Vegetariano.pdf', '2018-05-12', 16),
-(21, 'NO PORC.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/NO PORC.pdf', '2018-05-12', 16),
-(22, 'NO CARN DE VEDELLA.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/NO CARN DE VEDELLA.pdf', '2018-05-12', 16),
-(23, 'Menú Diabètic (5 racions HC).pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Menú Diabètic (5 racions HC).pdf', '2018-05-12', 16),
-(24, 'Intolerància al GLUTEN (CELIAQUIA).pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Intolerància al GLUTEN (CELIAQUIA).pdf', '2018-05-12', 16),
-(25, 'Intolerància a la FRUCTOSA-SORBITOL.pdf', 'Menu General', './menu_pdf/Menu General/Intolerància a la FRUCTOSA-SORBITOL.pdf', '2018-05-12', 16),
-(26, 'Al·lèrgia als LLEGUMS.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Al·lèrgia als LLEGUMS.pdf', '2018-05-12', 16),
-(27, 'Al·lèrgia als FRUITS SECS.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Al·lèrgia als FRUITS SECS.pdf', '2018-05-12', 16);
+(14, 'Menú MAIG.pdf', 'Menu General', './menu_pdf/Menu General/Menú MAIG.pdf', '2018-05-14', 16),
+(15, 'Informe del valor nutricional menú nº3 primavera-estiu.pdf', 'Menu General', './menu_pdf/Menu General/Informe del valor nutricional menú nº3 primavera-estiu.pdf', '2018-05-14', 16),
+(16, 'Proposta Sopars MAIG.pdf', 'Menu General', './menu_pdf/Menu General/Proposta Sopars MAIG.pdf', '2018-05-14', 16),
+(17, 'Vegetaria.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Vegetaria.pdf', '2018-05-14', 16),
+(18, 'NO PORC.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/NO PORC.pdf', '2018-05-14', 16),
+(19, 'NO CARN DE VEDELLA.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/NO CARN DE VEDELLA.pdf', '2018-05-14', 16),
+(20, 'Menú Diabètic (5 racions HC).pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Menú Diabètic (5 racions HC).pdf', '2018-05-14', 16),
+(21, 'Intolerància al GLUTEN (CELIAQUIA).pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Intolerància al GLUTEN (CELIAQUIA).pdf', '2018-05-14', 16),
+(22, 'Intolerància a la FRUCTOSA-SORBITOL.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Intolerància a la FRUCTOSA-SORBITOL.pdf', '2018-05-14', 16),
+(23, 'Alèrgia als LLEGUMS.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Alèrgia als LLEGUMS.pdf', '2018-05-14', 16),
+(24, 'Alèrgia als FRUITS SECS.pdf', 'Menu Adaptado', './menu_pdf/Menu Adaptado/Alèrgia als FRUITS SECS.pdf', '2018-05-14', 16);
 
 -- --------------------------------------------------------
 
@@ -103,12 +119,28 @@ INSERT INTO `tbl_menu` (`id_menu`, `nombre_menu`, `tipo_menu`, `ruta_menu`, `fec
 
 CREATE TABLE `tbl_normativa` (
   `id_normativa` int(11) NOT NULL,
-  `nombre_normativa` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `nombre_normativa` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `tipo_normativa` enum('Normativa','Guías y comunicados Servicio de comedor','Guías, Consejos, y Comunicados Administración pública') COLLATE utf8_unicode_ci NOT NULL,
   `ruta_normativa` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `fecha_normativa` date NOT NULL,
   `id_etapa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_normativa`
+--
+
+INSERT INTO `tbl_normativa` (`id_normativa`, `nombre_normativa`, `tipo_normativa`, `ruta_normativa`, `fecha_normativa`, `id_etapa`) VALUES
+(22, 'Full de renúncia al picnic de sortida o excursió.pdf', 'Normativa', './normativa_pdf/Normativa/Full de renúncia al picnic de sortida o excursió.pdf', '2018-05-14', 16),
+(23, 'Butlleta dieta ocasional gastrointestinal (retallar).pdf', 'Normativa', './normativa_pdf/Normativa/Butlleta dieta ocasional gastrointestinal (retallar).pdf', '2018-05-14', 16),
+(24, 'Menu alumne.pdf', 'Normativa', './normativa_pdf/Normativa/Menu alumne.pdf', '2018-05-14', 16),
+(25, 'IT-Elaboració PIC-NIC de F.ROCA rev. Gen.2017.pdf', 'Guías y comunicados Servicio de comedor', './normativa_pdf/Guías y comunicados Servicio de comedor/IT-Elaboració PIC-NIC de F.ROCA rev. Gen.2017.pdf', '2018-05-14', 16),
+(26, 'Informe F.ROCA sobre les  tècniques en la elaboració del PIC-NIC Abr.2016.pdf', 'Guías y comunicados Servicio de comedor', './normativa_pdf/Guías y comunicados Servicio de comedor/Informe F.ROCA sobre les  tècniques en la elaboració del PIC-NIC Abr.2016.pdf', '2018-05-14', 16),
+(27, 'Comunicació F.ROCA sobre el peix PANGA Feb.2017.pdf', 'Guías y comunicados Servicio de comedor', './normativa_pdf/Guías y comunicados Servicio de comedor/Comunicació F.ROCA sobre el peix PANGA Feb.2017.pdf', '2018-05-14', 16),
+(28, 'Comunicat del Canvi de la freqüència recomanada de carn.pdf', 'Guías, Consejos, y Comunicados Administración pública', './normativa_pdf/Guías, Consejos, y Comunicados Administración pública/Comunicat del Canvi de la freqüència recomanada de carn.pdf', '2018-05-14', 16),
+(29, 'Consell per a menjadors escolars i famílies_ Acompanyar els apats dels infants.pdf', 'Guías, Consejos, y Comunicados Administración pública', './normativa_pdf/Guías, Consejos, y Comunicados Administración pública/Consell per a menjadors escolars i famílies_ Acompanyar els apats dels infants.pdf', '2018-05-14', 16),
+(30, 'Taula de Gramatges en funció de edat.pdf', 'Guías, Consejos, y Comunicados Administración pública', './normativa_pdf/Guías, Consejos, y Comunicados Administración pública/Taula de Gramatges en funció de edat.pdf', '2018-05-14', 16),
+(31, 'Guia de alimentació saludable en etapa escolar.pdf', 'Guías, Consejos, y Comunicados Administración pública', './normativa_pdf/Guías, Consejos, y Comunicados Administración pública/Guia de alimentació saludable en etapa escolar.pdf', '2018-05-14', 16);
 
 -- --------------------------------------------------------
 
@@ -201,13 +233,6 @@ CREATE TABLE `tbl_usuario_ticket` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Volcado de datos para la tabla `tbl_usuario_ticket`
---
-
-INSERT INTO `tbl_usuario_ticket` (`id_usuario_ticket`, `id_usuario`, `id_ticket`, `fecha_caducidad`, `cantidad_ticket`) VALUES
-(1, 3, 16, '2018-08-30', '12');
-
---
 -- Índices para tablas volcadas
 --
 
@@ -288,13 +313,13 @@ ALTER TABLE `tbl_etapa`
 -- AUTO_INCREMENT de la tabla `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_normativa`
 --
 ALTER TABLE `tbl_normativa`
-  MODIFY `id_normativa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_normativa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_padres_alu_profe`
@@ -318,7 +343,7 @@ ALTER TABLE `tbl_usuarios`
 -- AUTO_INCREMENT de la tabla `tbl_usuario_ticket`
 --
 ALTER TABLE `tbl_usuario_ticket`
-  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
