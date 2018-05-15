@@ -112,6 +112,7 @@ require_once 'foothead/header.php';
 								</div>
 							</div>
 						</div>
+						<input type="hidden" id="insertPrecio" value="" name="insertPrecio">
 
 
 					</div>
@@ -141,7 +142,7 @@ require_once 'foothead/header.php';
 						<div class="card-footer">
 							<div class="row">
 								<div class="col-8">
-									<h3>TOTAL:</h3>
+									<h3 class="precioTotal">TOTAL:</h3>
 								</div>
 								<div class="col-4">
 									<h4 id="precio"></h4>

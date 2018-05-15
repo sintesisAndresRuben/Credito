@@ -9,6 +9,7 @@ $(document).ready(function(){
     var precio = $("#valor_ticket").val();
     var suma = precio*numticket;
     $( "#precio" ).html(suma+"€ ");
+    $("#insertPrecio").val(suma);
   });
   // AL CAMBIAR DE NUMERO CON LAS FLECHAS DEL INPUT
   $("#cantidadTicket").keyup(function(){
@@ -17,7 +18,7 @@ $(document).ready(function(){
     var precio = $("#valor_ticket").val();
     var suma = precio*numticket;
     $( "#precio" ).html(suma+"€");
-
+    $("#insertPrecio").val(suma);
 
   });
 
@@ -76,6 +77,7 @@ $(document).ready(function(){
     $("#valor_ticket").val(suma);
     var total = $("#valor_ticket").val()+"€"
     $( "#precio" ).html(total);
+    $("#insertPrecio").val(suma);
 
   })
   .change();
@@ -166,6 +168,9 @@ $(document).ready(function(){
   });
   //FINALIZA LA FUNCION PARA CAMBIAR EL ICONO OCULTAR/MOSTRAR TABLAS
 
+  // var precio = $("#precio").html();
+  // $("#insertPrecio").val(precio);
+  // alert(precio);
 
 // FIN DOCUMENT ready 
 });
