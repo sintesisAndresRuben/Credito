@@ -39,6 +39,8 @@ $(document).ready(function(){
       $("#cantidadTicket").prop("type","number");
       $("#david").css("visibility", "visible");
       $("#checks").css("visibility", "hidden");
+      $("#cantidad").val('0');
+      $("#seleccionados").html('0');
 
     } else if (caca=='Servicio comedor 5 días') {
       $("#cantidadTicket").val('1');
