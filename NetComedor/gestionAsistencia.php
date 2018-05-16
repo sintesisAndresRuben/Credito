@@ -3,7 +3,7 @@ include("conexion.proc.php");
 // if (!isset($_SESSION['user'])) {
 //     header('location: login.php');
 // }
-}if(($_SESSION['user']['id_etapa']=='7') OR ($_SESSION['user']['id_etapa']=='8') OR ($_SESSION['user']['id_etapa']=='9')){
+if(($_SESSION['user']['id_etapa']=='7') OR ($_SESSION['user']['id_etapa']=='8') OR ($_SESSION['user']['id_etapa']=='9')){
 	header('location:home.php');
 }
 ?>
@@ -36,8 +36,7 @@ require_once 'foothead/header.php';
 <!--Inicio de la página en sí-->
 <!--Inicio del contenido-->
 <?php
-$q="SELECT `tbl_usuarios`.`nombre_usuario`, `tbl_usuarios`.`apellido_usuario`, `tbl_usuarios`.`mail_usuario`, `tbl_etapa`.`nombre_etapa`, `tbl_dias_reserva`.`lunes`, `tbl_dias_reserva`.`martes`, `tbl_dias_reserva`.`miercoles`, `tbl_dias_reserva`.`jueves`, `tbl_dias_reserva`.`viernes`, `tbl_ticket`.`tipo_ticket`
-FROM `tbl_usuarios`, `tbl_etapa`, `tbl_dias_reserva`, `tbl_ticket`;";
+$q="SELECT `tbl_usuarios`.`mail_usuario`, `tbl_etapa`.`nombre_etapa`, `tbl_dias_reserva`.`lunes`, `tbl_dias_reserva`.`martes`, `tbl_dias_reserva`.`miercoles`, `tbl_dias_reserva`.`jueves`, `tbl_dias_reserva`.`viernes`FROM `tbl_dias_reserva`, `tbl_etapa`INNER JOIN `tbl_usuarios` ON `tbl_usuarios`.`id_etapa` = `tbl_etapa`.`id_etapa`";
 
 $tablaTicketUsuarios = mysqli_query($conexion, $q);
 if (mysqli_num_rows($tablaTicketUsuarios)>0) {
@@ -51,8 +50,6 @@ if (mysqli_num_rows($tablaTicketUsuarios)>0) {
 				<table id="example" class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>Nombre</th>
-							<th>Apellido</th>
 							<th>Mail</th>
 							<th>Etapa</th>
 							<th>Lunes</th>
@@ -65,8 +62,6 @@ if (mysqli_num_rows($tablaTicketUsuarios)>0) {
 					<tbody>
 						<?php
 						while ($ticket_usuario=mysqli_fetch_array($tablaTicketUsuarios)){
-							$nombre=$ticket_usuario['nombre_usuario'];
-							$apellido=$ticket_usuario['apellido_usuario'];
 							$mail=$ticket_usuario['mail_usuario'];
 							$etapa=$ticket_usuario['nombre_etapa'];
 							$lunes=$ticket_usuario['lunes'];
@@ -77,8 +72,6 @@ if (mysqli_num_rows($tablaTicketUsuarios)>0) {
 							?>	
 
 							<tr>
-								<td><?php echo $nombre; ?></td>
-								<td><?php echo $apellido; ?></td>
 								<td><?php echo $mail; ?></td>
 								<td><?php echo $etapa; ?></td>
 								<td><?php echo $lunes; ?></td>

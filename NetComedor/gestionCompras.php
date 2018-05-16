@@ -35,7 +35,7 @@ require_once 'foothead/header.php';
 <!--Inicio de la página en sí-->
 <!--Inicio del contenido-->
 <?php
-$q="SELECT `tbl_usuarios`.`nombre_usuario`, `tbl_usuarios`.`apellido_usuario`, `tbl_usuarios`.`mail_usuario`, `tbl_etapa`.`nombre_etapa`, `tbl_usuario_ticket`.`cantidad_ticket`, `tbl_ticket`.`tipo_ticket`, `tbl_usuario_ticket`.`precio_ticket` FROM `tbl_ticket` INNER JOIN `tbl_usuario_ticket` ON `tbl_usuario_ticket`.`id_ticket` = `tbl_ticket`.`id_ticket` INNER JOIN `tbl_etapa` ON `tbl_ticket`.`id_etapa` = `tbl_etapa`.`id_etapa` INNER JOIN `tbl_usuarios` ON `tbl_usuarios`.`id_etapa` = `tbl_etapa`.`id_etapa`";
+$q="SELECT `tbl_usuarios`.`mail_usuario`, `tbl_etapa`.`nombre_etapa`, `tbl_ticket`.`tipo_ticket`, `tbl_ticket`.`importe_ticket`, `tbl_usuario_ticket`.`cantidad_ticket`, `tbl_usuario_ticket`.`precio_ticket` FROM `tbl_ticket` INNER JOIN `tbl_etapa` ON `tbl_ticket`.`id_etapa` = `tbl_etapa`.`id_etapa` INNER JOIN `tbl_usuario_ticket` ON `tbl_usuario_ticket`.`id_ticket` = `tbl_ticket`.`id_ticket` INNER JOIN `tbl_usuarios` ON `tbl_usuarios`.`id_usuario` = `tbl_usuario_ticket`.`id_usuario`";
 
 $tablaTicketUsuarios = mysqli_query($conexion, $q);
 if (mysqli_num_rows($tablaTicketUsuarios)>0) {
@@ -49,42 +49,48 @@ if (mysqli_num_rows($tablaTicketUsuarios)>0) {
 				<table id="example" class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>Nombre</th>
-							<th>Apellido</th>
-							<th>Mail</th>
+							<th>Correo</th>
 							<th>Etapa</th>
-							<th>Cantidad tickets</th>
 							<th>Tipo ticket</th>
-							<th>Precio_total</th>
+							<th>Importe</th>
+							<th>Cantidad</th>
+							<th>Precio</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
+						$contador=0;
 						while ($ticket_usuario=mysqli_fetch_array($tablaTicketUsuarios)){
-							$nombre=$ticket_usuario['nombre_usuario'];
-							$apellido=$ticket_usuario['apellido_usuario'];
 							$mail=$ticket_usuario['mail_usuario'];
 							$etapa=$ticket_usuario['nombre_etapa'];
-							$cantidad=$ticket_usuario['cantidad_ticket'];
 							$tipo=$ticket_usuario['tipo_ticket'];
-							$precio=$ticket_usuario['precio_ticket'];	
+							$precio=$ticket_usuario['precio_ticket'];
+							$cantidad=$ticket_usuario['cantidad_ticket'];
+							$importe=$ticket_usuario['importe_ticket'];	
 							?>	
 
 							<tr>
-								<td><?php echo $nombre; ?></td>
-								<td><?php echo $apellido; ?></td>
 								<td><?php echo $mail; ?></td>
 								<td><?php echo $etapa; ?></td>
-								<td><?php echo $cantidad; ?></td>
 								<td><?php echo $tipo; ?></td>
-								<td><?php echo "$precio €"; ?></td> 
-							</tr>
-							<?php
-
-    // FIN WHILE
-						}
-						?>
+								<td><?php echo "$importe €"; ?></td>
+								<td><?php echo $cantidad; ?></td>						
+								<td><?php echo "$precio €"; ?></td>
+								<?php
+								$contador= $precio + $contador;
+    // FIN while
+							}
+							?>
+						</tr>
 					</tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><b>TOTAL:</b> <?php echo "$contador €"  ?></td>
+					</tr>
 				</table>
 			</div>
 			<div class="row">
