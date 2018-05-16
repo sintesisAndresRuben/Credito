@@ -22,8 +22,8 @@
 
   <!-- NOTIFICACIONES -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="otros/dist/notify.js"></script>
-  <script src="otros/dist/styles/metro/notify-metro.js"></script>
+  <script src="js/notify.js"></script>
+  <script src="js/notify-metro.js"></script>
 </head>
 
 <body>
