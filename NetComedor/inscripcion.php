@@ -2,6 +2,8 @@
 include("conexion.proc.php");
 if (!isset($_SESSION['user'])) {
 	header('location: login.php');
+}if(($_SESSION['user']['id_etapa']=='7') OR ($_SESSION['user']['id_etapa']=='8') OR ($_SESSION['user']['id_etapa']=='9')){
+	header('location:home.php');
 }
 ?>
 <!DOCTYPE html>
@@ -165,32 +167,32 @@ require_once 'foothead/header.php';
 </div>
 <br><br>
 <script type="text/javascript">
-    function notify1(style) {
-        $.notify({
-            title: 'ERROR!',
-            text: 'Selecciona el numero de dias que permite el ticket seleccionado <br><br>',
+	function notify1(style) {
+		$.notify({
+			title: 'ERROR!',
+			text: 'Selecciona el numero de dias que permite el ticket seleccionado <br><br>',
             // image: "<img src='images/Mail.png'/>"
         }, {
-            style: 'metro',
-            className: style,
-            autoHide: true,
-            clickToHide: true
+        	style: 'metro',
+        	className: style,
+        	autoHide: true,
+        	clickToHide: true
         });
-    }
+	}
 
 
-     function notify2(style) {
-        $.notify({
-            title: 'ERROR!',
-            text: 'No puedes seleccionar mas días de los que permite el tipo de ticket <br><br>',
+	function notify2(style) {
+		$.notify({
+			title: 'ERROR!',
+			text: 'No puedes seleccionar mas días de los que permite el tipo de ticket <br><br>',
             // image: "<img src='images/Mail.png'/>"
         }, {
-            style: 'metro',
-            className: style,
-            autoHide: true,
-            clickToHide: true
+        	style: 'metro',
+        	className: style,
+        	autoHide: true,
+        	clickToHide: true
         });
-    }
+	}
 </script>
 
 

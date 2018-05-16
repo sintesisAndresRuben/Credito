@@ -3,7 +3,9 @@ include("conexion.proc.php");
 // if (!isset($_SESSION['user'])) {
 //     header('location: login.php');
 // }
-
+}if(($_SESSION['user']['id_etapa']=='7') OR ($_SESSION['user']['id_etapa']=='8') OR ($_SESSION['user']['id_etapa']=='9')){
+	header('location:home.php');
+}
 ?>
 <?php
 		//Insertamos el header general
