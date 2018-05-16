@@ -18,8 +18,8 @@ require_once 'foothead/header.php';
 <!--Inicio del contenido--> 
 <div class="container">
 	<?php  if (($_SESSION['user']['id_etapa']=='7') OR ($_SESSION['user']['id_etapa']=='8') OR ($_SESSION['user']['id_etapa']=='9')) { ?>
-	</br></br></br>
-	<?php
+</br></br></br>
+<?php
 }
 ?>
 <div class="col-sm12">
@@ -34,25 +34,37 @@ require_once 'foothead/header.php';
 			</div>
 		</div>
 		<?php  if (($_SESSION['user']['id_etapa']=='10') OR ($_SESSION['user']['id_etapa']=='11') OR ($_SESSION['user']['id_etapa']=='12')OR($_SESSION['user']['id_etapa']=='13') OR($_SESSION['user']['id_etapa']=='14') OR ($_SESSION['user']['id_etapa']=='15')) { ?>
-			<div class="row justify-content-md-center">
-				<div class="col-sm4 rectanguloAbajo homeimage">
+		<div class="row justify-content-md-center">
+			<div class="col-sm4 rectanguloAbajo homeimage">
+				<?php
+				if ($_SESSION['user']['id_etapa']=='15'){
+					?>
+					<a href="elegirHijo.php"><img src="img/home/inscripcion.jpg" /></a>
+					<?php
+				} else {
+					?>
 					<a href="inscripcion.php"><img src="img/home/inscripcion.jpg" /></a>
-				</div>
-				<?php
-			}
-			?>
-			<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-				<div class="col-sm4 rectanguloAbajo homeimage">
-					<a href="gestionCompras.php"><img src="img/home/gestion.jpg"/></a>
-				</div>
-				<?php
-			}
-			?>
+
+					<?php
+
+				}
+				?>
+			</div>
+			<?php
+		}
+		?>
+		<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+		<div class="col-sm4 rectanguloAbajo homeimage">
+			<a href="gestionCompras.php"><img src="img/home/gestion.jpg"/></a>
 		</div>
-	</div>
-	<?php  if (($_SESSION['user']['id_etapa']=='7') OR ($_SESSION['user']['id_etapa']=='8') OR ($_SESSION['user']['id_etapa']=='9')) { ?>
-	</br></br></br>
-	<?php
+		<?php
+	}
+	?>
+</div>
+</div>
+<?php  if (($_SESSION['user']['id_etapa']=='7') OR ($_SESSION['user']['id_etapa']=='8') OR ($_SESSION['user']['id_etapa']=='9')) { ?>
+</br></br></br>
+<?php
 }
 ?>
 <form method="get" action="conexion.proc.php">
