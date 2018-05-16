@@ -2,7 +2,7 @@
 //session_start();
 include("conexion.proc.php");
 if (!isset($_SESSION['user'])) {
-	header('location: index.php');
+	header('location: login.php');
 } else if(isset($_SESSION['error'])){
 	$error = $_SESSION['error'];
 } else if(isset($_SESSION['error2'])){

@@ -1,7 +1,7 @@
 <?php
 include("conexion.proc.php");
 if(!isset($_SESSION['user'])) {
-	header('location: index.php');
+	header('location: login.php');
 }else {
 	$id= $_REQUEST['id'];
 	$q = "SELECT * FROM tbl_menu WHERE id_menu=$id";

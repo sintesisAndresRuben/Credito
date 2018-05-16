@@ -1,8 +1,8 @@
 <?php 
 include("conexion.proc.php");
-// if (!isset($_SESSION['user'])) {
-//     header('location: index.php');
-// }
+if (!isset($_SESSION['user'])) {
+	header('location: login.php');
+}
 
 ?>
 <?php
@@ -10,7 +10,7 @@ include("conexion.proc.php");
 require_once 'foothead/header.php';
 
 ?>
-<title>Gestion Usuarios</title>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 	<link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
@@ -29,6 +29,7 @@ require_once 'foothead/header.php';
 	<script src="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"></script>
 	<script src="https://cdn.datatables.net/buttons/1.5.1/css/buttons.bootstrap4.min.css"></script>
 	<script src="js/table.js"></script>
+	<title>Gestión Compras</title>
 </head>
 <!--Inicio de la página en sí-->
 <!--Inicio del contenido-->
@@ -42,7 +43,7 @@ if (mysqli_num_rows($tablaTicketUsuarios)>0) {
 		<div class="row">
 			<div class="col-md-12">
 				<br><br>
-				<h3>Gestion Usuarios</h3>
+				<h3>Gestión Compras</h3>
 				<br><br>
 				<table id="example" class="table table-striped table-bordered">
 					<thead>
