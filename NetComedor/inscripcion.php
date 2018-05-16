@@ -2,9 +2,10 @@
 include("conexion.proc.php");
 if (!isset($_SESSION['user'])) {
 	header('location: login.php');
-}if(($_SESSION['user']['id_etapa']=='7') OR ($_SESSION['user']['id_etapa']=='8') OR ($_SESSION['user']['id_etapa']=='9')){
-	header('location:home.php');
 }
+// if(($_SESSION['user']['id_etapa']=='7') OR ($_SESSION['user']['id_etapa']=='8') OR ($_SESSION['user']['id_etapa']=='9')){
+// 	header('location:home.php');
+// }
 ?>
 <!DOCTYPE html>
 <link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">

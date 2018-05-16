@@ -24,6 +24,7 @@ require_once 'foothead/header.php';
 ?>
 <div class="col-sm12">
 	<div class="col-sm10">
+		<?php echo $_SESSION['user']['tipo_usuario']; ?>
 		<div class="row justify-content-md-center">
 			<div class="col-sm4 rectanguloArriba homeimage">
 				<a href="menu.php"><img src="img/home/menu.jpg"/></a>

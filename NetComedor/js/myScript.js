@@ -49,6 +49,7 @@ $(document).ready(function(){
       //CAMBIAR EL VALOR DEL INPUT A UNO PARA QUE NO MULTIPLIQUE  
       $("#david").val('1');
       $("input[type=checkbox]").prop('checked', true);
+      $("input[type=checkbox]").val('1');
       $("#cantidad").val('5');
       $("#checks").css("visibility", "visible");
       $("#seleccionados").html('5');

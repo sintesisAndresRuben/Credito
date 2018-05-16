@@ -39,24 +39,36 @@ if(!isset($_SESSION['user'])){
 		$viernes='0';
 	}
 	
-	
-	
+	$id_usuario_ticket=0;
 	
 
 	$q = "INSERT INTO tbl_usuario_ticket (id_usuario,id_ticket,fecha_caducidad,cantidad_ticket,precio_ticket) VALUES (".$_SESSION['user']['id_usuario'].", $idTicket, '$fechaCad', $cantidad, $precioTotal)";
 	$comprarTicket=mysqli_query($conexion, $q);
 
-	if ($q==true) {
-		$tbl_dias_reserva="INSERT INTO tbl_dias_reserva (id_usuario_ticket, lunes, martes, miercoles, jueves, viernes) VALUES ('4', $lunes, $martes, $miercoles, $jueves, $viernes)";
-		$registrarAsistencia=mysqli_query($conexion,$tbl_dias_reserva);
+	if ($_SESSION['user']['tipo_usuario']=='padre' OR 'padre2') {
+		
+		if ($q==true) {
+			$tbl_ultimo_registro="SELECT * FROM tbl_usuario_ticket ORDER BY id_usuario_ticket DESC LIMIT 1";
+			$uRegistro=mysqli_query($conexion,$tbl_ultimo_registro);
+			while ($ultimo=mysqli_fetch_array($uRegistro)){
+
+				$id_usu_ticket=$ultimo['id_usuario_ticket'];
+			// echo $id_usu_ticket;
+			} 
+
+			if ($tbl_ultimo_registro==true) {
+				$tbl_dias_reserva="INSERT INTO tbl_dias_reserva (id_usuario_ticket, lunes, martes, miercoles, jueves, viernes) VALUES ($id_usu_ticket, $lunes, $martes, $miercoles, $jueves, $viernes)";
+				$registrarAsistencia=mysqli_query($conexion,$tbl_dias_reserva);
+
 		// echo $tbl_dias_reserva;
-	} else {
-		echo "Error al hacer la compra. VOLVER A INTENTAR";
+		// echo $id_usu_ticket;
+			}
+
+		} else {
+			echo "Error al hacer la compra. VOLVER A INTENTAR";
+		}
+
+
 	}
 	header("location:home.php");
-	}
-
-
-
-
-	?>
+}
