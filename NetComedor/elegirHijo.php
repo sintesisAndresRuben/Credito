@@ -35,7 +35,19 @@ require_once 'foothead/header.php';
 			while ($optionHijo = (mysqli_fetch_array($resultHijos))){
 				$hijos['hijos']=$optionHijo;
 				?>
-				<a href="inscripcionHijo.php?idHijo=<?php echo $hijos['hijos']['id_usuario'];?>"><?php echo $hijos['hijos']['nombre_usuario']; ?></a>
+				<a href="inscripcionHijo.php?idHijo=<?php echo $hijos['hijos']['id_usuario'];?>">
+					<?php 
+					if ($hijos['hijos']['sexo_usuario']=='hombre') {
+					?>
+						<img src="img/sexo/niño.png" alt="">
+					<?php
+					} else{
+					?>
+						<img src="img/sexo/niña.png" alt="">
+					<?php
+					}
+					?>
+					<?php echo $hijos['hijos']['nombre_usuario']." ".$hijos['hijos']['apellido_usuario']; ?></a>
 				
 				<?php
 			}

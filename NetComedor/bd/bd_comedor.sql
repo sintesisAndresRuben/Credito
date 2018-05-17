@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2018 at 04:46 PM
+-- Generation Time: May 17, 2018 at 06:39 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -58,7 +58,10 @@ CREATE TABLE `tbl_dias_reserva` (
 
 INSERT INTO `tbl_dias_reserva` (`id_dias_reserva`, `id_usuario_ticket`, `lunes`, `martes`, `miercoles`, `jueves`, `viernes`) VALUES
 (1, 1, 1, 1, 1, 0, 0),
-(2, 3, 1, 1, 1, 0, 0);
+(2, 3, 1, 1, 1, 0, 0),
+(4, 5, 1, 1, 1, 0, 0),
+(5, 6, 1, 0, 1, 1, 0),
+(6, 6, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -222,24 +225,25 @@ CREATE TABLE `tbl_usuarios` (
   `password_usuario` varchar(35) NOT NULL,
   `tipo_usuario` enum('alumno','padre','padre2','profesor','personal') NOT NULL,
   `admin` enum('si','no') NOT NULL,
-  `id_etapa` int(11) NOT NULL
+  `id_etapa` int(11) NOT NULL,
+  `sexo_usuario` enum('hombre','mujer') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_usuarios`
 --
 
-INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `mail_usuario`, `password_usuario`, `tipo_usuario`, `admin`, `id_etapa`) VALUES
-(3, 'Andrés', 'González', '1379.joan23@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'alumno', 'no', 12),
-(4, 'Ruben', 'Díaz', '93295.joan23@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'padre', 'no', 15),
-(7, 'David', 'Marín Salvador', 'david.marin@fje.edu', '47496afd0bb349059c000e89235b1d87', 'profesor', 'no', 13),
-(8, 'Agnes', 'Plans Berenguer', 'agnes.plans@fje.edu', '058b451ee66762862ed52239cf6cd53d', 'profesor', 'no', 13),
-(15, 'José Antonio ', 'López Rodríguez', 'jantonio.lopez@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'personal', 'si', 14),
-(16, 'Núria ', 'García Sánchez', 'nuria.garcia@fje.edu', '02ae76732a5d1d4476a88e74c1f06728', 'personal', 'no', 14),
-(17, 'Ramon', 'García García', 'ramon.garcia@fje.edu', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 15),
-(18, 'Judith', 'García Perez', '1234.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 8),
-(19, 'Javi', 'García Perez', '4321.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 9),
-(20, 'Alex', 'Diaz', '93296.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 8);
+INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `mail_usuario`, `password_usuario`, `tipo_usuario`, `admin`, `id_etapa`, `sexo_usuario`) VALUES
+(3, 'Andrés', 'González', '1379.joan23@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'alumno', 'no', 12, 'hombre'),
+(4, 'Ruben', 'Díaz', '93295.joan23@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'padre', 'no', 15, 'hombre'),
+(7, 'David', 'Marín Salvador', 'david.marin@fje.edu', '47496afd0bb349059c000e89235b1d87', 'profesor', 'no', 13, 'hombre'),
+(8, 'Agnes', 'Plans Berenguer', 'agnes.plans@fje.edu', '058b451ee66762862ed52239cf6cd53d', 'profesor', 'no', 13, 'mujer'),
+(15, 'José Antonio ', 'López Rodríguez', 'jantonio.lopez@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'personal', 'si', 14, 'hombre'),
+(16, 'Núria ', 'García Sánchez', 'nuria.garcia@fje.edu', '02ae76732a5d1d4476a88e74c1f06728', 'personal', 'no', 14, 'mujer'),
+(17, 'Ramon', 'García García', 'ramon.garcia@fje.edu', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 15, 'hombre'),
+(18, 'Judith', 'García Perez', '1234.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 8, 'mujer'),
+(19, 'Javi', 'García Perez', '4321.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 9, 'hombre'),
+(20, 'Alex', 'Diaz', '93296.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 8, 'hombre');
 
 -- --------------------------------------------------------
 
@@ -264,7 +268,9 @@ CREATE TABLE `tbl_usuario_ticket` (
 INSERT INTO `tbl_usuario_ticket` (`id_usuario_ticket`, `id_usuario`, `para_usuario`, `id_ticket`, `fecha_caducidad`, `cantidad_ticket`, `precio_ticket`) VALUES
 (1, 4, 4, 8, '2018-08-30', '1', '110.83'),
 (2, 4, 4, 8, '2018-08-30', '1', '110.83'),
-(3, 4, 4, 8, '2018-08-30', '1', '110.83');
+(3, 4, 4, 8, '2018-08-30', '1', '110.83'),
+(5, 17, 18, 8, '2018-08-30', '1', '110.83'),
+(6, 17, 19, 12, '2018-08-30', '1', '99.75');
 
 --
 -- Indexes for dumped tables
@@ -350,7 +356,7 @@ ALTER TABLE `tbl_asistencia`
 -- AUTO_INCREMENT for table `tbl_dias_reserva`
 --
 ALTER TABLE `tbl_dias_reserva`
-  MODIFY `id_dias_reserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_dias_reserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_etapa`
@@ -392,7 +398,7 @@ ALTER TABLE `tbl_usuarios`
 -- AUTO_INCREMENT for table `tbl_usuario_ticket`
 --
 ALTER TABLE `tbl_usuario_ticket`
-  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
