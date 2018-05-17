@@ -3,9 +3,17 @@ include("conexion.proc.php");
 if (!isset($_SESSION['user'])) {
 	header('location: login.php');
 }
+
+$idH=$_GET['idHijo'];
 // if(($_SESSION['user']['id_etapa']=='7') OR ($_SESSION['user']['id_etapa']=='8') OR ($_SESSION['user']['id_etapa']=='9')){
 // 	header('location:home.php');
 // }
+$q = "SELECT * FROM tbl_usuarios WHERE id_usuario=$idH";
+	// echo $q;
+	$resultado = mysqli_query($conexion, $q);
+	if (mysqli_num_rows($resultado)>0){
+		$datos_usuario=(mysqli_fetch_array($resultado));
+		$Hijo['datos']=$datos_usuario;
 ?>
 <!DOCTYPE html>
 <link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
@@ -26,18 +34,19 @@ require_once 'foothead/header.php';
 		<!-- ############################################################## -->
 		<div class="row">
 			<div class="col-lg-6">
-				<form action="inscripcion.proc.php" method="get" id="compra">
+				<form action="inscripcionHijo.proc.php" method="get" id="compra">
 					<input type="hidden" name="fecha" value="2018-08-30">
 					<div class="col">
 						<!-- NOMBRE Y APELLIDO -->
 						<div class="form-group row">
+							<input type="hidden" name="idHijo" value="<?php echo $Hijo['datos']['id_usuario'];?>">
 							<div class="col-12 col-sm mr-md-2 mr-lg-5">
 								<label for="nombre">Nombre:</label>
-								<input type="text" class="form-control" id="nombre" name="nombreU" value="<?php echo $_SESSION['user']['nombre_usuario'];?>" disabled="">
+								<input type="text" class="form-control" id="nombre" name="nombreU" value="<?php echo $Hijo['datos']['nombre_usuario'];?>" disabled="">
 							</div>
 							<div class="col-12 col-sm">
 								<label for="apellido">Apellido:</label>
-								<input type="text" class="form-control" id="apellido" name="apellidoU" value="<?php echo $_SESSION['user']['apellido_usuario'];?>" disabled="">
+								<input type="text" class="form-control" id="apellido" name="apellidoU" value="<?php echo $Hijo['datos']['apellido_usuario'];?>" disabled="">
 							</div>
 						</div>
 						<!-- TIPO TIQUET y CANTIDAD -->
@@ -47,7 +56,7 @@ require_once 'foothead/header.php';
 								<select class="form-control" id="tipoTicket" name="tipoT" required="">
 									<option value="" id="0" selected="selected"></option>
 									<?php
-									$sqlOption = "SELECT * FROM `tbl_ticket` WHERE id_etapa=".$_SESSION['user']['id_etapa'];
+									$sqlOption = "SELECT * FROM `tbl_ticket` WHERE id_etapa=".$Hijo['datos']['id_etapa'];
 									$result = mysqli_query($conexion,$sqlOption);
 
 									if (mysqli_num_rows($result)>0) {
@@ -66,7 +75,7 @@ require_once 'foothead/header.php';
 							</div>
 							<div class="col-12 col-sm">
 								<label for="apellido" id="david">Cantidad:</label>
-								<input type="number" class="form-control" id="cantidadTicket" required name="cantidadT" value="1" min="1" max="200">
+								<input type="number" class="form-control" id="cantidadTicket" name="cantidadT" value="1" required min="1" max="200">
 
 
 
@@ -204,6 +213,11 @@ require_once 'foothead/header.php';
 <?php
 		//Insertamos el footer
 require_once 'foothead/footer.php';
+
+} else {
+	// header("location:home.php");
+	echo "Error";
+}
 ?>
 
 </html>

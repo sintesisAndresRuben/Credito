@@ -8,6 +8,7 @@ if(!isset($_SESSION['user'])){
 	$cantidad = $_REQUEST['cantidadT'];
 	$fechaCad = $_REQUEST['fecha'];
 	$precioTotal = $_REQUEST['insertPrecio'];
+	$idHijo = $_REQUEST['idHijo'];
 	
 	if (isset($_REQUEST['lunes'])) {
 		$lunes = $_REQUEST['lunes'];	
@@ -42,7 +43,7 @@ if(!isset($_SESSION['user'])){
 	$id_usuario_ticket=0;
 	
 
-	$q = "INSERT INTO tbl_usuario_ticket (id_usuario,para_usuario,id_ticket,fecha_caducidad,cantidad_ticket,precio_ticket) VALUES (".$_SESSION['user']['id_usuario'].",".$_SESSION['user']['id_usuario'].", $idTicket, '$fechaCad', $cantidad, $precioTotal)";
+	$q = "INSERT INTO tbl_usuario_ticket (id_usuario,para_usuario,id_ticket,fecha_caducidad,cantidad_ticket,precio_ticket) VALUES (".$_SESSION['user']['id_usuario'].",$idHijo, $idTicket, '$fechaCad', $cantidad, $precioTotal)";
 	$comprarTicket=mysqli_query($conexion, $q);
 
 	if ($_SESSION['user']['tipo_usuario']=='padre' OR 'padre2') {

@@ -35,7 +35,7 @@ require_once 'foothead/header.php';
 			while ($optionHijo = (mysqli_fetch_array($resultHijos))){
 				$hijos['hijos']=$optionHijo;
 				?>
-				<a href="inscripcion.php?idHijo=<?php echo $hijos['hijos']['id_usuario'];?>"><?php echo $hijos['hijos']['nombre_usuario']; ?></a>
+				<a href="inscripcionHijo.php?idHijo=<?php echo $hijos['hijos']['id_usuario'];?>"><?php echo $hijos['hijos']['nombre_usuario']; ?></a>
 				
 				<?php
 			}
@@ -47,7 +47,7 @@ require_once 'foothead/header.php';
 
 // Fin num rows
 	} else {
-		header("location: inscripcion.php");
+		header("location: inscripcionHijo.php");
 
 // Fin else
 	}
