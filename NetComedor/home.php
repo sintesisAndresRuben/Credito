@@ -24,7 +24,6 @@ require_once 'foothead/header.php';
 ?>
 <div class="col-sm12">
 	<div class="col-sm10">
-		<?php echo $_SESSION['user']['tipo_usuario']; ?>
 		<div class="row justify-content-md-center">
 			<div class="col-sm4 rectanguloArriba homeimage">
 				<a href="menu.php"><img src="img/home/menu.jpg"/></a>
@@ -53,10 +52,16 @@ require_once 'foothead/header.php';
 			<?php
 		}
 		?>
-		<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+		
 		<div class="col-sm4 rectanguloAbajo homeimage">
-			<a href="gestionCompras.php"><img src="img/home/gestion.jpg"/></a>
+			<a href="gestion.php"><img src="img/home/gestion.jpg"/></a>
 		</div>
+		<?php  if ($_SESSION['user']['mail_usuario']=='jantonio.lopez@fje.edu'){ ?>
+		<!-- Este es el enlace para ir a la pagina de informes -->
+		<div class="col-sm4 rectanguloAbajo homeimage">
+			<a href="informe.php"><img src="img/home/menu.jpg"/></a>
+		</div>
+		<!-- FIN de la caja de Informes-->
 		<?php
 	}
 	?>

@@ -8,30 +8,12 @@ if (!isset($_SESSION['user'])) {
 ?>
 <?php
 //Insertamos el header general
-require_once 'foothead/header.php';
+require_once 'foothead/headerGESTION.php';
 
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<head>
-	<link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.bootstrap4.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.colVis.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css"></script>
-	<script src="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"></script>
-	<script src="https://cdn.datatables.net/buttons/1.5.1/css/buttons.bootstrap4.min.css"></script>
-	<script src="js/table.js"></script>
-	<title>Gestión Compras</title>
-</head>
+<title>Informe Compras</title>
 <!--Inicio de la página en sí-->
 <!--Inicio del contenido-->
 <?php
@@ -44,7 +26,7 @@ if (mysqli_num_rows($tablaTicketUsuarios)>0) {
 		<div class="row">
 			<div class="col-md-12">
 				<br><br>
-				<h3>Gestión Compras</h3>
+				<h3>Informe Compras</h3>
 				<br><br>
 				<table id="example" class="table table-striped table-bordered">
 					<thead>
@@ -94,7 +76,7 @@ if (mysqli_num_rows($tablaTicketUsuarios)>0) {
 				</table>
 			</div>
 			<div class="row">
-				<form method="get" action="home.php">
+				<form method="get" action="informe.php">
 					<button type="text" class="btn btn-warning" style="color:white; margin-left: 60%"><span class="fas fa-arrow-alt-circle-left"></span></button>
 				</form>
 			</div></div></div>
