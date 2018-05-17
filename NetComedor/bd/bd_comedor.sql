@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2018 at 07:56 PM
+-- Generation Time: May 17, 2018 at 04:46 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -169,7 +169,8 @@ CREATE TABLE `tbl_padres_alu_profe` (
 
 INSERT INTO `tbl_padres_alu_profe` (`id_pap`, `id_usuario`, `id_usu_dep`, `tipo`) VALUES
 (1, 18, 17, 'padre'),
-(2, 19, 17, 'padre');
+(2, 19, 17, 'padre'),
+(3, 20, 4, 'padre');
 
 -- --------------------------------------------------------
 
@@ -230,14 +231,15 @@ CREATE TABLE `tbl_usuarios` (
 
 INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `mail_usuario`, `password_usuario`, `tipo_usuario`, `admin`, `id_etapa`) VALUES
 (3, 'Andrés', 'González', '1379.joan23@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'alumno', 'no', 12),
-(4, 'Ruben', 'Díaz', '93295.joan23@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'padre2', 'no', 15),
+(4, 'Ruben', 'Díaz', '93295.joan23@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'padre', 'no', 15),
 (7, 'David', 'Marín Salvador', 'david.marin@fje.edu', '47496afd0bb349059c000e89235b1d87', 'profesor', 'no', 13),
 (8, 'Agnes', 'Plans Berenguer', 'agnes.plans@fje.edu', '058b451ee66762862ed52239cf6cd53d', 'profesor', 'no', 13),
 (15, 'José Antonio ', 'López Rodríguez', 'jantonio.lopez@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'personal', 'si', 14),
 (16, 'Núria ', 'García Sánchez', 'nuria.garcia@fje.edu', '02ae76732a5d1d4476a88e74c1f06728', 'personal', 'no', 14),
 (17, 'Ramon', 'García García', 'ramon.garcia@fje.edu', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 15),
 (18, 'Judith', 'García Perez', '1234.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 8),
-(19, 'Javi', 'García Perez', '4321.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 9);
+(19, 'Javi', 'García Perez', '4321.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 9),
+(20, 'Alex', 'Diaz', '93296.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 8);
 
 -- --------------------------------------------------------
 
@@ -248,6 +250,7 @@ INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, 
 CREATE TABLE `tbl_usuario_ticket` (
   `id_usuario_ticket` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
+  `para_usuario` int(11) NOT NULL,
   `id_ticket` int(11) NOT NULL,
   `fecha_caducidad` date NOT NULL,
   `cantidad_ticket` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
@@ -258,10 +261,10 @@ CREATE TABLE `tbl_usuario_ticket` (
 -- Dumping data for table `tbl_usuario_ticket`
 --
 
-INSERT INTO `tbl_usuario_ticket` (`id_usuario_ticket`, `id_usuario`, `id_ticket`, `fecha_caducidad`, `cantidad_ticket`, `precio_ticket`) VALUES
-(1, 4, 8, '2018-08-30', '1', '110.83'),
-(2, 4, 8, '2018-08-30', '1', '110.83'),
-(3, 4, 8, '2018-08-30', '1', '110.83');
+INSERT INTO `tbl_usuario_ticket` (`id_usuario_ticket`, `id_usuario`, `para_usuario`, `id_ticket`, `fecha_caducidad`, `cantidad_ticket`, `precio_ticket`) VALUES
+(1, 4, 4, 8, '2018-08-30', '1', '110.83'),
+(2, 4, 4, 8, '2018-08-30', '1', '110.83'),
+(3, 4, 4, 8, '2018-08-30', '1', '110.83');
 
 --
 -- Indexes for dumped tables
@@ -330,7 +333,8 @@ ALTER TABLE `tbl_usuarios`
 ALTER TABLE `tbl_usuario_ticket`
   ADD PRIMARY KEY (`id_usuario_ticket`),
   ADD KEY `id_usuario` (`id_usuario`),
-  ADD KEY `id_ticket` (`id_ticket`);
+  ADD KEY `id_ticket` (`id_ticket`),
+  ADD KEY `para_usuario` (`para_usuario`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -370,7 +374,7 @@ ALTER TABLE `tbl_normativa`
 -- AUTO_INCREMENT for table `tbl_padres_alu_profe`
 --
 ALTER TABLE `tbl_padres_alu_profe`
-  MODIFY `id_pap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_ticket`
@@ -382,7 +386,7 @@ ALTER TABLE `tbl_ticket`
 -- AUTO_INCREMENT for table `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_usuario_ticket`
@@ -443,7 +447,8 @@ ALTER TABLE `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuario_ticket`
   ADD CONSTRAINT `tbl_usuario_ticket_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `tbl_usuario_ticket_ibfk_2` FOREIGN KEY (`id_ticket`) REFERENCES `tbl_ticket` (`id_ticket`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `tbl_usuario_ticket_ibfk_2` FOREIGN KEY (`id_ticket`) REFERENCES `tbl_ticket` (`id_ticket`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_usuario_ticket_ibfk_3` FOREIGN KEY (`para_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

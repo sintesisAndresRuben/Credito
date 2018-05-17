@@ -16,35 +16,43 @@ require_once 'foothead/header.php';
 
 <!--Inicio de la página en sí-->
 <!--Inicio del contenido--> 
-<?php
-$buscarPadre = "SELECT * FROM `tbl_padres_alu_profe` WHERE id_usu_dep=".$_SESSION['user']['id_usuario'];
-$result = mysqli_query($conexion,$buscarPadre);
+<div class="container" style="background-color: gray;">
+	<?php
+	$idPadre=$_SESSION['user']['id_usuario'];
+//Query para BUSCAR cuantos hijos pertenece al padre que ha iniciado sesion.
+	$buscarPadre = "SELECT * FROM `tbl_padres_alu_profe` WHERE id_usu_dep=".$idPadre;
+	$resultPadre = mysqli_query($conexion,$buscarPadre);
 
-if (mysqli_num_rows($result)>1) {
-	while ($option = (mysqli_fetch_array($result))){
-		$hijos['hijos']=$option;
-		
-		// AQUI HAY QUE METER LAS OPCIONES DE ELEGIR AL HIJ@
+//Query para RECOGER los datos de los hijos que pertenecen al padre que ha iniciado sesion.
+	$datosHijos= "SELECT tbl_usuarios.* FROM tbl_usuarios INNER JOIN (SELECT id_usuario FROM tbl_padres_alu_profe WHERE id_usu_dep=$idPadre) q ON tbl_usuarios.id_usuario=q.id_usuario";
+	$resultHijos = mysqli_query($conexion,$datosHijos);
+
+
+
+	if (mysqli_num_rows($resultPadre)>1) {
+		while ($optionPadre = (mysqli_fetch_array($resultPadre))){
+		// echo "Tienes mas de un hijo".$buscarPadre;
+			while ($optionHijo = (mysqli_fetch_array($resultHijos))){
+				$hijos['hijos']=$optionHijo;
+				?>
+				<a href="inscripcion.php?idHijo=<?php echo $hijos['hijos']['id_usuario'];?>"><?php echo $hijos['hijos']['nombre_usuario']; ?></a>
+				
+				<?php
+			}
+
+
 
 	// Fin while
-	}
+		}
 
 // Fin num rows
-} else{
-?>
-	<a href="inscripcion.php">
+	} else {
+		header("location: inscripcion.php");
 
-<?php
 // Fin else
-}
+	}
 
-?>
-
-
-
-
-
-
+	?>
 </div>
 
 <!--Final del contenido-->
