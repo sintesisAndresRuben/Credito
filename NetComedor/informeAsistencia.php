@@ -13,21 +13,21 @@ require_once 'foothead/headerGESTION.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<title>Informe Asistencia</title>
+<title>Informe Asistencias</title>
 <!--Inicio de la página en sí-->
 <!--Inicio del contenido-->
-<?php
-$q="SELECT `tbl_usuarios`.`mail_usuario`, `tbl_usuarios`.`id_usuario`, `tbl_usuario_ticket`.`id_usuario`, `tbl_usuario_ticket`.`para_usuario`, `tbl_etapa`.`nombre_etapa`,`tbl_dias_reserva`.`lunes`, `tbl_dias_reserva`.`martes`, `tbl_dias_reserva`.`miercoles`, `tbl_dias_reserva`.`jueves`, `tbl_dias_reserva`.`viernes` FROM `tbl_usuarios` INNER JOIN `tbl_usuario_ticket` ON `tbl_usuarios`.`id_usuario`= `tbl_usuario_ticket`.`para_usuario` INNER JOIN `tbl_etapa` ON `tbl_usuarios`.`id_etapa` = `tbl_etapa`.`id_etapa` INNER JOIN `tbl_dias_reserva` ON `tbl_usuario_ticket`.`id_usuario_ticket` = `tbl_dias_reserva`.`id_usuario_ticket` WHERE `tbl_etapa`.`id_etapa` BETWEEN 7 AND 9";
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<br><br>
+			<h3>Informe Asistencias</h3>
+			<br><br>
+			<?php
+			$q="SELECT `tbl_usuarios`.`mail_usuario`, `tbl_usuarios`.`id_usuario`, `tbl_usuario_ticket`.`id_usuario`, `tbl_usuario_ticket`.`para_usuario`, `tbl_etapa`.`nombre_etapa`,`tbl_dias_reserva`.`lunes`, `tbl_dias_reserva`.`martes`, `tbl_dias_reserva`.`miercoles`, `tbl_dias_reserva`.`jueves`, `tbl_dias_reserva`.`viernes` FROM `tbl_usuarios` INNER JOIN `tbl_usuario_ticket` ON `tbl_usuarios`.`id_usuario`= `tbl_usuario_ticket`.`para_usuario` INNER JOIN `tbl_etapa` ON `tbl_usuarios`.`id_etapa` = `tbl_etapa`.`id_etapa` INNER JOIN `tbl_dias_reserva` ON `tbl_usuario_ticket`.`id_usuario_ticket` = `tbl_dias_reserva`.`id_usuario_ticket` WHERE `tbl_etapa`.`id_etapa` BETWEEN 7 AND 9";
 
-$tablaTicketUsuarios = mysqli_query($conexion, $q);
-if (mysqli_num_rows($tablaTicketUsuarios)>0) {
-	?>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<br><br>
-				<h3>Informe Asistencia</h3>
-				<br><br>
+			$tablaTicketUsuarios = mysqli_query($conexion, $q);
+			if (mysqli_num_rows($tablaTicketUsuarios)>0) {
+				?>
 				<table id="example" class="table table-striped table-bordered">
 					<thead>
 						<tr>
@@ -87,29 +87,53 @@ if (mysqli_num_rows($tablaTicketUsuarios)>0) {
 								<td><?php echo $viernes; ?></td>
 							</tr>
 							<?php
-
     // FIN WHILE
 						}
 						?>
 					</tbody>
 				</table>
-			</div>
-			<div class="row">
-				<form method="get" action="informe.php">
-					<button type="text" class="btn btn-warning" style="color:white; margin-left: 60%"><span class="fas fa-arrow-alt-circle-left"></span></button>
-				</form>
-			</div></div></div>
-			<br><br>
-			<?php
+
+				<?php
 // FIN ARRAY
-		}
-		?>
-		<!--Final del contenido-->
+			}else{
+				?>
+				<table id="example" class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>Correo</th>
+							<th>Etapa</th>
+							<th>Tipo ticket</th>
+							<th>Importe</th>
+							<th>Cantidad</th>
+							<th>Precio</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="6">No hay resultados a mostrar!</td>
+						</tr>
+					</tbody>
+				</table>
+				<?php 
+			} 
+			?>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<form method="get" action="informe.php">
+			<button type="text" class="btn btn-warning" style="color:white; margin-left: 60%"><span class="fas fa-arrow-alt-circle-left"></span></button>
+		</form>
+	</div>
+</div>
+<br><br>
+<!--Final del contenido-->
 
-		<!--Final de la página en sí-->
+<!--Final de la página en sí-->
 
-		<?php
+<?php
 		//Insertamos el footer
-		require_once 'foothead/footer.php';
-		?>
-		</html>
+require_once 'foothead/footer.php';
+?>
+</html>

@@ -24,10 +24,10 @@
 			<div class="col-sm10">
 				<div class="row justify-content-md-center">
 					<div class="col-sm4 rectanguloArriba homeimage">
-						<a href="informeCompras.php"><img src="img/home/menu.jpg"/></a>
+						<a href="informeVentas.php"><img src="img/informes/informesV.jpg"/></a>
 					</div>
 					<div class="col-sm4 rectanguloArriba homeimage">
-						<a href="informeAsistencia.php"><img src="img/home/menu.jpg"/></a>
+						<a href="informeAsistencia.php"><img src="img/informes/informesA.jpg"/></a>
 					</div>
 				</div>
 			</div>
