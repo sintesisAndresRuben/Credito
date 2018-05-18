@@ -126,8 +126,8 @@ require_once 'foothead/headerGESTION.php';
 			<button type="text" class="btn btn-warning" style="color:white; margin-left: 60%"><span class="fas fa-arrow-alt-circle-left"></span></button>
 		</form>
 	</div>
+<br><br><br><br>
 </div>
-<br><br>
 <!--Final del contenido-->
 
 <!--Final de la página en sí-->

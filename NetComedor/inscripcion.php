@@ -165,8 +165,9 @@ require_once 'foothead/header.php';
 		<!-- <button onclick="notify('error')">Err</button> -->
 	</div>
 	<!-- FIN CONTAINTER -->
+
 </div>
-<br><br>
+<br><br><br><br>
 <script type="text/javascript">
 	function notify1(style) {
 		$.notify({

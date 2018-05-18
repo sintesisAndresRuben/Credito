@@ -370,9 +370,8 @@ unset($_SESSION['error2']);
 <?php
 }
 ?>
-
+<br><br><br><br>
 </div>
-</br></br>
 <!--Final del contenido-->
 <!--Final de la página en sí-->
 <?php
