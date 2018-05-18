@@ -118,23 +118,76 @@ require_once 'foothead/header.php';
 			</div>
 		</div>
 	</div>
-		<p>
-			<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"id="key1"><span class="fas fa-eye-slash"id="ojo1"></span> Menu Adaptado</button>
-		</p>
-		<div class="col">
-			<div class="collapse show" id="multiCollapseExample2">
-				<div class="card-body">
-					<!-- MENU ADAPTADO -->
-					<?php
-					$w = "SELECT * FROM tbl_menu WHERE tipo_menu='Menu Adaptado'";
-					$tablaMenu = mysqli_query($conexion, $w);
-					if (mysqli_num_rows($tablaMenu)>0) {
+	<p>
+		<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"id="key1"><span class="fas fa-eye-slash"id="ojo1"></span> Menu Adaptado</button>
+	</p>
+	<div class="col">
+		<div class="collapse show" id="multiCollapseExample2">
+			<div class="card-body">
+				<!-- MENU ADAPTADO -->
+				<?php
+				$w = "SELECT * FROM tbl_menu WHERE tipo_menu='Menu Adaptado'";
+				$tablaMenu = mysqli_query($conexion, $w);
+				if (mysqli_num_rows($tablaMenu)>0) {
+					?>
+					<table id="mytable" class="table table-bordred table-striped"> 
+						<thead>
+							<tr>
+								<th>Titulo</th>
+								<th>Última modificación</th>
+								<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+									<th>Eliminar</th>
+									<?php
+								}
+								?>
+							</tr>
+						</thead>
+						<?php
+						while ($menu=mysqli_fetch_array($tablaMenu)){
+							$id_menu=$menu['id_menu'];
+							$nombre_menu=$menu['nombre_menu'];
+							$ruta_menu=$menu['ruta_menu'];
+							$fecha_menu=$menu['fecha_menu'];	
+							?>	
+							<tr>
+								<td style="display:none;">
+									<?php echo $id_menu; ?>
+								</td> 
+								<td>
+									<a href="<?php echo"$ruta_menu"; ?>" target="_blank"><?php echo $nombre_menu; ?></a>
+								</td>
+								<td>
+									<!--  -->
+									<?php  
+									$date = new DateTime($fecha_menu);
+									echo $date->format('d-m-Y');
+									?>
+								</td>
+								<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+									<td>
+										<a href="menuEliminar.proc.php?id=<?php echo $id_menu; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
+									</td>
+									<?php
+								}
+								?>
+							</tr>
+							<?php
+                // FIN WHILE
+						}
 						?>
+					</table>
+					<!-- FIN TABLA -->
+					<?php
+		// FIN ARRAY
+				}else{
+					?>
+					<div class="table-responsive" style="margin: auto;  ">
 						<table id="mytable" class="table table-bordred table-striped"> 
 							<thead>
 								<tr>
 									<th>Titulo</th>
 									<th>Última modificación</th>
+
 									<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
 										<th>Eliminar</th>
 										<?php
@@ -142,76 +195,24 @@ require_once 'foothead/header.php';
 									?>
 								</tr>
 							</thead>
-							<?php
-							while ($menu=mysqli_fetch_array($tablaMenu)){
-								$id_menu=$menu['id_menu'];
-								$nombre_menu=$menu['nombre_menu'];
-								$ruta_menu=$menu['ruta_menu'];
-								$fecha_menu=$menu['fecha_menu'];	
-								?>	
-								<tr>
-									<td style="display:none;">
-										<?php echo $id_menu; ?>
-									</td> 
-									<td>
-										<a href="<?php echo"$ruta_menu"; ?>" target="_blank"><?php echo $nombre_menu; ?></a>
-									</td>
-									<td>
-										<!--  -->
-										<?php  
-										$date = new DateTime($fecha_menu);
-										echo $date->format('d-m-Y');
-										?>
-									</td>
-									<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-										<td>
-											<a href="menuEliminar.proc.php?id=<?php echo $id_menu; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
-										</td>
-										<?php
-									}
-									?>
-								</tr>
-								<?php
-                // FIN WHILE
-							}
-							?>
+							<tr>
+								<td colspan="3">
+									No hay datos que mostrar
+								</td> 
+							</tr>
 						</table>
-						<!-- FIN TABLA -->
-						<?php
-		// FIN ARRAY
-					}else{
-						?>
-						<div class="table-responsive" style="margin: auto;  ">
-							<table id="mytable" class="table table-bordred table-striped"> 
-								<thead>
-									<tr>
-										<th>Titulo</th>
-										<th>Última modificación</th>
-
-										<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-											<th>Eliminar</th>
-											<?php
-										}
-										?>
-									</tr>
-								</thead>
-								<tr>
-									<td colspan="3">
-										No hay datos que mostrar
-									</td> 
-								</tr>
-							</table>
-						</div>
-						<?php	
-					}
-					?>
-					<!-- FIN DE LAS TABLAS -->
-					<!-- FIN MENU ADAPTADO -->
-				</div>
+					</div>
+					<?php	
+				}
+				?>
+				<!-- FIN DE LAS TABLAS -->
+				<!-- FIN MENU ADAPTADO -->
 			</div>
 		</div>
-		<!-- FIN EJEMPLO PARA OCULTAR LAS TABLAS -->
-	</br>
+	</div>
+</div>	
+	<!-- FIN EJEMPLO PARA OCULTAR LAS TABLAS -->
+</br>
 <!-- EMPIEZA EL BOTON DE VOLVER Y DE SUBIDA DE FICHEROS -->
 <div class="container">
 	<div class="row">
@@ -240,42 +241,41 @@ require_once 'foothead/header.php';
 							</div>
 						</form>
 					</div>
-
 				</div>
 			</div>
 		</div>
-		<!-- Mostramos el mensaje de erro que se repite el pdf -->
-		<?php
-		if(isset($error)){
-			?>
-			<div class="row justify-content-md-center">
-				<div class="alert alert-danger col-6 text-center" role="alert">
-					<strong>ERROR!</strong> El fichero ya existe
-				</div>
-			</div>
-		</div>
-		<?php  
-	}elseif (isset($error2)){
+	</br></br></br></br>
+	<!-- Mostramos el mensaje de erro que se repite el pdf -->
+	<?php
+	if(isset($error)){
 		?>
 		<div class="row justify-content-md-center">
 			<div class="alert alert-danger col-6 text-center" role="alert">
-				<strong>ERROR!</strong> No has seleccionado el fichero
+				<strong>ERROR!</strong> El fichero ya existe
 			</div>
 		</div>
 	</div>
-	<?php
+	<?php  
+}elseif (isset($error2)){
+	?>
+	<div class="row justify-content-md-center">
+		<div class="alert alert-danger col-6 text-center" role="alert">
+			<strong>ERROR!</strong> No has seleccionado el fichero
+		</div>
+	</div>
+</div>
+<?php
 }
 	//Matamos la sesion para que no se muestre el mensaje de error al recargar la pagina
 unset($_SESSION['error']);
 unset($_SESSION['error2']);
 ?>
 <!-- fin boton de herramientas -->
-
+</br></br>
 <?php
 }
 ?>
 </div>
-</br></br></br></br>
 <!--Final del contenido-->
 <!--Final de la página en sí-->
 <?php
