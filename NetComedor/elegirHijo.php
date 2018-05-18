@@ -71,7 +71,14 @@ require_once 'foothead/header.php';
 
 // Fin num rows
 	} else {
-		header("location: inscripcionHijo.php");
+		while ($optionPadre = (mysqli_fetch_array($resultPadre))){
+			while ($optionHijo = (mysqli_fetch_array($resultHijos))){
+				$hijos['hijos']=$optionHijo;
+				// $1Hijo=$hijos['hijos']['id_usuario'];
+				header("location: inscripcionHijo.php?idHijo=".$hijos['hijos']['id_usuario']);
+
+			}
+		}
 
 // Fin else
 	}
