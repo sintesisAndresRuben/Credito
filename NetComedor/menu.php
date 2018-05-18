@@ -11,6 +11,21 @@ if (!isset($_SESSION['user'])) {
 ?>
 <link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
 <title>Menú</title>
+<script type="text/javascript">
+	function notify2(style) {
+		$.notify({
+			title: 'ERROR!',
+			text: 'Selecciona el numero de dias que permite el ticket seleccionado <br><br>',
+            // image: "<img src='images/Mail.png'/>"
+        }, {
+        	style: 'metro',
+        	className: style,
+        	autoHide: true,
+        	clickToHide: true
+        });
+	}
+</script>
+
 <html lang="es">
 <?php
 //Insertamos el header general
@@ -248,14 +263,11 @@ require_once 'foothead/header.php';
 	<!-- Mostramos el mensaje de erro que se repite el pdf -->
 	<?php
 	if(isset($error)){
-		?>
-		<div class="row justify-content-md-center">
-			<div class="alert alert-danger col-6 text-center" role="alert">
-				<strong>ERROR!</strong> El fichero ya existe
-			</div>
-		</div>
-	</div>
-	<?php  
+		?>		
+		<script>
+			notify2('error');
+		</script>
+		<?php
 }elseif (isset($error2)){
 	?>
 	<div class="row justify-content-md-center">
