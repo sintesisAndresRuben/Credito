@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
 ?>
 <!DOCTYPE html>
 <link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
-<title>Comedor</title>
+<title>Inscripción</title>
 <html lang="es">
 <?php
 		//Insertamos el header general
@@ -22,7 +22,7 @@ require_once 'foothead/header.php';
 	
 	<div class="col-12">
 	</br></br>
-	<h3>Nueva Compra</h3>
+	<h3>Inscripción</h3>
 	</br></br>
 	<hr>
 	<!-- ############################################################## -->

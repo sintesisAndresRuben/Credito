@@ -52,13 +52,9 @@ require_once 'foothead/header.php';
 				<?php
 			}
 			?>
-			<?php  if (($_SESSION['user']['id_etapa']=='10') OR ($_SESSION['user']['id_etapa']=='11') OR ($_SESSION['user']['id_etapa']=='12')OR($_SESSION['user']['id_etapa']=='13') OR($_SESSION['user']['id_etapa']=='14') OR ($_SESSION['user']['id_etapa']=='15')) { ?>
 				<div class="col-sm4 rectanguloAbajo homeimage">
 					<a href="gestion.php"><img src="img/home/gestion.jpg"/></a>
 				</div>
-				<?php
-			}
-			?>
 			<?php  if ($_SESSION['user']['mail_usuario']=='jantonio.lopez@fje.edu'){ ?>
 				<!-- Este es el enlace para ir a la pagina de informes -->
 				<div class="col-sm4 rectanguloAbajo homeimage">
