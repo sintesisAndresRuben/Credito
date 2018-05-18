@@ -49,7 +49,7 @@ require_once 'foothead/header.php';
 						<select class="form-control" id="tipoTicket" name="tipoT" required="">
 							<option value="" id="0" selected="selected"></option>
 							<?php
-							$sqlOption = "SELECT `tbl_ticket`.`tipo_ticket`, `tbl_ticket`.`id_ticket`, `tbl_ticket`.`importe_ticket`, `tbl_usuario_ticket`.`id_usuario_ticket`, `tbl_usuarios`.`nombre_usuario` FROM tbl_usuarios INNER JOIN tbl_usuario_ticket ON `tbl_usuarios`.`id_usuario` = `tbl_usuarios`.`id_usuario` INNER JOIN tbl_ticket ON `tbl_usuario_ticket`.`id_ticket` = `tbl_ticket`.`id_ticket` WHERE id_usuario=".$_SESSION['user']['id_usuario'];
+							$sqlOption = "SELECT * FROM `tbl_ticket` WHERE id_etapa=".$_SESSION['user']['id_etapa'];
 							$result = mysqli_query($conexion,$sqlOption);
 
 							if (mysqli_num_rows($result)>0) {
