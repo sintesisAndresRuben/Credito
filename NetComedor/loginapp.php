@@ -22,9 +22,14 @@ if (! $dbs) {
 
 }
 
-$user_id = mysqli_real_escape_string ($dbc, $_GET['mail_usuario']);
+$datos=$_REQUEST;
 
-$psw = mysqli_real_escape_string ($dbc, $_GET['password_usuario']);
+$Nombre=$datos['mail_usuario'];
+$Clave=$datos['password_usuario'];
+
+$user_id = mysqli_real_escape_string ($dbc, $Nombre);
+
+$psw = mysqli_real_escape_string ($dbc, $Clave);
 
 $sql = $dbc-> query ("SELECT * FROM tbl_usuarios WHERE mail_usuario = '$user_id' AND password_usuario = '$psw'");
 

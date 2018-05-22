@@ -130,7 +130,7 @@ require_once 'foothead/header.php';
 							<div class="col-6">
 								<b>TIPO TIQUET:</b>
 							</div>
-							<div class="col-6" id="txtTicket">Ticket comedor </div>
+							<div class="col-6" id="txtTicket"></div>
 						</div>
 						<hr>
 						<div class="row">
@@ -154,6 +154,7 @@ require_once 'foothead/header.php';
 					</div>
 				</div>	
 			</div>
+			<input type="hidden" name="tipoTick"  id="txtTicket1" value="">
 		</div>
 		<div class="col-lg-2 col-sm">
 

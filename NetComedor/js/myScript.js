@@ -82,6 +82,7 @@ $(document).ready(function(){
 
 
     $( "#txtTicket" ).html( str );
+    $("#txtTicket1").val(str);
     var suma = precio*cantidad;
     $("#valor_ticket").val(suma);
     var total = $("#valor_ticket").val()+"€"
