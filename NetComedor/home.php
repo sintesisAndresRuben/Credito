@@ -63,21 +63,30 @@ require_once 'foothead/header.php';
 					// 	}
 					// }
 				//CONSULTA PARA CLASIFICAR EL TIPO DE ETAPA SI ERES UN PADRE
+						$a="SELECT * FROM tbl_usuario_ticket WHERE `tbl_usuario_ticket`.`para_usuario`=".$_SESSION['user']['id_usuario'];
+						$quien = mysqli_query($conexion, $a);
+
 						$g="SELECT `tbl_padres_alu_profe`.`id_usu_dep`, `tbl_usuarios`.`id_usuario`, `tbl_etapa`.`id_etapa` FROM `tbl_padres_alu_profe` INNER JOIN `tbl_usuarios` ON `tbl_padres_alu_profe`.`id_usuario` = `tbl_usuarios`.`id_usuario` INNER JOIN `tbl_etapa` ON `tbl_usuarios`.`id_etapa` = `tbl_etapa`.`id_etapa` WHERE `tbl_padres_alu_profe`.`id_usu_dep`=".$_SESSION['user']['id_usuario'];
 						$gestiones = mysqli_query($conexion, $g);
 						if (mysqli_num_rows($gestiones)>0) {
-							while ($gestion=mysqli_fetch_array($gestiones)){
-								$nombre_etapa=$gestion['id_etapa'];
-								if (($_SESSION['user']['id_etapa']=='15') AND (($nombre_etapa=='7')OR($nombre_etapa=='8')OR($nombre_etapa=='9'))) {
-								}
-							}
+							// while ($gestion=mysqli_fetch_array($gestiones)){
+							// 	$nombre_etapa=$gestion['id_etapa'];
+							// 	if (($_SESSION['user']['id_etapa']=='15') AND (($nombre_etapa=='7')OR($nombre_etapa=='8')OR($nombre_etapa=='9'))) {
+							// 
+
+							// 	}
+							// }
+							if (mysqli_num_rows($quien)>0) {
 							?>
 							<a href="gestionElegirHijo.php"><img src="img/home/gestion.jpg" /></a>
 							<?php
+							}
 						}  else if (($_SESSION['user']['id_etapa']=='10') OR ($_SESSION['user']['id_etapa']=='11')OR ($_SESSION['user']['id_etapa']=='12')OR ($_SESSION['user']['id_etapa']=='13')OR ($_SESSION['user']['id_etapa']=='14')OR ($_SESSION['user']['id_etapa']=='15')) {
+							if (mysqli_num_rows($quien)>0) {
 							?>
 							<a href="gestion.php"><img src="img/home/gestion.jpg" /></a>
 							<?php
+						}
 						}else {	
 						}
 				?>
