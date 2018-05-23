@@ -44,21 +44,25 @@ if(!isset($_SESSION['user'])){
 
 
 
-	if ($tipoTick=='Ticket comedor') {
-		$tcomedor="SELECT * FROM tbl_usuario_ticket WHERE para_usuario=".$_SESSION['user']['id_usuario'];
-		echo $tcomedor;
+	if ($tipoTick='Ticket comedor') {
+		// echo "Tipo ticket: ".$tipoTick;
+		$tcomedor="SELECT * FROM tbl_usuario_ticket WHERE id_ticket=".$idTicket." AND para_usuario=".$_SESSION['user']['id_usuario'];
+		// echo $tcomedor;
 		$tickCom=mysqli_query($conexion, $tcomedor);
 		if (mysqli_num_rows($tickCom)>0) {
-			$actualizar="UPDATE tbl_usuario_ticket SET cantidad_ticket=cantidad_ticket+$cantidad,precio_ticket=precio_ticket+$precioTotal WHERE para_usuario=".$_SESSION['user']['id_usuario'];
+			$actualizar="UPDATE tbl_usuario_ticket SET cantidad_ticket=cantidad_ticket+$cantidad,precio_ticket=precio_ticket+$precioTotal WHERE id_ticket=".$idTicket." AND para_usuario=".$_SESSION['user']['id_usuario'];
 			$sumar=mysqli_query($conexion, $actualizar);
 			$primer_tiquet_comedor=false;
+			// echo "<br>false";
 		} else {
 			$primer_tiquet_comedor=true;
+			// echo "<br>true";
 		}
 		// header("location:home.php");
 	} 
 	
 	if(($tipoTick!='Ticket comedor') OR ($primer_tiquet_comedor)){
+		echo "<br><b>primerTicket</b>";
 		$q = "INSERT INTO tbl_usuario_ticket (id_usuario,para_usuario,id_ticket,fecha_caducidad,cantidad_ticket,precio_ticket) VALUES (".$_SESSION['user']['id_usuario'].",".$_SESSION['user']['id_usuario'].", $idTicket, '$fechaCad', $cantidad, $precioTotal)";
 		$comprarTicket=mysqli_query($conexion, $q);
 
@@ -86,5 +90,5 @@ if(!isset($_SESSION['user'])){
 			}
 		}
 	}
-		// header("location:home.php");
+		header("location:home.php");
 }
