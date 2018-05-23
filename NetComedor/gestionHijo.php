@@ -10,26 +10,27 @@ $idH=$_GET['idHijo'];
 // }
 $q = "SELECT * FROM tbl_usuarios WHERE id_usuario=$idH";
 	// echo $q;
-	$resultado = mysqli_query($conexion, $q);
-	if (mysqli_num_rows($resultado)>0){
-		$datos_usuario=(mysqli_fetch_array($resultado));
-		$Hijo['datos']=$datos_usuario;
-?>
-<!DOCTYPE html>
-<link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
-<title>Comedor</title>
-<html lang="es">
-<?php
+$resultado = mysqli_query($conexion, $q);
+if (mysqli_num_rows($resultado)>0){
+	$datos_usuario=(mysqli_fetch_array($resultado));
+	$Hijo['datos']=$datos_usuario;
+	?>
+	<!DOCTYPE html>
+	<link rel="shortcut icon" href="http://www.j23.fje.edu/sites/all/themes/escuelas_fje/images/favicon_bellvitge_fje.ico" type="image/vnd.microsoft.icon">
+	<title>Ver Inscripción</title>
+	<html lang="es">
+	<?php
 		//Insertamos el header general
-require_once 'foothead/header.php';
-?>
+	require_once 'foothead/header.php';
+	?>
 
-<!--Inicio de la página en sí-->
-<!--Inicio del contenido--> 
-<div class="container" style="/*background-color: gray*/;">
-	
-	<div class="col-12">
-		<h3>Nueva Compra</h3>
+	<!--Inicio de la página en sí-->
+	<!--Inicio del contenido--> 
+	<div class="container" style="/*background-color: gray*/;">
+
+		<div class="col-12">
+		</br></br>
+		<h3>Ver Inscripción</h3>
 		<hr>
 		<!-- ############################################################## -->
 		<div class="row">
@@ -54,7 +55,7 @@ require_once 'foothead/header.php';
 							<div class="col-12 col-sm mr-md-2 mr-lg-5">
 								<label for="nombre">Tipo ticket:</label>
 								<select class="form-control" id="tipoTicket" name="tipoT" required="">
-									<option value="" id="0" selected="selected"></option>
+									<!-- <option value="" id="0" selected="selected"></option> -->
 									<?php
 									$sqlOption = "SELECT * FROM `tbl_ticket` WHERE id_etapa=".$Hijo['datos']['id_etapa'];
 									$result = mysqli_query($conexion,$sqlOption);
@@ -63,24 +64,30 @@ require_once 'foothead/header.php';
 										while ($option = (mysqli_fetch_array($result))){
 											$tbl_T['ticket']=$option;
 											?>
-											<!-- <option value="<?php echo $tbl_T['ticket']['importe_ticket'] ?>"><?php echo $tbl_T['ticket']['tipo_ticket']?></option> -->
 											<option value="<?php echo $tbl_T['ticket']['id_ticket'] ?>" name="<?php echo $tbl_T['ticket']['tipo_ticket'] ?>" id="<?php echo $tbl_T['ticket']['importe_ticket'] ?>"><?php echo $tbl_T['ticket']['tipo_ticket']?></option>
-											<?php
-
+										<?php
 										}
 									}
+									//Hay que mejorar la cantidad porque siempre se queda fija.
 									?>
 								</select>
 								<input type="hidden" id="valor_ticket" name="valor_ticket" value=""><!-- modificar y ponerlo hidden (PONER EL PRECIO Y MULTIPLICAR TIPO TICKET POR CANTIDAD) -->
 							</div>
-							<div class="col-12 col-sm">
-								<label for="apellido" id="david">Cantidad:</label>
-								<input type="number" class="form-control" id="cantidadTicket" name="cantidadT" value="1" required min="1" max="200">
-
-
-
-
-							</div>
+							<?php
+							$sqlCantidad = "SELECT * FROM `tbl_usuario_ticket` WHERE id_usuario=".$_SESSION['user']['id_usuario'];
+							$result = mysqli_query($conexion,$sqlCantidad);
+							if (mysqli_num_rows($result)>0) {
+								while ($cantidad = (mysqli_fetch_array($result))){
+									$tbl_Cantidad['cantidad']=$cantidad;
+								} 
+								?>
+								<div class="col-12 col-sm">
+									<label for="apellido" id="david">Cantidad:</label>
+									<input type="number" class="form-control" id="cantidadTicket" name="cantidadT" value="<?php echo $tbl_Cantidad['cantidad']['cantidad_ticket'] ?>" required min="1" max="200" disabled>
+								</div>
+								<?php
+							}
+							?>
 						</div>
 
 						<!-- FECHA CAD -->
@@ -163,13 +170,13 @@ require_once 'foothead/header.php';
 				</div>
 			</div>
 			<div class="col-lg-2 col-sm">
-				
+
 				<button type="submit" class="btn btn-primary btn-block" id="submit" ><i class="fas fa-shopping-cart"></i> COMPRAR</button>
 				<br>
 
-				
+
 			</div>
-			
+
 		</form>
 		<!-- <button onclick="notify('error')">Err</button> -->
 	</div>
