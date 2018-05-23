@@ -161,6 +161,7 @@ require_once 'foothead/header.php';
 						</div>
 					</div>	
 				</div>
+				<input type="hidden" name="tipoTick"  id="txtTicket1" value="">
 			</div>
 			<div class="col-lg-2 col-sm">
 				

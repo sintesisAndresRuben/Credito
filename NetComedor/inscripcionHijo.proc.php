@@ -9,6 +9,7 @@ if(!isset($_SESSION['user'])){
 	$fechaCad = $_REQUEST['fecha'];
 	$precioTotal = $_REQUEST['insertPrecio'];
 	$idHijo = $_REQUEST['idHijo'];
+	$tipoTick = $_REQUEST['tipoTick'];
 	
 	if (isset($_REQUEST['lunes'])) {
 		$lunes = $_REQUEST['lunes'];	
@@ -41,35 +42,54 @@ if(!isset($_SESSION['user'])){
 	}
 	
 	$id_usuario_ticket=0;
-	
 
-	$q = "INSERT INTO tbl_usuario_ticket (id_usuario,para_usuario,id_ticket,fecha_caducidad,cantidad_ticket,precio_ticket) VALUES (".$_SESSION['user']['id_usuario'].",$idHijo, $idTicket, '$fechaCad', $cantidad, $precioTotal)";
-	$comprarTicket=mysqli_query($conexion, $q);
 
-	if ($_SESSION['user']['tipo_usuario']=='padre' OR 'padre2') {
-		
-		if ($q==true) {
-			$tbl_ultimo_registro="SELECT * FROM tbl_usuario_ticket ORDER BY id_usuario_ticket DESC LIMIT 1";
-			$uRegistro=mysqli_query($conexion,$tbl_ultimo_registro);
-			while ($ultimo=mysqli_fetch_array($uRegistro)){
+	if ($tipoTick='Ticket comedor') {
+		// echo "Tipo ticket: ".$tipoTick;
+		$tcomedor="SELECT * FROM tbl_usuario_ticket WHERE id_ticket=".$idTicket." AND para_usuario=".$idHijo;
+		// echo $tcomedor;
+		$tickCom=mysqli_query($conexion, $tcomedor);
+		if (mysqli_num_rows($tickCom)>0) {
+			$actualizar="UPDATE tbl_usuario_ticket SET cantidad_ticket=cantidad_ticket+$cantidad,precio_ticket=precio_ticket+$precioTotal WHERE id_ticket=".$idTicket." AND para_usuario=".$idHijo;
+			$sumar=mysqli_query($conexion, $actualizar);
+			$primer_tiquet_comedor=false;
+			// echo "<br>false";
+		} else {
+			$primer_tiquet_comedor=true;
+			// echo "<br>true";
+		}
+		// header("location:home.php");
+	} 
 
-				$id_usu_ticket=$ultimo['id_usuario_ticket'];
+
+	if(($tipoTick!='Ticket comedor') OR ($primer_tiquet_comedor)){
+		$q = "INSERT INTO tbl_usuario_ticket (id_usuario,para_usuario,id_ticket,fecha_caducidad,cantidad_ticket,precio_ticket) VALUES (".$_SESSION['user']['id_usuario'].",$idHijo, $idTicket, '$fechaCad', $cantidad, $precioTotal)";
+		$comprarTicket=mysqli_query($conexion, $q);
+
+		if ($_SESSION['user']['tipo_usuario']=='padre' OR 'padre2') {
+			
+			if ($q==true) {
+				$tbl_ultimo_registro="SELECT * FROM tbl_usuario_ticket ORDER BY id_usuario_ticket DESC LIMIT 1";
+				$uRegistro=mysqli_query($conexion,$tbl_ultimo_registro);
+				while ($ultimo=mysqli_fetch_array($uRegistro)){
+
+					$id_usu_ticket=$ultimo['id_usuario_ticket'];
 			// echo $id_usu_ticket;
-			} 
+				} 
 
-			if ($tbl_ultimo_registro==true) {
-				$tbl_dias_reserva="INSERT INTO tbl_dias_reserva (id_usuario_ticket, lunes, martes, miercoles, jueves, viernes) VALUES ($id_usu_ticket, $lunes, $martes, $miercoles, $jueves, $viernes)";
-				$registrarAsistencia=mysqli_query($conexion,$tbl_dias_reserva);
+				if ($tbl_ultimo_registro==true) {
+					$tbl_dias_reserva="INSERT INTO tbl_dias_reserva (id_usuario_ticket, lunes, martes, miercoles, jueves, viernes) VALUES ($id_usu_ticket, $lunes, $martes, $miercoles, $jueves, $viernes)";
+					$registrarAsistencia=mysqli_query($conexion,$tbl_dias_reserva);
 
 		// echo $tbl_dias_reserva;
 		// echo $id_usu_ticket;
+				}
+
+			} else {
+				echo "Error al hacer la compra. VOLVER A INTENTAR";
 			}
 
-		} else {
-			echo "Error al hacer la compra. VOLVER A INTENTAR";
 		}
-
-
 	}
 	header("location:home.php");
 }
