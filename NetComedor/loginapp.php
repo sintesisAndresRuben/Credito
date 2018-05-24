@@ -74,7 +74,7 @@ if (isset($datos['mail'])) {
 		}
 
 	} else {
-		echo "Error";
+		echo "Error2";
 	}
 }
 
@@ -114,7 +114,7 @@ if (isset($datos['resul'])) {
 
 
 	} else {
-		echo "No existe codigo";
+		echo "Inexistente";
 	}
 
 }
