@@ -62,25 +62,7 @@ if(!isset($_SESSION['user'])){
 	} 
 
 
-		if ($tipoTick!='Ticket comedor') {
-		// echo "Tipo ticket: ".$tipoTick;
-		$tcomedor="SELECT * FROM tbl_usuario_ticket WHERE id_ticket=".$idTicket." AND para_usuario=".$idHijo;
-		// echo $tcomedor;
-		$tickCom=mysqli_query($conexion, $tcomedor);
-		if (mysqli_num_rows($tickCom)>0) {
-			$actualizar="UPDATE tbl_usuario_ticket SET cantidad_ticket=1, precio_ticket=$precioTotal, id_ticket=$idTicket WHERE para_usuario=".$idHijo;
-			$sumar=mysqli_query($conexion, $actualizar);
-			$primer_tiquet_comedor=false;
-			// echo "<br>false";
-		} else {
-			$primer_tiquet_comedor=true;
-			// echo "<br>true";
-		}
-		// header("location:home.php");
-	} 
-
-
-	if($primer_tiquet_comedor){
+	if(($tipoTick!='Ticket comedor') OR ($primer_tiquet_comedor)){
 		$q = "INSERT INTO tbl_usuario_ticket (id_usuario,para_usuario,id_ticket,fecha_caducidad,cantidad_ticket,precio_ticket) VALUES (".$_SESSION['user']['id_usuario'].",$idHijo, $idTicket, '$fechaCad', $cantidad, $precioTotal)";
 		$comprarTicket=mysqli_query($conexion, $q);
 
