@@ -37,8 +37,15 @@ if (isset($datos['mail_usuario'])) {
 	$sql = $dbc-> query ("SELECT * FROM tbl_usuarios WHERE mail_usuario = '$user_id' AND password_usuario = '$psw'");
 
 	if (mysqli_num_rows ($sql)> 0){
+		$datos_usuario=(mysqli_fetch_array($sql));
+		$idEtapa=$datos_usuario['id_etapa'];
+		if ($idEtapa==15) {
+			echo "Login Padres";
+		} else {
+			echo "Login ok";
+
+		}
 		// PONER UN IF QUE SI SON PADRES LE APAREZCA UN ALERT CON: Disculpe, la aplicacion esta desarrollada para los alumnos y personal
-		echo "Login ok";
 	} else {
 		echo "Login Error";
 	}
