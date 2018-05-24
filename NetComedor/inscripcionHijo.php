@@ -216,7 +216,7 @@ require_once 'foothead/header.php';
 require_once 'foothead/footer.php';
 
 } else {
-	// header("location:home.php");
+	header("location:home.php");
 	echo "Error";
 }
 ?>

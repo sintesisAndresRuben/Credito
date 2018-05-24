@@ -90,5 +90,5 @@ if(!isset($_SESSION['user'])){
 			}
 		}
 	}
-		header("location:home.php");
+		// header("location:home.php");
 }

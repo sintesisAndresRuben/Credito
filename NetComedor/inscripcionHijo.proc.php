@@ -10,6 +10,7 @@ if(!isset($_SESSION['user'])){
 	$precioTotal = $_REQUEST['insertPrecio'];
 	$idHijo = $_REQUEST['idHijo'];
 	$tipoTick = $_REQUEST['tipoTick'];
+	echo "Al principio de la pagina: $tipoTick</br>";
 	
 	if (isset($_REQUEST['lunes'])) {
 		$lunes = $_REQUEST['lunes'];	
@@ -43,8 +44,8 @@ if(!isset($_SESSION['user'])){
 	
 	$id_usuario_ticket=0;
 
-
-	if ($tipoTick='Ticket comedor') {
+	if ($tipoTick=="Ticket comedor") {
+		// echo "Estoy entrando por el tipo ticket comedor</br>";
 		// echo "Tipo ticket: ".$tipoTick;
 		$tcomedor="SELECT * FROM tbl_usuario_ticket WHERE id_ticket=".$idTicket." AND para_usuario=".$idHijo;
 		// echo $tcomedor;
@@ -62,19 +63,23 @@ if(!isset($_SESSION['user'])){
 	} 
 
 
-		if ($tipoTick!='Ticket comedor') {
-		// echo "Tipo ticket: ".$tipoTick;
+	if ($tipoTick!="Ticket comedor") {
+		echo "Estoy entrando por los difernetes servicios de comedor</br>";
+		echo "Tipo ticket: ".$tipoTick;
+		echo "$precioTotal</br>";
+		echo "$idTicket</br>";
 		$tcomedor="SELECT * FROM tbl_usuario_ticket WHERE id_ticket=".$idTicket." AND para_usuario=".$idHijo;
-		// echo $tcomedor;
+		echo "Consulta para ver el registro del comedor del alumno con su determinado ticket: $tcomedor</br>";
 		$tickCom=mysqli_query($conexion, $tcomedor);
 		if (mysqli_num_rows($tickCom)>0) {
-			$actualizar="UPDATE tbl_usuario_ticket SET cantidad_ticket=1, precio_ticket=$precioTotal, id_ticket=$idTicket WHERE para_usuario=".$idHijo;
+			$actualizar="UPDATE tbl_usuario_ticket SET cantidad_ticket=1, precio_ticket=".$precioTotal.", id_ticket=" .$idTicket. " WHERE  para_usuario=".$idHijo;
+			echo "Actualizacion: $actualizar</br>";
 			$sumar=mysqli_query($conexion, $actualizar);
 			$primer_tiquet_comedor=false;
-			// echo "<br>false";
+			echo "false";
 		} else {
 			$primer_tiquet_comedor=true;
-			// echo "<br>true";
+			echo "<br>true";
 		}
 		// header("location:home.php");
 	} 
@@ -109,5 +114,5 @@ if(!isset($_SESSION['user'])){
 
 		}
 	}
-	header("location:home.php");
+	// header("location:home.php");
 }
