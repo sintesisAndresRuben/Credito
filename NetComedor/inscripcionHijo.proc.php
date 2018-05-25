@@ -10,8 +10,6 @@ if(!isset($_SESSION['user'])){
 	$precioTotal = $_REQUEST['insertPrecio'];
 	$idHijo = $_REQUEST['idHijo'];
 	$tipoTick = $_REQUEST['tipoTick'];
-	echo "Al principio de la pagina: $tipoTick</br>";
-	
 	if (isset($_REQUEST['lunes'])) {
 		$lunes = $_REQUEST['lunes'];	
 	} else {
@@ -41,7 +39,12 @@ if(!isset($_SESSION['user'])){
 	} else {
 		$viernes='0';
 	}
-	
+	// echo "lunes: $lunes</br>";
+	// echo "martes: $martes</br>";
+	// echo "miercoles: $miercoles</br>";
+	// echo "jueves: $jueves</br>";
+	// echo "viernes: $viernes</br>";
+	// echo "Al principio de la pagina: $tipoTick</br>";
 	$id_usuario_ticket=0;
 
 	if ($tipoTick=="Ticket comedor") {
@@ -64,24 +67,27 @@ if(!isset($_SESSION['user'])){
 
 
 	if ($tipoTick!="Ticket comedor") {
-		echo "Estoy entrando por los difernetes servicios de comedor</br>";
-		echo "Tipo ticket: ".$tipoTick;
-		echo "$precioTotal</br>";
-		echo "$idTicket</br>";
-		$tcomedor="SELECT * FROM tbl_usuario_ticket WHERE id_ticket=".$idTicket." AND para_usuario=".$idHijo;
+		// echo "Estoy entrando por los difernetes servicios de comedor</br>";
+		// echo "Tipo ticket: ".$tipoTick;
+		// echo "$precioTotal</br>";
+		// echo "$idTicket</br>";
+		$tcomedor="SELECT * FROM tbl_usuario_ticket WHERE para_usuario=".$idHijo;
 		echo "Consulta para ver el registro del comedor del alumno con su determinado ticket: $tcomedor</br>";
 		$tickCom=mysqli_query($conexion, $tcomedor);
 		if (mysqli_num_rows($tickCom)>0) {
 			$actualizar="UPDATE tbl_usuario_ticket SET cantidad_ticket=1, precio_ticket=".$precioTotal.", id_ticket=" .$idTicket. " WHERE  para_usuario=".$idHijo;
-			echo "Actualizacion: $actualizar</br>";
+			$dias="UPDATE tbl_dias_reserva SET tbl_dias_reserva.lunes=".$lunes.", tbl_dias_reserva.martes=".$martes.", tbl_dias_reserva.miercoles=".$miercoles.", tbl_dias_reserva.jueves=".$jueves.", tbl_dias_reserva.viernes=".$viernes." WHERE tbl_dias_reserva.id_usuario_ticket=(SELECT tbl_usuario_ticket.id_usuario_ticket FROM tbl_usuario_ticket WHERE para_usuario=".$idHijo.")";
+			// echo "Actualizacion registro: $actualizar</br>";
+			// echo "Actualizacion dias: $dias</br>";
 			$sumar=mysqli_query($conexion, $actualizar);
+			$actudias=mysqli_query($conexion, $dias);
 			$primer_tiquet_comedor=false;
-			echo "false";
+			// echo "false";
 		} else {
 			$primer_tiquet_comedor=true;
-			echo "<br>true";
+			// echo "<br>true";
 		}
-		// header("location:home.php");
+		header("location:home.php");
 	} 
 
 

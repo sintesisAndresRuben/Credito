@@ -58,11 +58,11 @@ if(!isset($_SESSION['user'])){
 			$primer_tiquet_comedor=true;
 			// echo "<br>true";
 		}
-		// header("location:home.php");
+		header("location:home.php");
 	} 
 	
 	if(($tipoTick!='Ticket comedor') OR ($primer_tiquet_comedor)){
-		echo "<br><b>primerTicket</b>";
+		// echo "<br><b>primerTicket</b>";
 		$q = "INSERT INTO tbl_usuario_ticket (id_usuario,para_usuario,id_ticket,fecha_caducidad,cantidad_ticket,precio_ticket) VALUES (".$_SESSION['user']['id_usuario'].",".$_SESSION['user']['id_usuario'].", $idTicket, '$fechaCad', $cantidad, $precioTotal)";
 		$comprarTicket=mysqli_query($conexion, $q);
 
