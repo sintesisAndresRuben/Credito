@@ -71,84 +71,84 @@ require_once 'foothead/header.php';
 									<th>Titulo</th>
 									<th>Última modificación</th>
 									<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-									<th>Eliminar</th>
-									<?php
-								}
-								?>
-
-							</tr>
-						</thead>
-						<?php
-						while ($normativa=mysqli_fetch_array($tablaNormativa)){
-							$id_normativa=$normativa['id_normativa'];
-							$nombre_normativa=$normativa['nombre_normativa'];
-							$ruta_normativa=$normativa['ruta_normativa'];
-							$fecha_normativa=$normativa['fecha_normativa'];	
-							?>	
-							<tr>
-								<td style="display:none;">
-									<?php echo $id_normativa; ?>
-								</td> 
-								<td>
-									<a href="<?php echo"$ruta_normativa"; ?>" target="_blank"><?php echo $nombre_normativa; ?></a>
-								</td>
-								<td>
-									<!--  -->
-									<?php  
-									$date = new DateTime($fecha_normativa);
-									echo $date->format('d-m-Y');
+										<th>Eliminar</th>
+										<?php
+									}
 									?>
-								</td>
-								<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-								<td>
-									<a href="normativaEliminar.proc.php?id=<?php echo $id_normativa; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
-								</td>
+
+								</tr>
+							</thead>
+							<?php
+							while ($normativa=mysqli_fetch_array($tablaNormativa)){
+								$id_normativa=$normativa['id_normativa'];
+								$nombre_normativa=$normativa['nombre_normativa'];
+								$ruta_normativa=$normativa['ruta_normativa'];
+								$fecha_normativa=$normativa['fecha_normativa'];	
+								?>	
+								<tr>
+									<td style="display:none;">
+										<?php echo $id_normativa; ?>
+									</td> 
+									<td>
+										<a href="<?php echo"$ruta_normativa"; ?>" target="_blank"><?php echo $nombre_normativa; ?></a>
+									</td>
+									<td>
+										<!--  -->
+										<?php  
+										$date = new DateTime($fecha_normativa);
+										echo $date->format('d-m-Y');
+										?>
+									</td>
+									<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+										<td>
+											<a href="normativaEliminar.proc.php?id=<?php echo $id_normativa; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
+										</td>
+										<?php
+									}
+									?>
+
+								</tr>
 								<?php
+                // FIN WHILE
 							}
 							?>
-
-						</tr>
+						</table>
+						<!-- FIN TABLA -->
 						<?php
-                // FIN WHILE
+		// FIN ARRAY
+					}else{
+						?>
+
+						<div class="table-responsive" style="margin: auto;  ">
+							<table id="mytable" class="table table-bordred table-striped"> 
+								<thead>
+									<tr>
+										<th>Titulo</th>
+										<th>Última modificación</th>
+
+										<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+											<th>Eliminar</th>
+											<?php
+										}
+										?>
+
+									</tr>
+								</thead>
+								<tr>
+									<td colspan="3">
+										No hay datos que mostrar
+									</td> 
+								</tr>
+							</table>
+						</div>
+						<?php	
 					}
 					?>
-				</table>
-				<!-- FIN TABLA -->
-				<?php
-		// FIN ARRAY
-			}else{
-				?>
-
-				<div class="table-responsive" style="margin: auto;  ">
-					<table id="mytable" class="table table-bordred table-striped"> 
-						<thead>
-							<tr>
-								<th>Titulo</th>
-								<th>Última modificación</th>
-
-								<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-								<th>Eliminar</th>
-								<?php
-							}
-							?>
-
-						</tr>
-					</thead>
-					<tr>
-						<td colspan="3">
-							No hay datos que mostrar
-						</td> 
-					</tr>
-				</table>
+				</br>
+				<!-- FIN TABLA NORMATIVA -->
 			</div>
-			<?php	
-		}
-		?>
-	</br>
-	<!-- FIN TABLA NORMATIVA -->
-</div>
-</div>
-</div>
+		</div>
+	</div>
 </div>
 <p>
 	<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2" id="key1"><span class="fas fa-eye-slash" id="ojo1"></span> Guías y comunicados Servicio de comedor</button>
@@ -168,78 +168,78 @@ require_once 'foothead/header.php';
 							<th>Titulo</th>
 							<th>Última modificación</th>
 							<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-							<th>Eliminar</th>
-							<?php
-						}
-						?>
-					</tr>
-				</thead>
-				<?php
-				while ($normativa=mysqli_fetch_array($tablanormativa)){
-					$id_normativa=$normativa['id_normativa'];
-					$nombre_normativa=$normativa['nombre_normativa'];
-					$ruta_normativa=$normativa['ruta_normativa'];
-					$fecha_normativa=$normativa['fecha_normativa'];	
-					?>	
-					<tr>
-						<td style="display:none;">
-							<?php echo $id_normativa; ?>
-						</td> 
-						<td>
-							<a href="<?php echo"$ruta_normativa"; ?>" target="_blank"><?php echo $nombre_normativa; ?></a>
-						</td>
-						<td>
-							<!--  -->
-							<?php  
-							$date = new DateTime($fecha_normativa);
-							echo $date->format('d-m-Y');
+								<th>Eliminar</th>
+								<?php
+							}
 							?>
-						</td>
-						<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-						<td>
-							<a href="normativaEliminar.proc.php?id=<?php echo $id_normativa; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
-						</td>
+						</tr>
+					</thead>
+					<?php
+					while ($normativa=mysqli_fetch_array($tablanormativa)){
+						$id_normativa=$normativa['id_normativa'];
+						$nombre_normativa=$normativa['nombre_normativa'];
+						$ruta_normativa=$normativa['ruta_normativa'];
+						$fecha_normativa=$normativa['fecha_normativa'];	
+						?>	
+						<tr>
+							<td style="display:none;">
+								<?php echo $id_normativa; ?>
+							</td> 
+							<td>
+								<a href="<?php echo"$ruta_normativa"; ?>" target="_blank"><?php echo $nombre_normativa; ?></a>
+							</td>
+							<td>
+								<!--  -->
+								<?php  
+								$date = new DateTime($fecha_normativa);
+								echo $date->format('d-m-Y');
+								?>
+							</td>
+							<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+								<td>
+									<a href="normativaEliminar.proc.php?id=<?php echo $id_normativa; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
+								</td>
+								<?php
+							}
+							?>
+						</tr>
 						<?php
+                // FIN WHILE
 					}
 					?>
-				</tr>
+				</table>
+				<!-- FIN TABLA -->
 				<?php
-                // FIN WHILE
+		// FIN ARRAY
+			}else{
+				?>
+				<div class="table-responsive" style="margin: auto;  ">
+					<table id="mytable" class="table table-bordred table-striped"> 
+						<thead>
+							<tr>
+								<th>Titulo</th>
+								<th>Última modificación</th>
+
+								<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+									<th>Eliminar</th>
+									<?php
+								}
+								?>
+							</tr>
+						</thead>
+						<tr>
+							<td colspan="3">
+								No hay datos que mostrar
+							</td> 
+						</tr>
+					</table>
+				</div>
+				<?php	
 			}
 			?>
-		</table>
-		<!-- FIN TABLA -->
-		<?php
-		// FIN ARRAY
-	}else{
-		?>
-		<div class="table-responsive" style="margin: auto;  ">
-			<table id="mytable" class="table table-bordred table-striped"> 
-				<thead>
-					<tr>
-						<th>Titulo</th>
-						<th>Última modificación</th>
-
-						<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-						<th>Eliminar</th>
-						<?php
-					}
-					?>
-				</tr>
-			</thead>
-			<tr>
-				<td colspan="3">
-					No hay datos que mostrar
-				</td> 
-			</tr>
-		</table>
+			<!-- FIN TABLA GUIAS Y COMUNICADOS SERVICIO COMEDOR -->
+		</div>
 	</div>
-	<?php	
-}
-?>
-<!-- FIN TABLA GUIAS Y COMUNICADOS SERVICIO COMEDOR -->
-</div>
-</div>
 </div>
 <p>
 	<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3" id="key2"><span class="fas fa-eye-slash" id="ojo2"></span> Guías, Consejos, y Comunicados Administración pública</button>
@@ -259,78 +259,78 @@ require_once 'foothead/header.php';
 							<th>Titulo</th>
 							<th>Última modificación</th>
 							<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-							<th>Eliminar</th>
-							<?php
-						}
-						?>
-					</tr>
-				</thead>
-				<?php
-				while ($normativa=mysqli_fetch_array($tablanormativa)){
-					$id_normativa=$normativa['id_normativa'];
-					$nombre_normativa=$normativa['nombre_normativa'];
-					$ruta_normativa=$normativa['ruta_normativa'];
-					$fecha_normativa=$normativa['fecha_normativa'];	
-					?>	
-					<tr>
-						<td style="display:none;">
-							<?php echo $id_normativa; ?>
-						</td> 
-						<td>
-							<a href="<?php echo"$ruta_normativa"; ?>" target="_blank"><?php echo $nombre_normativa; ?></a>
-						</td>
-						<td>
-							<!--  -->
-							<?php  
-							$date = new DateTime($fecha_normativa);
-							echo $date->format('d-m-Y');
+								<th>Eliminar</th>
+								<?php
+							}
 							?>
-						</td>
-						<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-						<td>
-							<a href="normativaEliminar.proc.php?id=<?php echo $id_normativa; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
-						</td>
+						</tr>
+					</thead>
+					<?php
+					while ($normativa=mysqli_fetch_array($tablanormativa)){
+						$id_normativa=$normativa['id_normativa'];
+						$nombre_normativa=$normativa['nombre_normativa'];
+						$ruta_normativa=$normativa['ruta_normativa'];
+						$fecha_normativa=$normativa['fecha_normativa'];	
+						?>	
+						<tr>
+							<td style="display:none;">
+								<?php echo $id_normativa; ?>
+							</td> 
+							<td>
+								<a href="<?php echo"$ruta_normativa"; ?>" target="_blank"><?php echo $nombre_normativa; ?></a>
+							</td>
+							<td>
+								<!--  -->
+								<?php  
+								$date = new DateTime($fecha_normativa);
+								echo $date->format('d-m-Y');
+								?>
+							</td>
+							<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+								<td>
+									<a href="normativaEliminar.proc.php?id=<?php echo $id_normativa; ?>"><p data-placement="top" data-toggle="tooltip" title="Eliminar producto"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="fas fa-trash"></span></button></p></a>
+								</td>
+								<?php
+							}
+							?>
+						</tr>
 						<?php
+                // FIN WHILE
 					}
 					?>
-				</tr>
+				</table>
+				<!-- FIN TABLA -->
 				<?php
-                // FIN WHILE
+		// FIN ARRAY
+			}else{
+				?>
+				<div class="table-responsive" style="margin: auto;  ">
+					<table id="mytable" class="table table-bordred table-striped"> 
+						<thead>
+							<tr>
+								<th>Titulo</th>
+								<th>Última modificación</th>
+
+								<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
+									<th>Eliminar</th>
+									<?php
+								}
+								?>
+							</tr>
+						</thead>
+						<tr>
+							<td colspan="3">
+								No hay datos que mostrar
+							</td> 
+						</tr>
+					</table>
+				</div>
+				<?php	
 			}
 			?>
-		</table>
-		<!-- FIN TABLA -->
-		<?php
-		// FIN ARRAY
-	}else{
-		?>
-		<div class="table-responsive" style="margin: auto;  ">
-			<table id="mytable" class="table table-bordred table-striped"> 
-				<thead>
-					<tr>
-						<th>Titulo</th>
-						<th>Última modificación</th>
-
-						<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-						<th>Eliminar</th>
-						<?php
-					}
-					?>
-				</tr>
-			</thead>
-			<tr>
-				<td colspan="3">
-					No hay datos que mostrar
-				</td> 
-			</tr>
-		</table>
+			<!-- FIN TABLA GUIAS, CONSEJOS, Y COMUNICADOS ADMINISTRACION PUBLICA -->
+		</div>
 	</div>
-	<?php	
-}
-?>
-<!-- FIN TABLA GUIAS, CONSEJOS, Y COMUNICADOS ADMINISTRACION PUBLICA -->
-</div>
-</div>
 </div>
 </div>
 <!-- FIN EJEMPLO PARA OCULTAR LAS TABLAS -->
@@ -343,12 +343,9 @@ require_once 'foothead/header.php';
 		</form>
 		<!-- boton de herraminetas -->
 		<?php  if ($_SESSION['user']['tipo_usuario']=='personal'){ ?>
-		<p>
-			<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><span class="fas fa-wrench"></span></button>
-		</p>
-	</div>
-	<div class="row">
-		<div class="col-8">
+			<p>
+				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><span class="fas fa-wrench"></span></button>
+			</p>
 			<div class="collapse" id="collapseExample">
 				<div class="card-body">
 					<form action="normativaSubida.proc.php" method="post" enctype="multipart/form-data">
