@@ -56,12 +56,8 @@ require_once 'foothead/header.php';
 							</div>
 							<?php
 						}
-
-
-
-						// Fin while
 					}
-
+					// Fin while
 					?>
 				</div>
 			</div>
