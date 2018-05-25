@@ -45,9 +45,10 @@ if(!isset($_SESSION['user'])){
 	// echo "jueves: $jueves</br>";
 	// echo "viernes: $viernes</br>";
 	// echo "Al principio de la pagina: $tipoTick</br>";
+	// echo "$tipoTick";
 	$id_usuario_ticket=0;
 
-	if ($tipoTick=="Ticket comedor") {
+	if ($tipoTick=="Ticket comedor ") {
 		// echo "Estoy entrando por el tipo ticket comedor</br>";
 		// echo "Tipo ticket: ".$tipoTick;
 		$tcomedor="SELECT * FROM tbl_usuario_ticket WHERE id_ticket=".$idTicket." AND para_usuario=".$idHijo;
@@ -65,14 +66,13 @@ if(!isset($_SESSION['user'])){
 		// header("location:home.php");
 	} 
 
-
-	if ($tipoTick!="Ticket comedor") {
+	if ($tipoTick!="Ticket comedor ") {
 		// echo "Estoy entrando por los difernetes servicios de comedor</br>";
 		// echo "Tipo ticket: ".$tipoTick;
 		// echo "$precioTotal</br>";
 		// echo "$idTicket</br>";
 		$tcomedor="SELECT * FROM tbl_usuario_ticket WHERE para_usuario=".$idHijo;
-		echo "Consulta para ver el registro del comedor del alumno con su determinado ticket: $tcomedor</br>";
+		// echo "Consulta para ver el registro del comedor del alumno con su determinado ticket: $tcomedor</br>";
 		$tickCom=mysqli_query($conexion, $tcomedor);
 		if (mysqli_num_rows($tickCom)>0) {
 			$actualizar="UPDATE tbl_usuario_ticket SET cantidad_ticket=1, precio_ticket=".$precioTotal.", id_ticket=" .$idTicket. " WHERE  para_usuario=".$idHijo;
@@ -120,5 +120,5 @@ if(!isset($_SESSION['user'])){
 
 		}
 	}
-	// header("location:home.php");
+	header("location:home.php");
 }
