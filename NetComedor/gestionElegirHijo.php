@@ -24,6 +24,7 @@ require_once 'foothead/header.php';
 //Query para BUSCAR cuantos hijos pertenece al padre que ha iniciado sesion.
 	$buscarPadre = "SELECT * FROM `tbl_padres_alu_profe` WHERE id_usu_dep=".$idPadre;
 	$resultPadre = mysqli_query($conexion,$buscarPadre);
+//Hacer una consulta que me salgan los hijos de los padres pero que no me aparezcan los hijos por cada reserva que hacen entre servicio y ticket.
 
 //Query para RECOGER los datos de los hijos que pertenecen al padre que ha iniciado sesion.
 	$datosHijos= "SELECT tbl_usuarios.* FROM tbl_usuarios INNER JOIN (SELECT id_usuario FROM tbl_padres_alu_profe WHERE id_usu_dep=17) q ON tbl_usuarios.id_usuario=q.id_usuario INNER JOIN tbl_usuario_ticket ON tbl_usuarios.id_usuario=tbl_usuario_ticket.para_usuario WHERE tbl_usuario_ticket.id_usuario=".$idPadre;

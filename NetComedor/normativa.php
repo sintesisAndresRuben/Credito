@@ -362,7 +362,7 @@ require_once 'foothead/header.php';
 							<label><input type="radio" name="norma" id="norma" value="Guías, Consejos, y Comunicados Administración pública"> Guías, Consejos, y Comunicados Administración pública</label>
 						</div>
 					</form>
-				</div>
+				</div> 
 			</div>
 		</div>
 	</div>
@@ -389,8 +389,9 @@ require_once 'foothead/header.php';
 	<?php
 }
 ?>
-<br><br><br><br>
 </div>
+</div>
+<br><br><br><br>
 <!--Final del contenido-->
 <!--Final de la página en sí-->
 <?php
