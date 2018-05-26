@@ -2,10 +2,10 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 25, 2018 at 07:48 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 26-05-2018 a las 16:47:09
+-- Versión del servidor: 10.1.29-MariaDB
+-- Versión de PHP: 7.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bd_comedor`
+-- Base de datos: `bd_comedor`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_asistencia`
+-- Estructura de tabla para la tabla `tbl_asistencia`
 --
 
 CREATE TABLE `tbl_asistencia` (
@@ -39,7 +39,7 @@ CREATE TABLE `tbl_asistencia` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_dias_reserva`
+-- Estructura de tabla para la tabla `tbl_dias_reserva`
 --
 
 CREATE TABLE `tbl_dias_reserva` (
@@ -53,22 +53,16 @@ CREATE TABLE `tbl_dias_reserva` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_dias_reserva`
+-- Volcado de datos para la tabla `tbl_dias_reserva`
 --
 
 INSERT INTO `tbl_dias_reserva` (`id_dias_reserva`, `id_usuario_ticket`, `lunes`, `martes`, `miercoles`, `jueves`, `viernes`) VALUES
-(13, 13, 1, 1, 1, 0, 0),
-(14, 14, 0, 0, 0, 0, 0),
-(16, 16, 0, 0, 0, 0, 0),
-(17, 17, 0, 0, 0, 0, 0),
-(18, 18, 0, 0, 0, 0, 0),
-(19, 18, 0, 0, 0, 0, 0),
-(20, 18, 0, 0, 0, 0, 0);
+(29, 23, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_etapa`
+-- Estructura de tabla para la tabla `tbl_etapa`
 --
 
 CREATE TABLE `tbl_etapa` (
@@ -77,7 +71,7 @@ CREATE TABLE `tbl_etapa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_etapa`
+-- Volcado de datos para la tabla `tbl_etapa`
 --
 
 INSERT INTO `tbl_etapa` (`id_etapa`, `nombre_etapa`) VALUES
@@ -95,7 +89,7 @@ INSERT INTO `tbl_etapa` (`id_etapa`, `nombre_etapa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_menu`
+-- Estructura de tabla para la tabla `tbl_menu`
 --
 
 CREATE TABLE `tbl_menu` (
@@ -108,7 +102,7 @@ CREATE TABLE `tbl_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_menu`
+-- Volcado de datos para la tabla `tbl_menu`
 --
 
 INSERT INTO `tbl_menu` (`id_menu`, `nombre_menu`, `tipo_menu`, `ruta_menu`, `fecha_menu`, `id_etapa`) VALUES
@@ -127,7 +121,7 @@ INSERT INTO `tbl_menu` (`id_menu`, `nombre_menu`, `tipo_menu`, `ruta_menu`, `fec
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_normativa`
+-- Estructura de tabla para la tabla `tbl_normativa`
 --
 
 CREATE TABLE `tbl_normativa` (
@@ -140,7 +134,7 @@ CREATE TABLE `tbl_normativa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_normativa`
+-- Volcado de datos para la tabla `tbl_normativa`
 --
 
 INSERT INTO `tbl_normativa` (`id_normativa`, `nombre_normativa`, `tipo_normativa`, `ruta_normativa`, `fecha_normativa`, `id_etapa`) VALUES
@@ -158,7 +152,7 @@ INSERT INTO `tbl_normativa` (`id_normativa`, `nombre_normativa`, `tipo_normativa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_padres_alu_profe`
+-- Estructura de tabla para la tabla `tbl_padres_alu_profe`
 --
 
 CREATE TABLE `tbl_padres_alu_profe` (
@@ -169,7 +163,7 @@ CREATE TABLE `tbl_padres_alu_profe` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_padres_alu_profe`
+-- Volcado de datos para la tabla `tbl_padres_alu_profe`
 --
 
 INSERT INTO `tbl_padres_alu_profe` (`id_pap`, `id_usuario`, `id_usu_dep`, `tipo`) VALUES
@@ -179,7 +173,7 @@ INSERT INTO `tbl_padres_alu_profe` (`id_pap`, `id_usuario`, `id_usu_dep`, `tipo`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_qr`
+-- Estructura de tabla para la tabla `tbl_qr`
 --
 
 CREATE TABLE `tbl_qr` (
@@ -189,7 +183,7 @@ CREATE TABLE `tbl_qr` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_qr`
+-- Volcado de datos para la tabla `tbl_qr`
 --
 
 INSERT INTO `tbl_qr` (`id_qr`, `codigo`, `fecha`) VALUES
@@ -198,7 +192,7 @@ INSERT INTO `tbl_qr` (`id_qr`, `codigo`, `fecha`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_ticket`
+-- Estructura de tabla para la tabla `tbl_ticket`
 --
 
 CREATE TABLE `tbl_ticket` (
@@ -209,7 +203,7 @@ CREATE TABLE `tbl_ticket` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_ticket`
+-- Volcado de datos para la tabla `tbl_ticket`
 --
 
 INSERT INTO `tbl_ticket` (`id_ticket`, `importe_ticket`, `tipo_ticket`, `id_etapa`) VALUES
@@ -234,7 +228,7 @@ INSERT INTO `tbl_ticket` (`id_ticket`, `importe_ticket`, `tipo_ticket`, `id_etap
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_usuarios`
+-- Estructura de tabla para la tabla `tbl_usuarios`
 --
 
 CREATE TABLE `tbl_usuarios` (
@@ -250,7 +244,7 @@ CREATE TABLE `tbl_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_usuarios`
+-- Volcado de datos para la tabla `tbl_usuarios`
 --
 
 INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `mail_usuario`, `password_usuario`, `tipo_usuario`, `admin`, `id_etapa`, `sexo_usuario`) VALUES
@@ -268,7 +262,7 @@ INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_usuario_ticket`
+-- Estructura de tabla para la tabla `tbl_usuario_ticket`
 --
 
 CREATE TABLE `tbl_usuario_ticket` (
@@ -282,20 +276,16 @@ CREATE TABLE `tbl_usuario_ticket` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_usuario_ticket`
+-- Volcado de datos para la tabla `tbl_usuario_ticket`
 --
 
 INSERT INTO `tbl_usuario_ticket` (`id_usuario_ticket`, `id_usuario`, `para_usuario`, `id_ticket`, `fecha_caducidad`, `cantidad_ticket`, `precio_ticket`) VALUES
-(13, 17, 18, 8, '2018-08-30', '1', '110.83'),
-(14, 17, 18, 9, '2018-08-30', '10', '97'),
-(16, 17, 19, 13, '2018-08-30', '10', '87'),
-(17, 15, 15, 18, '2018-08-30', '1', '3.9'),
-(18, 4, 4, 16, '2018-08-30', '0', '11.7');
+(23, 3, 3, 16, '2018-08-30', '10', '39');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_usuario_ticket_informes`
+-- Estructura de tabla para la tabla `tbl_usuario_ticket_informes`
 --
 
 CREATE TABLE `tbl_usuario_ticket_informes` (
@@ -309,11 +299,18 @@ CREATE TABLE `tbl_usuario_ticket_informes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
+-- Volcado de datos para la tabla `tbl_usuario_ticket_informes`
+--
+
+INSERT INTO `tbl_usuario_ticket_informes` (`id_informes`, `id_usuario`, `para_usuario`, `id_ticket`, `fecha_caducidad`, `cantidad_ticket`, `precio_ticket`) VALUES
+(12, 3, 3, 16, '2018-08-30', '10', '39');
+
+--
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `tbl_asistencia`
+-- Indices de la tabla `tbl_asistencia`
 --
 ALTER TABLE `tbl_asistencia`
   ADD PRIMARY KEY (`id_asistencia`),
@@ -321,34 +318,34 @@ ALTER TABLE `tbl_asistencia`
   ADD KEY `id_etapa` (`id_etapa`);
 
 --
--- Indexes for table `tbl_dias_reserva`
+-- Indices de la tabla `tbl_dias_reserva`
 --
 ALTER TABLE `tbl_dias_reserva`
   ADD PRIMARY KEY (`id_dias_reserva`),
   ADD KEY `id_usuario_ticket` (`id_usuario_ticket`);
 
 --
--- Indexes for table `tbl_etapa`
+-- Indices de la tabla `tbl_etapa`
 --
 ALTER TABLE `tbl_etapa`
   ADD PRIMARY KEY (`id_etapa`);
 
 --
--- Indexes for table `tbl_menu`
+-- Indices de la tabla `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
   ADD PRIMARY KEY (`id_menu`),
   ADD KEY `id_etapa` (`id_etapa`);
 
 --
--- Indexes for table `tbl_normativa`
+-- Indices de la tabla `tbl_normativa`
 --
 ALTER TABLE `tbl_normativa`
   ADD PRIMARY KEY (`id_normativa`),
   ADD KEY `id_etapa` (`id_etapa`);
 
 --
--- Indexes for table `tbl_padres_alu_profe`
+-- Indices de la tabla `tbl_padres_alu_profe`
 --
 ALTER TABLE `tbl_padres_alu_profe`
   ADD PRIMARY KEY (`id_pap`),
@@ -356,27 +353,27 @@ ALTER TABLE `tbl_padres_alu_profe`
   ADD KEY `id_padre` (`id_usu_dep`);
 
 --
--- Indexes for table `tbl_qr`
+-- Indices de la tabla `tbl_qr`
 --
 ALTER TABLE `tbl_qr`
   ADD PRIMARY KEY (`id_qr`);
 
 --
--- Indexes for table `tbl_ticket`
+-- Indices de la tabla `tbl_ticket`
 --
 ALTER TABLE `tbl_ticket`
   ADD PRIMARY KEY (`id_ticket`),
   ADD KEY `id_etapa` (`id_etapa`);
 
 --
--- Indexes for table `tbl_usuarios`
+-- Indices de la tabla `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
   ADD PRIMARY KEY (`id_usuario`),
   ADD KEY `id_etapa` (`id_etapa`);
 
 --
--- Indexes for table `tbl_usuario_ticket`
+-- Indices de la tabla `tbl_usuario_ticket`
 --
 ALTER TABLE `tbl_usuario_ticket`
   ADD PRIMARY KEY (`id_usuario_ticket`),
@@ -385,134 +382,134 @@ ALTER TABLE `tbl_usuario_ticket`
   ADD KEY `para_usuario` (`para_usuario`);
 
 --
--- Indexes for table `tbl_usuario_ticket_informes`
+-- Indices de la tabla `tbl_usuario_ticket_informes`
 --
 ALTER TABLE `tbl_usuario_ticket_informes`
   ADD PRIMARY KEY (`id_informes`),
-  ADD UNIQUE KEY `id_usuario` (`id_usuario`),
-  ADD UNIQUE KEY `para_usuario` (`para_usuario`),
-  ADD UNIQUE KEY `id_ticket` (`id_ticket`);
+  ADD KEY `id_ticket` (`id_ticket`) USING BTREE,
+  ADD KEY `id_usuario` (`id_usuario`) USING BTREE,
+  ADD KEY `para_usuario` (`para_usuario`) USING BTREE;
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `tbl_asistencia`
+-- AUTO_INCREMENT de la tabla `tbl_asistencia`
 --
 ALTER TABLE `tbl_asistencia`
   MODIFY `id_asistencia` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tbl_dias_reserva`
+-- AUTO_INCREMENT de la tabla `tbl_dias_reserva`
 --
 ALTER TABLE `tbl_dias_reserva`
-  MODIFY `id_dias_reserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_dias_reserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `tbl_etapa`
+-- AUTO_INCREMENT de la tabla `tbl_etapa`
 --
 ALTER TABLE `tbl_etapa`
   MODIFY `id_etapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `tbl_menu`
+-- AUTO_INCREMENT de la tabla `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
   MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `tbl_normativa`
+-- AUTO_INCREMENT de la tabla `tbl_normativa`
 --
 ALTER TABLE `tbl_normativa`
   MODIFY `id_normativa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT for table `tbl_padres_alu_profe`
+-- AUTO_INCREMENT de la tabla `tbl_padres_alu_profe`
 --
 ALTER TABLE `tbl_padres_alu_profe`
   MODIFY `id_pap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tbl_qr`
+-- AUTO_INCREMENT de la tabla `tbl_qr`
 --
 ALTER TABLE `tbl_qr`
   MODIFY `id_qr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `tbl_ticket`
+-- AUTO_INCREMENT de la tabla `tbl_ticket`
 --
 ALTER TABLE `tbl_ticket`
   MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT for table `tbl_usuarios`
+-- AUTO_INCREMENT de la tabla `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `tbl_usuario_ticket`
+-- AUTO_INCREMENT de la tabla `tbl_usuario_ticket`
 --
 ALTER TABLE `tbl_usuario_ticket`
-  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `tbl_usuario_ticket_informes`
+-- AUTO_INCREMENT de la tabla `tbl_usuario_ticket_informes`
 --
 ALTER TABLE `tbl_usuario_ticket_informes`
-  MODIFY `id_informes` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_informes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `tbl_asistencia`
+-- Filtros para la tabla `tbl_asistencia`
 --
 ALTER TABLE `tbl_asistencia`
   ADD CONSTRAINT `tbl_asistencia_ibfk_1` FOREIGN KEY (`id_usuario_ticket`) REFERENCES `tbl_usuario_ticket` (`id_usuario_ticket`) ON UPDATE CASCADE,
   ADD CONSTRAINT `tbl_asistencia_ibfk_2` FOREIGN KEY (`id_etapa`) REFERENCES `tbl_etapa` (`id_etapa`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_dias_reserva`
+-- Filtros para la tabla `tbl_dias_reserva`
 --
 ALTER TABLE `tbl_dias_reserva`
   ADD CONSTRAINT `tbl_dias_reserva_ibfk_1` FOREIGN KEY (`id_usuario_ticket`) REFERENCES `tbl_usuario_ticket` (`id_usuario_ticket`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_menu`
+-- Filtros para la tabla `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
   ADD CONSTRAINT `tbl_menu_ibfk_1` FOREIGN KEY (`id_etapa`) REFERENCES `tbl_etapa` (`id_etapa`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_normativa`
+-- Filtros para la tabla `tbl_normativa`
 --
 ALTER TABLE `tbl_normativa`
   ADD CONSTRAINT `tbl_normativa_ibfk_1` FOREIGN KEY (`id_etapa`) REFERENCES `tbl_etapa` (`id_etapa`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_padres_alu_profe`
+-- Filtros para la tabla `tbl_padres_alu_profe`
 --
 ALTER TABLE `tbl_padres_alu_profe`
   ADD CONSTRAINT `tbl_padres_alu_profe_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`) ON UPDATE CASCADE,
   ADD CONSTRAINT `tbl_padres_alu_profe_ibfk_2` FOREIGN KEY (`id_usu_dep`) REFERENCES `tbl_usuarios` (`id_usuario`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_ticket`
+-- Filtros para la tabla `tbl_ticket`
 --
 ALTER TABLE `tbl_ticket`
   ADD CONSTRAINT `tbl_ticket_ibfk_1` FOREIGN KEY (`id_etapa`) REFERENCES `tbl_etapa` (`id_etapa`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_usuarios`
+-- Filtros para la tabla `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
   ADD CONSTRAINT `tbl_usuarios_ibfk_1` FOREIGN KEY (`id_etapa`) REFERENCES `tbl_etapa` (`id_etapa`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_usuario_ticket`
+-- Filtros para la tabla `tbl_usuario_ticket`
 --
 ALTER TABLE `tbl_usuario_ticket`
   ADD CONSTRAINT `tbl_usuario_ticket_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`) ON UPDATE CASCADE,
@@ -520,7 +517,7 @@ ALTER TABLE `tbl_usuario_ticket`
   ADD CONSTRAINT `tbl_usuario_ticket_ibfk_3` FOREIGN KEY (`para_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_usuario_ticket_informes`
+-- Filtros para la tabla `tbl_usuario_ticket_informes`
 --
 ALTER TABLE `tbl_usuario_ticket_informes`
   ADD CONSTRAINT `tbl_usuario_ticket_informes_ibfk_3` FOREIGN KEY (`id_ticket`) REFERENCES `tbl_ticket` (`id_ticket`) ON UPDATE CASCADE,
