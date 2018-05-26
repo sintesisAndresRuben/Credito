@@ -291,15 +291,16 @@ unset($_SESSION['error']);
 unset($_SESSION['error2']);
 ?>
 <!-- fin boton de herramientas -->
-</br></br>
 <?php
 }
 ?>
 </div>
+</div>
+</br></br></br></br>
 <!--Final del contenido-->
 <!--Final de la página en sí-->
 <?php
 //Insertamos el footer
-// require_once 'foothead/footer.php';
+require_once 'foothead/footer.php';
 ?>
 </html>
