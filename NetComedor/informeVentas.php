@@ -23,7 +23,7 @@ require_once 'foothead/headerGESTION.php';
 			<!--Inicio de la página en sí-->
 			<!--Inicio del contenido-->
 			<?php
-			$q="SELECT `tbl_usuarios`.`mail_usuario`, `tbl_etapa`.`nombre_etapa`, `tbl_ticket`.`tipo_ticket`, `tbl_ticket`.`importe_ticket`, `tbl_usuario_ticket`.`cantidad_ticket`, `tbl_usuario_ticket`.`precio_ticket` FROM `tbl_ticket` INNER JOIN `tbl_etapa` ON `tbl_ticket`.`id_etapa` = `tbl_etapa`.`id_etapa` INNER JOIN `tbl_usuario_ticket` ON `tbl_usuario_ticket`.`id_ticket` = `tbl_ticket`.`id_ticket` INNER JOIN `tbl_usuarios` ON `tbl_usuarios`.`id_usuario` = `tbl_usuario_ticket`.`id_usuario`";
+			$q="SELECT `tbl_usuarios`.`mail_usuario`, `tbl_etapa`.`nombre_etapa`, `tbl_ticket`.`tipo_ticket`, `tbl_ticket`.`importe_ticket`, `tbl_usuario_ticket_informes`.`cantidad_ticket`, `tbl_usuario_ticket_informes`.`precio_ticket` FROM `tbl_ticket` INNER JOIN `tbl_etapa` ON `tbl_ticket`.`id_etapa` = `tbl_etapa`.`id_etapa` INNER JOIN `tbl_usuario_ticket_informes` ON `tbl_usuario_ticket_informes`.`id_ticket` = `tbl_ticket`.`id_ticket` INNER JOIN `tbl_usuarios` ON `tbl_usuarios`.`id_usuario` = `tbl_usuario_ticket_informes`.`id_usuario`";
 
 			$tablaTicketUsuarios = mysqli_query($conexion, $q);
 			if (mysqli_num_rows($tablaTicketUsuarios)>0) {
