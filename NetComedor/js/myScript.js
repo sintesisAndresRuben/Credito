@@ -88,8 +88,9 @@ $(document).ready(function(){
     var suma = precio*cantidad;
     var suma2 = suma.toFixed(2);
     $("#valor_ticket").val(suma);
-    var total = $("#valor_ticket").val()+"€"
-    $( "#precio" ).html(total);
+    var total = $("#valor_ticket").val();
+    var total2= parseFloat(total);
+    $( "#precio" ).html(total2.toFixed(2)+" €");
     $("#insertPrecio").val(suma2);
 
   })
