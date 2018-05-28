@@ -57,6 +57,7 @@ if (mysqli_num_rows($resultado)>0){
 								<!-- <option value="" id="0" selected="selected"></option> -->
 								<?php
 								$sqlOption = "SELECT tbl_ticket.id_ticket,tbl_ticket.importe_ticket,tbl_ticket.tipo_ticket,tbl_ticket.id_etapa, tbl_usuario_ticket.id_usuario_ticket FROM tbl_ticket INNER JOIN tbl_usuario_ticket ON tbl_ticket.id_ticket= tbl_usuario_ticket.id_ticket WHERE id_etapa=".$Hijo['datos']['id_etapa'];
+								echo $sqlOption;
 								$result = mysqli_query($conexion,$sqlOption);
 
 								if (mysqli_num_rows($result)>0) {
