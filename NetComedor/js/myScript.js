@@ -8,8 +8,9 @@ $(document).ready(function(){
     $("#textoCant").html(numticket);
     var precio = $("#valor_ticket").val();
     var suma = precio*numticket;
-    $( "#precio" ).html(suma+"€ ");
-    $("#insertPrecio").val(suma);
+    var suma2 = suma.toFixed(2);
+    $( "#precio" ).html(suma2+"€ ");
+    $("#insertPrecio").val(suma2);
   });
   // AL CAMBIAR DE NUMERO CON LAS FLECHAS DEL INPUT
   $("#cantidadTicket").keyup(function(){
@@ -17,8 +18,9 @@ $(document).ready(function(){
     $("#textoCant").html(numticket);
     var precio = $("#valor_ticket").val();
     var suma = precio*numticket;
-    $( "#precio" ).html(suma+"€");
-    $("#insertPrecio").val(suma);
+    var suma2 = suma.toFixed(2);
+    $( "#precio" ).html(suma2+"€");
+    $("#insertPrecio").val(suma2);
 
   });
 
@@ -84,10 +86,11 @@ $(document).ready(function(){
     $( "#txtTicket" ).html( str );
     $("#txtTicket1").val(str);
     var suma = precio*cantidad;
+    var suma2 = suma.toFixed(2);
     $("#valor_ticket").val(suma);
     var total = $("#valor_ticket").val()+"€"
     $( "#precio" ).html(total);
-    $("#insertPrecio").val(suma);
+    $("#insertPrecio").val(suma2);
 
   })
   .change();
