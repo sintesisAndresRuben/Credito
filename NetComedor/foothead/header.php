@@ -16,7 +16,7 @@
   <link rel="stylesheet" type="text/css" href="css/footer.css" media="all">
   <link rel="stylesheet" type="text/css" href="css/header.css" media="all">
   <link rel="stylesheet" type="text/css" href="css/contenido.css" media="all">
-  <script src="js/myScript.js"></script>
+  <!-- <script src="js/myScript.js"></script> -->
 
   <!-- NOTIFICACIONES -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
