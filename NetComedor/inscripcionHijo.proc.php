@@ -77,14 +77,22 @@ if(!isset($_SESSION['user'])){
 	} 
 
 	if ($tipoTick!="Ticket comedor ") {
-		echo "Estoy entrando por los difernetes servicios de comedor</br>";
-		echo "Tipo ticket: ".$tipoTick;
+		// echo "Estoy entrando por los difernetes servicios de comedor</br>";
+		// echo "Tipo ticket: ".$tipoTick;
 		// echo "$precioTotal</br>";
-		echo "Id del ticket: $idTicket</br>";
-		echo "Id del ticket anterior: ".$UpServicio;
+		// echo "Id del ticket: $idTicket</br>";
+		// echo "Id del ticket anterior: ".$UpServicio;
 		//
 		// echo "Consulta para ver el registro del comedor del alumno con su determinado ticket: $tcomedor</br>";
-		$tcomedor="SELECT * FROM tbl_usuario_ticket WHERE id_ticket<>9 AND para_usuario=".$idHijo;
+		$tcomedor="SELECT * FROM tbl_usuario_ticket WHERE (id_ticket=1 AND para_usuario=18) 
+		OR (id_ticket=2 AND para_usuario=$idHijo) 
+		OR (id_ticket=3 AND para_usuario=$idHijo)
+		OR (id_ticket=6 AND para_usuario=$idHijo) 
+		OR (id_ticket=7 AND para_usuario=$idHijo)
+		OR (id_ticket=8 AND para_usuario=$idHijo) 
+		OR (id_ticket=10 AND para_usuario=$idHijo)
+		OR (id_ticket=11 AND para_usuario=$idHijo) 
+		OR (id_ticket=12 AND para_usuario=$idHijo)";
 		$tickCom=mysqli_query($conexion, $tcomedor);
 		if (mysqli_num_rows($tickCom)>0) {
 
@@ -92,17 +100,33 @@ if(!isset($_SESSION['user'])){
 
 			$sumar=mysqli_query($conexion, $actualizar);
 
-			$dias="UPDATE tbl_dias_reserva SET tbl_dias_reserva.lunes=".$lunes.", tbl_dias_reserva.martes=".$martes.", tbl_dias_reserva.miercoles=".$miercoles.", tbl_dias_reserva.jueves=".$jueves.", tbl_dias_reserva.viernes=".$viernes." WHERE tbl_dias_reserva.id_usuario_ticket=(SELECT tbl_usuario_ticket.id_usuario_ticket FROM tbl_usuario_ticket WHERE para_usuario=".$idHijo.")";
+			$a="SELECT tbl_usuario_ticket.id_usuario_ticket, tbl_usuario_ticket.id_ticket FROM tbl_usuario_ticket WHERE (id_ticket=1 AND para_usuario=".$idHijo.") 
+			OR (id_ticket=2 AND para_usuario=".$idHijo.") 
+			OR (id_ticket=3 AND para_usuario=".$idHijo.")
+			OR (id_ticket=6 AND para_usuario=".$idHijo.") 
+			OR (id_ticket=7 AND para_usuario=".$idHijo.")
+			OR (id_ticket=8 AND para_usuario=".$idHijo.") 
+			OR (id_ticket=10 AND para_usuario=".$idHijo.")
+			OR (id_ticket=11 AND para_usuario=".$idHijo.") 
+			OR (id_ticket=12 AND para_usuario=".$idHijo.")";
+			$r = mysqli_query($conexion, $a);
+			if (mysqli_num_rows($r)>0){
+				$d=(mysqli_fetch_array($r));
+			$h['datos']=$d;
+			$h['datos']['id_usuario_ticket'];
+			}
+			// echo "</br>".$h['datos']['id_usuario_ticket'];
+			$dias="UPDATE tbl_dias_reserva SET tbl_dias_reserva.lunes=".$lunes.", tbl_dias_reserva.martes=".$martes.", tbl_dias_reserva.miercoles=".$miercoles.", tbl_dias_reserva.jueves=".$jueves.", tbl_dias_reserva.viernes=".$viernes." WHERE tbl_dias_reserva.id_usuario_ticket=".$h['datos']['id_usuario_ticket'];
 
 			$actudias=mysqli_query($conexion, $dias);
-
+			// echo "</br>$dias";
 			$informes="INSERT INTO tbl_usuario_ticket_informes (id_usuario,para_usuario,id_ticket,fecha_caducidad,cantidad_ticket,precio_ticket) VALUES (".$_SESSION['user']['id_usuario'].",".$idHijo.", $idTicket, '$fechaCad', $cantidad, $precioTotal)";
 
 			$insertar=mysqli_query($conexion, $informes);
 			// echo "Actualizacion registro: $actualizar</br>";
 			// echo "Actualizacion dias: $dias</br>";
-			
-			
+
+
 			$primer_tiquet_comedor=false;
 			// echo "false";
 		} else {
@@ -132,8 +156,14 @@ if(!isset($_SESSION['user'])){
 				} 
 
 				if ($tbl_ultimo_registro==true) {
-					$tbl_dias_reserva="INSERT INTO tbl_dias_reserva (id_usuario_ticket, lunes, martes, miercoles, jueves, viernes) VALUES ($id_usu_ticket, $lunes, $martes, $miercoles, $jueves, $viernes)";
-					$registrarAsistencia=mysqli_query($conexion,$tbl_dias_reserva);
+					if ($tipoTick!="Ticket comedor ") {
+						$tbl_dias_reserva="INSERT INTO tbl_dias_reserva (id_usuario_ticket, lunes, martes, miercoles, jueves, viernes,servicio) VALUES ($id_usu_ticket, $lunes, $martes, $miercoles, $jueves, $viernes,'Si')";
+						$registrarAsistencia=mysqli_query($conexion,$tbl_dias_reserva);
+					} else {
+						$tbl_dias_reserva="INSERT INTO tbl_dias_reserva (id_usuario_ticket, lunes, martes, miercoles, jueves, viernes) VALUES ($id_usu_ticket, $lunes, $martes, $miercoles, $jueves, $viernes)";
+						$registrarAsistencia=mysqli_query($conexion,$tbl_dias_reserva);
+					}
+
 
 		// echo $tbl_dias_reserva;
 		// echo $id_usu_ticket;
@@ -145,5 +175,5 @@ if(!isset($_SESSION['user'])){
 
 		}
 	}
-	header("location:home.php");
+header("location:home.php");
 }

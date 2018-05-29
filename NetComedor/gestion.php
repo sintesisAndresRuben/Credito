@@ -15,6 +15,7 @@ if (!isset($_SESSION['user'])) {
 		//Insertamos el header general
 require_once 'foothead/header.php';
 ?>
+<script src="js/myScriptGestion.js"></script>
 
 <!--Inicio de la página en sí-->
 <!--Inicio del contenido--> 

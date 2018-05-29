@@ -49,8 +49,8 @@ $(document).ready(function(){
       $("#cantidadTicket").prop("type","hidden");
       $("#david").css("visibility", "hidden");
       //CAMBIAR EL VALOR DEL INPUT A UNO PARA QUE NO MULTIPLIQUE  
-      $("#textoCant").html('1');
       $("#david").val('1');
+      $("#textoCant").html('1');
       $("input[type=checkbox]").prop('checked', true);
       $("input[type=checkbox]").val('1');
       $("#cantidad").val('5');
@@ -60,12 +60,12 @@ $(document).ready(function(){
 
     } else if (caca=='Servicio comedor 4 días') {
       $("#cantidadTicket").val('1');
-      $("#textoCant").html('1');
       $("#cantidadTicket").prop("type","hidden");
       $("#david").css("visibility", "hidden");
+      $("#textoCant").html('1');
       //CAMBIAR EL VALOR DEL INPUT A UNO PARA QUE NO MULTIPLIQUE  
       $("#david").val('1');
-      $("input[type=checkbox]").prop('checked', false);
+      // $("input[type=checkbox]").prop('checked', false);
       $("#cantidad").val('4');
       $("#checks").css("visibility", "visible");
       $("#seleccionados").html('0');
@@ -77,7 +77,7 @@ $(document).ready(function(){
       $("#david").css("visibility", "hidden");
       //CAMBIAR EL VALOR DEL INPUT A UNO PARA QUE NO MULTIPLIQUE  
       $("#david").val('1');
-      $("input[type=checkbox]").prop('checked', false);
+      // $("input[type=checkbox]").prop('checked', false);
       $("#cantidad").val('3');
       $("#checks").css("visibility", "visible");
       $("#seleccionados").html('0');
