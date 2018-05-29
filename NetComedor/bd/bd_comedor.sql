@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-05-2018 a las 16:47:09
--- Versión del servidor: 10.1.29-MariaDB
--- Versión de PHP: 7.0.26
+-- Tiempo de generación: 29-05-2018 a las 20:44:43
+-- Versión del servidor: 10.1.28-MariaDB
+-- Versión de PHP: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -49,15 +49,16 @@ CREATE TABLE `tbl_dias_reserva` (
   `martes` tinyint(1) NOT NULL,
   `miercoles` tinyint(1) NOT NULL,
   `jueves` tinyint(1) NOT NULL,
-  `viernes` tinyint(1) NOT NULL
+  `viernes` tinyint(1) NOT NULL,
+  `servicio` enum('No','Si') NOT NULL DEFAULT 'No'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tbl_dias_reserva`
 --
 
-INSERT INTO `tbl_dias_reserva` (`id_dias_reserva`, `id_usuario_ticket`, `lunes`, `martes`, `miercoles`, `jueves`, `viernes`) VALUES
-(29, 23, 0, 0, 0, 0, 0);
+INSERT INTO `tbl_dias_reserva` (`id_dias_reserva`, `id_usuario_ticket`, `lunes`, `martes`, `miercoles`, `jueves`, `viernes`, `servicio`) VALUES
+(41, 35, 0, 0, 0, 0, 0, 'No');
 
 -- --------------------------------------------------------
 
@@ -168,7 +169,16 @@ CREATE TABLE `tbl_padres_alu_profe` (
 
 INSERT INTO `tbl_padres_alu_profe` (`id_pap`, `id_usuario`, `id_usu_dep`, `tipo`) VALUES
 (1, 18, 17, 'padre'),
-(2, 19, 17, 'padre');
+(2, 19, 17, 'padre'),
+(4, 20, 22, 'padre'),
+(5, 20, 21, 'madre'),
+(6, 3, 8, 'profesor'),
+(7, 3, 7, 'profesor'),
+(8, 4, 7, 'profesor'),
+(9, 4, 8, 'profesor'),
+(10, 24, 23, 'padre'),
+(11, 25, 23, 'padre'),
+(12, 26, 23, 'padre');
 
 -- --------------------------------------------------------
 
@@ -248,16 +258,22 @@ CREATE TABLE `tbl_usuarios` (
 --
 
 INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `mail_usuario`, `password_usuario`, `tipo_usuario`, `admin`, `id_etapa`, `sexo_usuario`) VALUES
-(3, 'Andrés', 'González', '1379.joan23@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'alumno', 'no', 12, 'hombre'),
-(4, 'Ruben', 'Díaz', '1', '7694f4a66316e53c8cdd9d9954bd611d', 'alumno', 'no', 12, 'hombre'),
-(7, 'David', 'Marín Salvador', 'david.marin@fje.edu', '47496afd0bb349059c000e89235b1d87', 'profesor', 'no', 13, 'hombre'),
-(8, 'Agnes', 'Plans Berenguer', 'agnes.plans@fje.edu', '058b451ee66762862ed52239cf6cd53d', 'profesor', 'no', 13, 'mujer'),
-(15, 'José Antonio ', 'López Rodríguez', 'jantonio.lopez@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'personal', 'si', 14, 'hombre'),
-(16, 'Núria ', 'García Sánchez', 'nuria.garcia@fje.edu', '02ae76732a5d1d4476a88e74c1f06728', 'personal', 'no', 14, 'mujer'),
-(17, 'Ramon', 'García García', 'ramon.garcia@fje.edu', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 15, 'hombre'),
-(18, 'Judith', 'García Perez', '1234.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 8, 'mujer'),
-(19, 'Javi', 'García Perez', '4321.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 9, 'hombre'),
-(20, 'Alex', 'Diaz', '93296.joan23@fje.edu', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 8, 'hombre');
+(3, 'Andrés', 'González', '1379.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 12, 'hombre'),
+(4, 'Ruben', 'Díaz', '93295.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 12, 'hombre'),
+(7, 'David', 'Marín Salvador', 'david.marin', '793741d54b00253006453742ad4ed534', 'profesor', 'no', 13, 'hombre'),
+(8, 'Agnes', 'Plans Berenguer', 'agnes.plans', '793741d54b00253006453742ad4ed534', 'profesor', 'no', 13, 'mujer'),
+(15, 'José Antonio ', 'López Rodríguez', 'jantonio.lopez', '0be5a6c82893ecaa8bb29bd36831e457', 'personal', 'si', 14, 'hombre'),
+(16, 'Núria ', 'García Sánchez', 'nuria.garcia', '0be5a6c82893ecaa8bb29bd36831e457', 'personal', 'no', 14, 'mujer'),
+(17, 'Ramon', 'García García', 'ramon.garcia', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 15, 'hombre'),
+(18, 'Judith', 'García Perez', '1234.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 8, 'mujer'),
+(19, 'Javi', 'García Perez', '4321.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 7, 'hombre'),
+(20, 'Federico', 'Diaz Fernandez', '93296.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 10, 'hombre'),
+(21, 'Maria', 'Fernandez Lara', 'maria.fernandez', '41409f34ee49036ad153fa10b374747e', 'madre', 'no', 15, 'mujer'),
+(22, 'Manolo', 'Garcia Yus', 'monolo.garcia', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 15, 'hombre'),
+(23, 'Pepe ', 'Viyuela Mas', 'pepe.viyuela', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 16, 'hombre'),
+(24, 'Eduardo', 'Viyuela Marin', '6789.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 11, 'hombre'),
+(25, 'Silvia', 'Vyuela Marin', '01923.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 12, 'mujer'),
+(26, 'Marina', 'Viyuela Marin', '5687.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 9, 'mujer');
 
 -- --------------------------------------------------------
 
@@ -280,7 +296,7 @@ CREATE TABLE `tbl_usuario_ticket` (
 --
 
 INSERT INTO `tbl_usuario_ticket` (`id_usuario_ticket`, `id_usuario`, `para_usuario`, `id_ticket`, `fecha_caducidad`, `cantidad_ticket`, `precio_ticket`) VALUES
-(23, 3, 3, 16, '2018-08-30', '10', '39');
+(35, 3, 3, 16, '2018-08-30', '6', '23.40');
 
 -- --------------------------------------------------------
 
@@ -303,7 +319,7 @@ CREATE TABLE `tbl_usuario_ticket_informes` (
 --
 
 INSERT INTO `tbl_usuario_ticket_informes` (`id_informes`, `id_usuario`, `para_usuario`, `id_ticket`, `fecha_caducidad`, `cantidad_ticket`, `precio_ticket`) VALUES
-(12, 3, 3, 16, '2018-08-30', '10', '39');
+(28, 3, 3, 16, '2018-08-30', '6', '23.40');
 
 --
 -- Índices para tablas volcadas
@@ -404,7 +420,7 @@ ALTER TABLE `tbl_asistencia`
 -- AUTO_INCREMENT de la tabla `tbl_dias_reserva`
 --
 ALTER TABLE `tbl_dias_reserva`
-  MODIFY `id_dias_reserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_dias_reserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_etapa`
@@ -428,7 +444,7 @@ ALTER TABLE `tbl_normativa`
 -- AUTO_INCREMENT de la tabla `tbl_padres_alu_profe`
 --
 ALTER TABLE `tbl_padres_alu_profe`
-  MODIFY `id_pap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_qr`
@@ -446,19 +462,19 @@ ALTER TABLE `tbl_ticket`
 -- AUTO_INCREMENT de la tabla `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuario_ticket`
 --
 ALTER TABLE `tbl_usuario_ticket`
-  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuario_ticket_informes`
 --
 ALTER TABLE `tbl_usuario_ticket_informes`
-  MODIFY `id_informes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_informes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Restricciones para tablas volcadas
