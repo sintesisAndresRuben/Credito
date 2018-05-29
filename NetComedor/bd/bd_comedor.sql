@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-05-2018 a las 20:44:43
--- Versión del servidor: 10.1.28-MariaDB
--- Versión de PHP: 7.1.11
+-- Tiempo de generación: 29-05-2018 a las 22:54:46
+-- Versión del servidor: 10.1.31-MariaDB
+-- Versión de PHP: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,7 +58,12 @@ CREATE TABLE `tbl_dias_reserva` (
 --
 
 INSERT INTO `tbl_dias_reserva` (`id_dias_reserva`, `id_usuario_ticket`, `lunes`, `martes`, `miercoles`, `jueves`, `viernes`, `servicio`) VALUES
-(41, 35, 0, 0, 0, 0, 0, 'No');
+(45, 37, 0, 0, 0, 0, 0, 'No'),
+(46, 37, 0, 0, 0, 0, 0, 'No'),
+(47, 38, 1, 1, 1, 1, 1, 'Si'),
+(48, 39, 0, 0, 0, 0, 0, 'No'),
+(49, 40, 1, 1, 1, 1, 0, 'Si'),
+(50, 41, 0, 0, 0, 0, 0, 'No');
 
 -- --------------------------------------------------------
 
@@ -269,7 +274,7 @@ INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, 
 (19, 'Javi', 'García Perez', '4321.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 7, 'hombre'),
 (20, 'Federico', 'Diaz Fernandez', '93296.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 10, 'hombre'),
 (21, 'Maria', 'Fernandez Lara', 'maria.fernandez', '41409f34ee49036ad153fa10b374747e', 'madre', 'no', 15, 'mujer'),
-(22, 'Manolo', 'Garcia Yus', 'monolo.garcia', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 15, 'hombre'),
+(22, 'Manolo', 'Díaz Yus', 'manolo.diaz', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 15, 'hombre'),
 (23, 'Pepe ', 'Viyuela Mas', 'pepe.viyuela', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 16, 'hombre'),
 (24, 'Eduardo', 'Viyuela Marin', '6789.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 11, 'hombre'),
 (25, 'Silvia', 'Vyuela Marin', '01923.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 12, 'mujer'),
@@ -296,7 +301,11 @@ CREATE TABLE `tbl_usuario_ticket` (
 --
 
 INSERT INTO `tbl_usuario_ticket` (`id_usuario_ticket`, `id_usuario`, `para_usuario`, `id_ticket`, `fecha_caducidad`, `cantidad_ticket`, `precio_ticket`) VALUES
-(35, 3, 3, 16, '2018-08-30', '6', '23.40');
+(37, 22, 20, 14, '2018-08-30', '3', '11.70'),
+(38, 17, 18, 6, '2018-08-30', '1', '168.84'),
+(39, 17, 18, 9, '2018-08-30', '4', '38.80'),
+(40, 17, 19, 2, '2018-08-30', '1', '146.12'),
+(41, 17, 19, 4, '2018-08-30', '1', '9.70');
 
 -- --------------------------------------------------------
 
@@ -319,7 +328,13 @@ CREATE TABLE `tbl_usuario_ticket_informes` (
 --
 
 INSERT INTO `tbl_usuario_ticket_informes` (`id_informes`, `id_usuario`, `para_usuario`, `id_ticket`, `fecha_caducidad`, `cantidad_ticket`, `precio_ticket`) VALUES
-(28, 3, 3, 16, '2018-08-30', '6', '23.40');
+(30, 22, 20, 14, '2018-08-30', '3', '11.70'),
+(31, 17, 18, 6, '2018-08-30', '1', '168.84'),
+(32, 17, 18, 9, '2018-08-30', '4', '38.80'),
+(33, 17, 19, 2, '2018-08-30', '1', '146.12'),
+(34, 17, 19, 4, '2018-08-30', '1', '9.70'),
+(35, 17, 18, 8, '2018-08-30', '1', '110.83'),
+(36, 17, 18, 6, '2018-08-30', '1', '168.84');
 
 --
 -- Índices para tablas volcadas
@@ -420,7 +435,7 @@ ALTER TABLE `tbl_asistencia`
 -- AUTO_INCREMENT de la tabla `tbl_dias_reserva`
 --
 ALTER TABLE `tbl_dias_reserva`
-  MODIFY `id_dias_reserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_dias_reserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_etapa`
@@ -468,13 +483,13 @@ ALTER TABLE `tbl_usuarios`
 -- AUTO_INCREMENT de la tabla `tbl_usuario_ticket`
 --
 ALTER TABLE `tbl_usuario_ticket`
-  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuario_ticket_informes`
 --
 ALTER TABLE `tbl_usuario_ticket_informes`
-  MODIFY `id_informes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_informes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Restricciones para tablas volcadas

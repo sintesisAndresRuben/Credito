@@ -27,13 +27,11 @@ require_once 'foothead/header.php';
 //Hacer una consulta que me salgan los hijos de los padres pero que no me aparezcan los hijos por cada reserva que hacen entre servicio y ticket.
 
 //Query para RECOGER los datos de los hijos que pertenecen al padre que ha iniciado sesion.
-<<<<<<< HEAD
-	$datosHijos= "SELECT tbl_usuarios.* FROM tbl_usuarios INNER JOIN (SELECT id_usuario FROM tbl_padres_alu_profe WHERE id_usu_dep=".$idPadre.") q ON tbl_usuarios.id_usuario=q.id_usuario INNER JOIN tbl_usuario_ticket ON tbl_usuarios.id_usuario=tbl_usuario_ticket.para_usuario WHERE tbl_usuario_ticket.id_usuario=".$idPadre;
+	// $datosHijos= "SELECT tbl_usuarios.* FROM tbl_usuarios INNER JOIN (SELECT id_usuario FROM tbl_padres_alu_profe WHERE id_usu_dep=".$idPadre.") q ON tbl_usuarios.id_usuario=q.id_usuario INNER JOIN tbl_usuario_ticket ON tbl_usuarios.id_usuario=tbl_usuario_ticket.para_usuario WHERE tbl_usuario_ticket.id_usuario=".$idPadre;
 	// $datosHijos="SELECT tbl_usuarios.* FROM tbl_usuarios INNER JOIN (SELECT id_usuario FROM tbl_padres_alu_profe WHERE id_usu_dep=".$idPadre.") q ON tbl_usuarios.id_usuario=q.id_usuario INNER JOIN tbl_usuario_ticket ON tbl_usuarios.id_usuario=tbl_usuario_ticket.para_usuario WHERE tbl_usuario_ticket.id_usuario=".$idPadre." GROUP BY tbl_usuario_ticket.id_usuario";
-=======
+
 	// $datosHijos= "SELECT tbl_usuarios.* FROM tbl_usuarios INNER JOIN (SELECT id_usuario FROM tbl_padres_alu_profe WHERE id_usu_dep=".$idPadre.") q ON tbl_usuarios.id_usuario=q.id_usuario INNER JOIN tbl_usuario_ticket ON tbl_usuarios.id_usuario=tbl_usuario_ticket.para_usuario WHERE tbl_usuario_ticket.id_usuario=".$idPadre;
 	$datosHijos="SELECT tbl_usuarios.* FROM tbl_usuarios INNER JOIN (SELECT id_usuario FROM tbl_padres_alu_profe WHERE id_usu_dep=".$idPadre.") q ON tbl_usuarios.id_usuario=q.id_usuario INNER JOIN tbl_usuario_ticket ON tbl_usuarios.id_usuario=tbl_usuario_ticket.para_usuario WHERE tbl_usuario_ticket.id_usuario=".$idPadre." GROUP BY tbl_usuarios.id_usuario";
->>>>>>> 50d3849da91053f48f9f2cf0f797c92eb67e6095
 	$resultHijos = mysqli_query($conexion,$datosHijos);
 	?>
 
