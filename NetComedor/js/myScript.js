@@ -43,6 +43,14 @@ $(document).ready(function(){
       $("#checks").css("visibility", "hidden");
       $("#cantidad").val('0');
       $("#seleccionados").html('0');
+      $("#lunes").val('0');
+      $("#martes").val('0');
+      $("#miercoles").val('0');
+      $("#jueves").val('0');
+      $("#viernes").val('0');
+      // $("input[type=checkbox]").prop('checked', false);
+
+
 
     } else if (caca=='Servicio comedor 5 días') {
       $("#cantidadTicket").val('1');
