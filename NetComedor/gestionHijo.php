@@ -110,12 +110,15 @@ if (mysqli_num_rows($resultado)>0){
 										$tbl_Dias['dias']=$dias;
 									}
 								} else {
-									
+
 								}
 								?>
 								<div class="form-check form-check-inline">
 									<label class="form-check-label">
-										<?php if ($tbl_Dias['dias']['lunes']==1) {
+
+										<?php 
+										if (isset($tbl_Dias['dias'])) {
+										if ($tbl_Dias['dias']['lunes']==1) {
 											?>
 											<input class="form-check-input" type="checkbox" name="lunes" id="lunes1" value="<?php echo $tbl_Dias['dias']['lunes'] ?>" checked disabled> LUN.
 											<?php
@@ -174,6 +177,7 @@ if (mysqli_num_rows($resultado)>0){
 										}else{  ?>
 											<input class="form-check-input" type="checkbox" name="viernes" id="viernes1" value="<?php echo $tbl_Dias['dias']['viernes'] ?>" disabled> VIE.
 											<?php
+										}
 										}
 										?>
 									</label>
