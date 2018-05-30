@@ -172,7 +172,7 @@ if (mysqli_num_rows($resultado)>0){
 									<label class="form-check-label">
 										<?php if ($tbl_Dias['dias']['viernes']==1) {
 											?>
-											<input class="form-check-input" type="checkbox" name="viernes" id="viernes1" value="<?php echo $tbl_Dias['dias']['viernes'] ?>" disabled> VIE.
+											<input class="form-check-input" type="checkbox" name="viernes" id="viernes1" value="<?php echo $tbl_Dias['dias']['viernes'] ?>" checked disabled> VIE.
 											<?php
 										}else{  ?>
 											<input class="form-check-input" type="checkbox" name="viernes" id="viernes1" value="<?php echo $tbl_Dias['dias']['viernes'] ?>" disabled> VIE.
