@@ -41,11 +41,11 @@ if(!isset($_SESSION['user'])){
 	} else {
 		$viernes='0';
 	}
-	echo "lunes: $lunes</br>";
-	echo "martes: $martes</br>";
-	echo "miercoles: $miercoles</br>";
-	echo "jueves: $jueves</br>";
-	echo "viernes: $viernes</br>";
+	// echo "lunes: $lunes</br>";
+	// echo "martes: $martes</br>";
+	// echo "miercoles: $miercoles</br>";
+	// echo "jueves: $jueves</br>";
+	// echo "viernes: $viernes</br>";
 	// echo "Al principio de la pagina: $tipoTick</br>";
 	// echo "$tipoTick";
 	$id_usuario_ticket=0;
@@ -175,5 +175,5 @@ if(!isset($_SESSION['user'])){
 
 		}
 	}
-// header("location:home.php");
+header("location:home.php");
 }
