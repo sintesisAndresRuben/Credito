@@ -13,65 +13,70 @@ $(document).ready(function(){
     $("#insertPrecio").val(suma2);
   });
   // AL CAMBIAR DE NUMERO CON LAS FLECHAS DEL INPUT
-  $("#cantidadTicket").keyup(function(){
-    var numticket = $(this).val();
-    $("#textoCant").html(numticket);
-    var precio = $("#valor_ticket").val();
-    var suma = precio*numticket;
-    var suma2 = suma.toFixed(2);
-    $( "#precio" ).html(suma2+"€");
-    $("#insertPrecio").val(suma2);
+  // $("#cantidadTicket").keyup(function(){
+  //   var numticket = $(this).val();
+  //   $("#textoCant").html(numticket);
+  //   var precio = $("#valor_ticket").val();
+  //   var suma = precio*numticket;
+  //   var suma2 = suma.toFixed(2);
+  //   $( "#precio" ).html(suma2+"€");
+  //   $("#insertPrecio").val(suma2);
 
-  });
+  // });
 
   ////////////////////FUNCION PARA QUE ESCRIBA LA OPCION SELECCIONADA EN EL CAMPO TIPO TIQUET //////////////////////////////
   $( "select" ).change(function () {
     var str = "";
     var precio;
     var caca;
+    var n;
     var cantidad = $("#cantidadTicket").val();
     $( "select option:selected" ).each(function() {
       str += $( this ).text() + " ";
       caca = $(this).text();
+      n = $(this).attr("name");
       precio = parseFloat($(this).attr("id"));
     });
     // alert(caca);
     
     if (caca=='Ticket comedor') {
       $("#cantidadTicket").prop("type","number");
+      $("#cantidadTicket").val(n);
+      $("#textoCant").html(n);
       $("#david").css("visibility", "visible");
       $("#checks").css("visibility", "hidden");
       $("#cantidad").val('0');
       $("#seleccionados").html('0');
 
     } else if (caca=='Servicio comedor 5 días') {
-      $("#cantidadTicket").val('1');
+      // $("#cantidadTicket").val('1');
       $("#cantidadTicket").prop("type","hidden");
       $("#david").css("visibility", "hidden");
       //CAMBIAR EL VALOR DEL INPUT A UNO PARA QUE NO MULTIPLIQUE  
       $("#david").val('1');
       $("#textoCant").html('1');
       $("input[type=checkbox]").prop('checked', true);
-      $("input[type=checkbox]").val('1');
+      // $("input[type=checkbox]").val('1');
       $("#cantidad").val('5');
       $("#checks").css("visibility", "visible");
       $("#seleccionados").html('5');
 
 
     } else if (caca=='Servicio comedor 4 días') {
-      $("#cantidadTicket").val('1');
-      $("#cantidadTicket").prop("type","hidden");
+      $("#cantidadTicket").val(n);
+      // $("#cantidadTicket").prop("type","hidden");
       $("#david").css("visibility", "hidden");
-      $("#textoCant").html('1');
+      $("#textoCant").html(n);
       //CAMBIAR EL VALOR DEL INPUT A UNO PARA QUE NO MULTIPLIQUE  
       $("#david").val('1');
       // $("input[type=checkbox]").prop('checked', false);
       $("#cantidad").val('4');
       $("#checks").css("visibility", "visible");
       $("#seleccionados").html('0');
+      // var n = str.getElementByName();
 
     } else if (caca=='Servicio comedor 3 días') {
-      $("#cantidadTicket").val('1');
+      // $("#cantidadTicket").val('1');
       $("#textoCant").html('1');
       $("#cantidadTicket").prop("type","hidden");
       $("#david").css("visibility", "hidden");
@@ -88,7 +93,7 @@ $(document).ready(function(){
 
     $( "#txtTicket" ).html( str );
     $("#txtTicket1").val(str);
-    var suma = precio*cantidad;
+    var suma = precio*n;
     var suma2 = suma.toFixed(2);
     $("#valor_ticket").val(suma);
     var total = $("#valor_ticket").val();

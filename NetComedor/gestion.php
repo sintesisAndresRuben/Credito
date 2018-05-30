@@ -49,14 +49,14 @@ require_once 'foothead/header.php';
 							<select class="form-control" id="tipoTicket" name="tipoT" required="">
 								<!-- <option value="" id="0"></option> -->
 								<?php
-								$sqlOption = "SELECT * FROM `tbl_ticket` WHERE id_etapa=".$_SESSION['user']['id_etapa'];
+								$sqlOption = "SELECT tbl_ticket.id_ticket,tbl_ticket.importe_ticket,tbl_ticket.tipo_ticket,tbl_ticket.id_etapa, tbl_usuario_ticket.id_usuario_ticket, tbl_usuario_ticket.cantidad_ticket FROM tbl_ticket INNER JOIN tbl_usuario_ticket ON tbl_ticket.id_ticket= tbl_usuario_ticket.id_ticket WHERE id_etapa=".$_SESSION['user']['id_etapa'];
 								$result = mysqli_query($conexion,$sqlOption);
 
 								if (mysqli_num_rows($result)>0) {
 									while ($option = (mysqli_fetch_array($result))){
 										$tbl_T['ticket']=$option;
 										?>
-										<option  value="<?php echo $tbl_T['ticket']['id_ticket'] ?>" name="<?php echo $tbl_T['ticket']['tipo_ticket'] ?>" id="<?php echo $tbl_T['ticket']['importe_ticket'] ?>"selected disabled><?php echo $tbl_T['ticket']['tipo_ticket']?></option>
+										<option  value="<?php echo $tbl_T['ticket']['id_ticket'] ?>" name="<?php echo $tbl_T['ticket']['cantidad_ticket'] ?>" id="<?php echo $tbl_T['ticket']['importe_ticket'] ?>"selected disabled><?php echo $tbl_T['ticket']['tipo_ticket']?></option>
 										<?php
 
 									}

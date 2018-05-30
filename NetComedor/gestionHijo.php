@@ -57,7 +57,7 @@ if (mysqli_num_rows($resultado)>0){
 							<select class="form-control" id="tipoTicket" name="tipoT" required="">
 								<!-- <option value="" id="0" selected="selected"></option> -->
 								<?php
-								$sqlOption = "SELECT tbl_ticket.id_ticket,tbl_ticket.importe_ticket,tbl_ticket.tipo_ticket,tbl_ticket.id_etapa, tbl_usuario_ticket.id_usuario_ticket FROM tbl_ticket INNER JOIN tbl_usuario_ticket ON tbl_ticket.id_ticket= tbl_usuario_ticket.id_ticket WHERE id_etapa=".$Hijo['datos']['id_etapa'];
+								$sqlOption = "SELECT tbl_ticket.id_ticket,tbl_ticket.importe_ticket,tbl_ticket.tipo_ticket,tbl_ticket.id_etapa, tbl_usuario_ticket.id_usuario_ticket, tbl_usuario_ticket.cantidad_ticket FROM tbl_ticket INNER JOIN tbl_usuario_ticket ON tbl_ticket.id_ticket= tbl_usuario_ticket.id_ticket WHERE id_etapa=".$Hijo['datos']['id_etapa'];
 								echo $sqlOption;
 								$result = mysqli_query($conexion,$sqlOption);
 
@@ -65,7 +65,7 @@ if (mysqli_num_rows($resultado)>0){
 									while ($option = (mysqli_fetch_array($result))){
 										$tbl_T['ticket']=$option;
 										?>
-										<option value="<?php echo $tbl_T['ticket']['id_ticket'] ?>" name="<?php echo $tbl_T['ticket']['tipo_ticket'] ?>" id="<?php echo $tbl_T['ticket']['importe_ticket'] ?>"><?php echo $tbl_T['ticket']['tipo_ticket']?></option>
+										<option value="<?php echo $tbl_T['ticket']['id_ticket'] ?>" name="<?php echo $tbl_T['ticket']['cantidad_ticket'] ?>" id="<?php echo $tbl_T['ticket']['importe_ticket'] ?>"><?php echo $tbl_T['ticket']['tipo_ticket']?></option>
 										<?php
 									}
 								}
@@ -103,13 +103,15 @@ if (mysqli_num_rows($resultado)>0){
 								<input type="hidden" id="cantidad" value="0">
 								<label for="apellido">Elegir los dias de la semana:</label>
 								<?php
-								$sqlDias = "SELECT tbl_usuario_ticket.para_usuario, tbl_usuario_ticket.id_usuario, tbl_dias_reserva.lunes, tbl_dias_reserva.martes, tbl_dias_reserva.miercoles, tbl_dias_reserva.jueves, tbl_dias_reserva.viernes FROM tbl_usuarios INNER JOIN tbl_usuario_ticket ON tbl_usuarios.id_usuario= tbl_usuario_ticket.para_usuario INNER JOIN tbl_dias_reserva ON tbl_usuario_ticket.id_usuario_ticket=tbl_dias_reserva.id_usuario_ticket WHERE para_usuario=".$Hijo['datos']['id_usuario'];
+								$sqlDias = "SELECT tbl_usuario_ticket.para_usuario, tbl_usuario_ticket.id_usuario, tbl_dias_reserva.lunes, tbl_dias_reserva.martes, tbl_dias_reserva.miercoles, tbl_dias_reserva.jueves, tbl_dias_reserva.viernes, tbl_dias_reserva.servicio FROM tbl_usuarios INNER JOIN tbl_usuario_ticket ON tbl_usuarios.id_usuario= tbl_usuario_ticket.para_usuario INNER JOIN tbl_dias_reserva ON tbl_usuario_ticket.id_usuario_ticket=tbl_dias_reserva.id_usuario_ticket WHERE servicio='Si' AND para_usuario=".$Hijo['datos']['id_usuario'];
 								$result = mysqli_query($conexion,$sqlDias);
 								if (mysqli_num_rows($result)>0) {
 									while ($dias = (mysqli_fetch_array($result))){
 										$tbl_Dias['dias']=$dias;
 									}
-								} 
+								} else {
+									
+								}
 								?>
 								<div class="form-check form-check-inline">
 									<label class="form-check-label">

@@ -23,7 +23,7 @@ require_once 'foothead/headerGESTION.php';
 			<h3>Informe Asistencias</h3>
 			<br><br>
 			<?php
-			$q="SELECT `tbl_usuarios`.`mail_usuario`, `tbl_usuarios`.`id_usuario`, `tbl_usuario_ticket`.`id_usuario`, `tbl_usuario_ticket`.`para_usuario`, `tbl_etapa`.`nombre_etapa`,`tbl_dias_reserva`.`lunes`, `tbl_dias_reserva`.`martes`, `tbl_dias_reserva`.`miercoles`, `tbl_dias_reserva`.`jueves`, `tbl_dias_reserva`.`viernes` FROM `tbl_usuarios` INNER JOIN `tbl_usuario_ticket` ON `tbl_usuarios`.`id_usuario`= `tbl_usuario_ticket`.`para_usuario` INNER JOIN `tbl_etapa` ON `tbl_usuarios`.`id_etapa` = `tbl_etapa`.`id_etapa` INNER JOIN `tbl_dias_reserva` ON `tbl_usuario_ticket`.`id_usuario_ticket` = `tbl_dias_reserva`.`id_usuario_ticket` WHERE `tbl_etapa`.`id_etapa` BETWEEN 7 AND 9";
+			$q="SELECT `tbl_usuarios`.`mail_usuario`, `tbl_usuarios`.`id_usuario`, `tbl_usuario_ticket`.`id_usuario`, `tbl_usuario_ticket`.`para_usuario`, `tbl_etapa`.`nombre_etapa`,`tbl_dias_reserva`.`lunes`, `tbl_dias_reserva`.`martes`, `tbl_dias_reserva`.`miercoles`, `tbl_dias_reserva`.`jueves`, `tbl_dias_reserva`.`viernes`, `tbl_dias_reserva`.`servicio` FROM `tbl_usuarios` INNER JOIN `tbl_usuario_ticket` ON `tbl_usuarios`.`id_usuario`= `tbl_usuario_ticket`.`para_usuario` INNER JOIN `tbl_etapa` ON `tbl_usuarios`.`id_etapa` = `tbl_etapa`.`id_etapa` INNER JOIN `tbl_dias_reserva` ON `tbl_usuario_ticket`.`id_usuario_ticket` = `tbl_dias_reserva`.`id_usuario_ticket` WHERE `tbl_dias_reserva`.`servicio`='Si' AND `tbl_etapa`.`id_etapa` BETWEEN 7 AND 9";
 
 			$tablaTicketUsuarios = mysqli_query($conexion, $q);
 			if (mysqli_num_rows($tablaTicketUsuarios)>0) {
