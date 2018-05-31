@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-05-2018 a las 13:31:06
--- Versión del servidor: 10.1.26-MariaDB
--- Versión de PHP: 7.1.9
+-- Tiempo de generación: 30-05-2018 a las 15:51:20
+-- Versión del servidor: 10.1.31-MariaDB
+-- Versión de PHP: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -71,7 +71,8 @@ INSERT INTO `tbl_dias_reserva` (`id_dias_reserva`, `id_usuario_ticket`, `lunes`,
 (57, 45, 0, 0, 0, 0, 0, 'No'),
 (58, 45, 0, 0, 0, 0, 0, 'No'),
 (59, 45, 0, 0, 0, 0, 0, 'No'),
-(60, 45, 0, 0, 0, 0, 0, 'No');
+(60, 45, 0, 0, 0, 0, 0, 'No'),
+(61, 45, 0, 0, 0, 0, 0, 'No');
 
 -- --------------------------------------------------------
 
@@ -272,10 +273,10 @@ CREATE TABLE `tbl_usuarios` (
 
 INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `mail_usuario`, `password_usuario`, `tipo_usuario`, `admin`, `id_etapa`, `sexo_usuario`) VALUES
 (3, 'Andrés', 'González', '1379.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 12, 'hombre'),
-(4, 'Ruben', 'Díaz', '93295.joan23', '1fa3356b1eb65f144a367ff8560cb406', 'alumno', 'no', 12, 'hombre'),
+(4, 'Ruben', 'Díaz', '93295.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 12, 'hombre'),
 (7, 'David', 'Marín Salvador', 'david.marin', '793741d54b00253006453742ad4ed534', 'profesor', 'no', 13, 'hombre'),
 (8, 'Agnes', 'Plans Berenguer', 'agnes.plans', '793741d54b00253006453742ad4ed534', 'profesor', 'no', 13, 'mujer'),
-(15, 'José Antonio ', 'López Rodríguez', 'jantonio.lopez@fje.edu', '1fa3356b1eb65f144a367ff8560cb406', 'personal', 'si', 14, 'hombre'),
+(15, 'José Antonio ', 'López Rodríguez', 'jantonio.lopez@fje.edu', '0be5a6c82893ecaa8bb29bd36831e457', 'personal', 'si', 14, 'hombre'),
 (16, 'Núria ', 'García Sánchez', 'nuria.garcia', '0be5a6c82893ecaa8bb29bd36831e457', 'personal', 'no', 14, 'mujer'),
 (17, 'Ramon', 'García García', 'ramon.garcia', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 15, 'hombre'),
 (18, 'Judith', 'García Perez', '1234.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 8, 'mujer'),
@@ -458,7 +459,7 @@ ALTER TABLE `tbl_asistencia`
 -- AUTO_INCREMENT de la tabla `tbl_dias_reserva`
 --
 ALTER TABLE `tbl_dias_reserva`
-  MODIFY `id_dias_reserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_dias_reserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_etapa`
