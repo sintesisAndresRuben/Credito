@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-05-2018 a las 15:51:20
--- Versión del servidor: 10.1.31-MariaDB
--- Versión de PHP: 7.2.4
+-- Tiempo de generación: 31-05-2018 a las 23:26:07
+-- Versión del servidor: 10.1.26-MariaDB
+-- Versión de PHP: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,21 +58,19 @@ CREATE TABLE `tbl_dias_reserva` (
 --
 
 INSERT INTO `tbl_dias_reserva` (`id_dias_reserva`, `id_usuario_ticket`, `lunes`, `martes`, `miercoles`, `jueves`, `viernes`, `servicio`) VALUES
-(45, 37, 0, 0, 0, 0, 0, 'No'),
-(46, 37, 0, 0, 0, 0, 0, 'No'),
-(47, 38, 0, 1, 1, 1, 1, 'Si'),
-(48, 39, 0, 0, 0, 0, 0, 'No'),
-(50, 41, 0, 0, 0, 0, 0, 'No'),
-(52, 43, 1, 0, 1, 0, 1, 'Si'),
-(53, 44, 0, 0, 0, 0, 0, 'No'),
-(54, 44, 0, 0, 0, 0, 0, 'No'),
-(55, 45, 0, 0, 0, 0, 0, 'No'),
-(56, 45, 0, 0, 0, 0, 0, 'No'),
-(57, 45, 0, 0, 0, 0, 0, 'No'),
-(58, 45, 0, 0, 0, 0, 0, 'No'),
-(59, 45, 0, 0, 0, 0, 0, 'No'),
-(60, 45, 0, 0, 0, 0, 0, 'No'),
-(61, 45, 0, 0, 0, 0, 0, 'No');
+(62, 46, 0, 0, 0, 0, 0, 'No'),
+(63, 47, 0, 0, 0, 0, 0, 'No'),
+(64, 48, 1, 1, 1, 0, 0, 'Si'),
+(65, 49, 0, 0, 0, 0, 0, 'No'),
+(66, 50, 0, 0, 0, 0, 0, 'No'),
+(67, 51, 0, 0, 0, 0, 0, 'No'),
+(68, 52, 1, 1, 1, 1, 1, 'Si'),
+(69, 53, 1, 0, 1, 1, 1, 'Si'),
+(70, 54, 1, 1, 1, 0, 0, 'Si'),
+(71, 55, 1, 1, 1, 1, 1, 'Si'),
+(72, 56, 1, 1, 1, 1, 0, 'Si'),
+(73, 57, 0, 0, 0, 0, 0, 'No'),
+(74, 58, 1, 0, 1, 0, 1, 'Si');
 
 -- --------------------------------------------------------
 
@@ -192,7 +190,15 @@ INSERT INTO `tbl_padres_alu_profe` (`id_pap`, `id_usuario`, `id_usu_dep`, `tipo`
 (9, 4, 8, 'profesor'),
 (10, 24, 23, 'padre'),
 (11, 25, 23, 'padre'),
-(12, 26, 23, 'padre');
+(12, 26, 23, 'padre'),
+(13, 37, 36, 'madre'),
+(14, 31, 29, 'padre'),
+(15, 28, 27, 'madre'),
+(16, 30, 29, 'padre'),
+(17, 33, 32, 'padre'),
+(18, 35, 34, 'padre'),
+(19, 38, 36, 'madre'),
+(20, 3, 17, 'padre');
 
 -- --------------------------------------------------------
 
@@ -272,22 +278,34 @@ CREATE TABLE `tbl_usuarios` (
 --
 
 INSERT INTO `tbl_usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `mail_usuario`, `password_usuario`, `tipo_usuario`, `admin`, `id_etapa`, `sexo_usuario`) VALUES
-(3, 'Andrés', 'González', '1379.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 12, 'hombre'),
-(4, 'Ruben', 'Díaz', '93295.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 12, 'hombre'),
-(7, 'David', 'Marín Salvador', 'david.marin', '793741d54b00253006453742ad4ed534', 'profesor', 'no', 13, 'hombre'),
-(8, 'Agnes', 'Plans Berenguer', 'agnes.plans', '793741d54b00253006453742ad4ed534', 'profesor', 'no', 13, 'mujer'),
-(15, 'José Antonio ', 'López Rodríguez', 'jantonio.lopez@fje.edu', '0be5a6c82893ecaa8bb29bd36831e457', 'personal', 'si', 14, 'hombre'),
-(16, 'Núria ', 'García Sánchez', 'nuria.garcia', '0be5a6c82893ecaa8bb29bd36831e457', 'personal', 'no', 14, 'mujer'),
-(17, 'Ramon', 'García García', 'ramon.garcia', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 15, 'hombre'),
-(18, 'Judith', 'García Perez', '1234.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 8, 'mujer'),
-(19, 'Javi', 'García Perez', '4321.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 7, 'hombre'),
-(20, 'Federico', 'Diaz Fernandez', '93296.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 10, 'hombre'),
-(21, 'Maria', 'Fernandez Lara', 'maria.fernandez', '41409f34ee49036ad153fa10b374747e', 'madre', 'no', 15, 'mujer'),
-(22, 'Manolo', 'Díaz Yus', 'manolo.diaz', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 15, 'hombre'),
-(23, 'Pepe ', 'Viyuela Mas', 'pepe.viyuela', '41409f34ee49036ad153fa10b374747e', 'padre', 'no', 16, 'hombre'),
-(24, 'Eduardo', 'Viyuela Marin', '6789.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 11, 'hombre'),
-(25, 'Silvia', 'Vyuela Marin', '01923.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 12, 'mujer'),
-(26, 'Marina', 'Viyuela Marin', '5687.joan23', 'c6865cf98b133f1f3de596a4a2894630', 'alumno', 'no', 9, 'mujer');
+(3, 'Andrés', 'González', '1379.joan23', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 12, 'hombre'),
+(4, 'Ruben', 'Díaz', '93295.joan23', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 12, 'hombre'),
+(7, 'David', 'Marín Salvador', 'david.marin', '0cc175b9c0f1b6a831c399e269772661', 'profesor', 'no', 13, 'hombre'),
+(8, 'Agnes', 'Plans Berenguer', 'agnes.plans', '0cc175b9c0f1b6a831c399e269772661', 'profesor', 'no', 13, 'mujer'),
+(15, 'José Antonio ', 'López Rodríguez', 'jantonio.lopez@fje.edu', '0cc175b9c0f1b6a831c399e269772661', 'personal', 'si', 14, 'hombre'),
+(16, 'Núria ', 'García Sánchez', 'nuria.garcia', '0cc175b9c0f1b6a831c399e269772661', 'personal', 'no', 14, 'mujer'),
+(17, 'Ramon', 'García García', 'ramon.garcia', '0cc175b9c0f1b6a831c399e269772661', 'padre', 'no', 15, 'hombre'),
+(18, 'Judith', 'García Perez', '1234.joan23', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 8, 'mujer'),
+(19, 'Javi', 'García Perez', '4321.joan23', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 7, 'hombre'),
+(20, 'Federico', 'Diaz Fernandez', '93296.joan23', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 10, 'hombre'),
+(21, 'Maria', 'Fernandez Lara', 'maria.fernandez', '0cc175b9c0f1b6a831c399e269772661', 'madre', 'no', 15, 'mujer'),
+(22, 'Manolo', 'Díaz Yus', 'manolo.diaz', '0cc175b9c0f1b6a831c399e269772661', 'padre', 'no', 15, 'hombre'),
+(23, 'Pepe ', 'Viyuela Mas', 'pepe.viyuela', '0cc175b9c0f1b6a831c399e269772661', 'padre', 'no', 15, 'hombre'),
+(24, 'Eduardo', 'Viyuela Marin', '6789.joan23', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 11, 'hombre'),
+(25, 'Silvia', 'Vyuela Marin', '01923.joan23', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 12, 'mujer'),
+(26, 'Marina', 'Viyuela Marin', 'marina.viyuela', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 9, 'mujer'),
+(27, 'Montse', 'Ruiz', 'montse.ruiz', '0cc175b9c0f1b6a831c399e269772661', 'madre', 'no', 15, 'mujer'),
+(28, 'Cristina', 'Diaz', 'cristina.diaz', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 9, 'mujer'),
+(29, 'Fernando', 'Cotan', 'fernando.cotan', '0cc175b9c0f1b6a831c399e269772661', 'padre', 'no', 15, 'hombre'),
+(30, 'Irene', 'Cotan', 'irene.cotan', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 12, 'mujer'),
+(31, 'Alba', 'Cotan', 'alba.cotan', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 9, 'mujer'),
+(32, 'Domingo', 'Ruiz', 'domingo.ruiz', '0cc175b9c0f1b6a831c399e269772661', 'padre', 'no', 15, 'hombre'),
+(33, 'Marc', 'Ruiz', 'marc.ruiz', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 9, 'hombre'),
+(34, 'Jose', 'Coderch', 'jose.coderch', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 15, 'hombre'),
+(35, 'Oscar', 'Coderch', 'oscar.coderch', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 8, 'hombre'),
+(36, 'Raquel', 'Ruiz', 'raquel.ruiz', '0cc175b9c0f1b6a831c399e269772661', 'madre', 'no', 15, 'mujer'),
+(37, 'Abril', 'Ruiz', 'abril.ruiz', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 7, 'mujer'),
+(38, 'Victor', 'Ruiz', 'pepa.ruiz', '0cc175b9c0f1b6a831c399e269772661', 'alumno', 'no', 9, 'hombre');
 
 -- --------------------------------------------------------
 
@@ -310,13 +328,19 @@ CREATE TABLE `tbl_usuario_ticket` (
 --
 
 INSERT INTO `tbl_usuario_ticket` (`id_usuario_ticket`, `id_usuario`, `para_usuario`, `id_ticket`, `fecha_caducidad`, `cantidad_ticket`, `precio_ticket`) VALUES
-(37, 22, 20, 14, '2018-08-30', '3', '11.70'),
-(38, 17, 18, 7, '2018-08-30', '1', '146.12'),
-(39, 17, 18, 9, '2018-08-30', '4', '38.80'),
-(41, 17, 19, 4, '2018-08-30', '5', '9.70'),
-(43, 17, 19, 3, '2018-08-30', '1', '110.83'),
-(44, 15, 15, 18, '2018-08-30', '9', '35.1'),
-(45, 4, 4, 16, '2018-08-30', '10', '39');
+(46, 23, 24, 15, '2018-08-30', '5', '19.50'),
+(47, 23, 25, 16, '2018-08-30', '7', '27.30'),
+(48, 23, 26, 12, '2018-08-30', '1', '99.75'),
+(49, 23, 26, 13, '2018-08-30', '1', '8.70'),
+(50, 21, 20, 14, '2018-08-30', '2', '7.8'),
+(51, 7, 7, 17, '2018-08-30', '1', '3.90'),
+(52, 36, 37, 1, '2018-08-30', '1', '180.73'),
+(53, 36, 38, 11, '2018-08-30', '1', '131.43'),
+(54, 34, 35, 8, '2018-08-30', '1', '110.83'),
+(55, 32, 33, 10, '2018-08-30', '1', '162.36'),
+(56, 29, 31, 11, '2018-08-30', '1', '131.43'),
+(57, 29, 30, 16, '2018-08-30', '1', '3.90'),
+(58, 27, 28, 12, '2018-08-30', '1', '99.75');
 
 -- --------------------------------------------------------
 
@@ -339,26 +363,20 @@ CREATE TABLE `tbl_usuario_ticket_informes` (
 --
 
 INSERT INTO `tbl_usuario_ticket_informes` (`id_informes`, `id_usuario`, `para_usuario`, `id_ticket`, `fecha_caducidad`, `cantidad_ticket`, `precio_ticket`) VALUES
-(30, 22, 20, 14, '2018-08-30', '3', '11.70'),
-(31, 17, 18, 6, '2018-08-30', '1', '168.84'),
-(32, 17, 18, 9, '2018-08-30', '4', '38.80'),
-(33, 17, 19, 2, '2018-08-30', '1', '146.12'),
-(34, 17, 19, 4, '2018-08-30', '1', '9.70'),
-(35, 17, 18, 8, '2018-08-30', '1', '110.83'),
-(36, 17, 18, 6, '2018-08-30', '1', '168.84'),
-(37, 17, 18, 7, '2018-08-30', '1', '146.12'),
-(38, 17, 19, 3, '2018-08-30', '1', '110.83'),
-(39, 17, 19, 1, '2018-08-30', '1', '180.73'),
-(40, 17, 19, 2, '2018-08-30', '1', '146.12'),
-(41, 17, 19, 2, '2018-08-30', '1', '146.12'),
-(42, 17, 19, 3, '2018-08-30', '1', '110.83'),
-(43, 17, 18, 7, '2018-08-30', '1', '146.12'),
-(44, 17, 18, 8, '2018-08-30', '1', '110.83'),
-(45, 17, 18, 6, '2018-08-30', '1', '168.84'),
-(46, 17, 18, 7, '2018-08-30', '1', '146.12'),
-(47, 15, 15, 18, '2018-08-30', '9', '35.1'),
-(48, 4, 4, 16, '2018-08-30', '10', '39'),
-(49, 17, 18, 7, '2018-08-30', '1', '146.12');
+(50, 23, 24, 15, '2018-08-30', '5', '19.50'),
+(51, 23, 25, 16, '2018-08-30', '7', '27.30'),
+(52, 23, 26, 11, '2018-08-30', '1', '131.43'),
+(53, 23, 26, 12, '2018-08-30', '1', '99.75'),
+(54, 23, 26, 13, '2018-08-30', '1', '8.70'),
+(55, 21, 20, 14, '2018-08-30', '2', '7.8'),
+(56, 7, 7, 17, '2018-08-30', '1', '3.90'),
+(57, 36, 37, 1, '2018-08-30', '1', '180.73'),
+(58, 36, 38, 11, '2018-08-30', '1', '131.43'),
+(59, 34, 35, 8, '2018-08-30', '1', '110.83'),
+(60, 32, 33, 10, '2018-08-30', '1', '162.36'),
+(61, 29, 31, 11, '2018-08-30', '1', '131.43'),
+(62, 29, 30, 16, '2018-08-30', '1', '3.90'),
+(63, 27, 28, 12, '2018-08-30', '1', '99.75');
 
 --
 -- Índices para tablas volcadas
@@ -459,7 +477,7 @@ ALTER TABLE `tbl_asistencia`
 -- AUTO_INCREMENT de la tabla `tbl_dias_reserva`
 --
 ALTER TABLE `tbl_dias_reserva`
-  MODIFY `id_dias_reserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_dias_reserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_etapa`
@@ -483,7 +501,7 @@ ALTER TABLE `tbl_normativa`
 -- AUTO_INCREMENT de la tabla `tbl_padres_alu_profe`
 --
 ALTER TABLE `tbl_padres_alu_profe`
-  MODIFY `id_pap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_pap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_qr`
@@ -501,19 +519,19 @@ ALTER TABLE `tbl_ticket`
 -- AUTO_INCREMENT de la tabla `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuario_ticket`
 --
 ALTER TABLE `tbl_usuario_ticket`
-  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_usuario_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuario_ticket_informes`
 --
 ALTER TABLE `tbl_usuario_ticket_informes`
-  MODIFY `id_informes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_informes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- Restricciones para tablas volcadas
